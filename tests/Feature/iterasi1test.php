@@ -3,19 +3,18 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use App\Models\User;
-use App\Providers\RouteServiceProvider;
 use Tests\TestCase;
+use App\Providers\RouteServiceProvider;
+use App\Models\User;
 
-class iterasi1test extends TestCase
+class iterasi1 extends TestCase
 {
     /**
-     * A basic feature test example.
+     * A basic test example.
      *
      * @return void
      */
-    public function test_example()
+    public function test_the_application_returns_a_successful_response()
     {
         $response = $this->get('/');
 
@@ -24,16 +23,13 @@ class iterasi1test extends TestCase
     public function test_users_can_authenticate_using_the_login_screen()
     {
         // $user = User::factory()->create();
-        // $response = $this->post('/auth', [
-        //     'email' => $user->email,
-        //     'password' => 'password',
-        // ]);
 
-        // $this->assertAuthenticated();
-        // $response->assertRedirect(RouteServiceProvider::HOME);
-        $response = $this->get('/index');
+        $response = $this->post('/auth', [
+            'email' => 'fajriansyah573@gmail.com',
+            'password' => 'asdfghjkl',
+        ]);
 
-        $response->assertStatus(200);
+        $this->assertAuthenticated();
+        $response->assertRedirect(RouteServiceProvider::HOME);
     }
-
 }
