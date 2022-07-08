@@ -26,18 +26,21 @@ use App\Http\Controllers\AuthenticateController;
 Route::get('/forget', function () {
     return view('auth.passwords.email');
 });
+//Route::get('/', [LoginController::class,'index'])->name('login');
 
 Route::group(['middleware' => 'guest'], function () {
     Route::post('/auth', [AuthenticateController::class,'authenticate']);
-    Route::get('/', function () {
-        return view('home');
-    });
+    // Route::get('/', function () {
+    //     return view('home');
+    // });
+    
     Route::get('/login', [LoginController::class,'index'])->name('login')->Middleware('guest');
     
 
 });
 
 Route::resource('/login', LoginController::class);
+Route::resource('/', LoginController::class);
 
 
 Route::group(['middleware' => 'auth'], function () {

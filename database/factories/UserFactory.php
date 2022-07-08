@@ -19,15 +19,15 @@ class UserFactory extends Factory
     {
         return [
             'nama' => $this->faker->name,
-            'email' => $this->faker->email,
+            'email' => 'fansyah559@gmail.com',
             // 'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => 'anukananuku', // password
             'remember_token' => Str::random(10),
             'jabatan' => $this->faker->jobTitle,
             'kontak' => '082350476227',
             'alamat' => $this->faker->address,
-            'role' => 'admin',
-            'foto' => 'asdf',
+            'role' => 'Admin',
+            'foto' => 'foto',
         ];
     }
 

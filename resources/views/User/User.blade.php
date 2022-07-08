@@ -20,13 +20,15 @@
 
   <!-- Main content -->
   <section class="content">
-
+    <div class="container-fluid">
     <div class="row">
       <div class="col-12">
-        
+        <!-- /.card -->
+        <div class="card">
           <!-- /.card-header -->
-          <div class="card-body  table-responsive p-0">
-            <table class="table  table-hover text-nowrap">
+          <div class="card-body ">
+            <table id="example1" class="table table-bordered table-striped">
+            {{-- <table class="table  table-hover text-nowrap"> --}}
               <thead>
                 <tr>
                   <th>ID</th>
@@ -81,9 +83,11 @@
           <!-- /.card-body -->
         </div>
         <!-- /.card -->
+        </div>
+        <!-- /.card -->
       </div>
    
-
+    </div>
   </section>
 
   <!-- /.content -->

@@ -1,97 +1,3 @@
-{{-- @extends('layout.layout')
-
-@section('content') --}}
-{{-- <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row ">
-        <div class="col-sm-6">
-          <h1 class="m-0">Dokumen</h1>
-        </div><!-- /.col -->
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a class="btn btn-sm btn-primary" href="{{ route('dokumen.create') }}">Upload Dokumen</a></li>
-          </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </div>
-  <!-- /.content-header -->
-
-  <!-- Main content -->
-  <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-      <div class="card-body table-responsive p-0">
-        <table id="example1" class="table table-bordered table-striped">
-          <thead>
-          <tr>
-              <th scope="col">id</th>
-              <th scope="col">nama</th>
-              <th scope="col">nomor surat</th>
-              <th scope="col">tanggal surat</th>
-              <th scope="col">produk</th>
-              <th scope="col">asuransi</th>
-              <th scope="col">nama Pengupload</th>
-              <th colspan="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>@foreach($dokumen as $data)
-              <td>{{ $data->id }}</td>
-              <td>{{ $data->nama }}</td>
-              <td>{{ $data->nomor_surat }}</td>
-              <td>{{ $data->tanggal_surat }}</td>
-              <td>{{ $data->produk }}</td>
-              <td>{{ $data->asuransi->nama }}</td>
-              <td>{{ $data->user->nama }}</td>
-              <td>
-                  <a href="{{ route('dokumen.show',2) }}"class="btn btn-sm btn-primary">Download</a>
-                  <a href="{{ route('dokumen.edit',2) }}"class="btn btn-sm btn-warning">Edit</a>
-                  <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#staticBackdrop">
-                    Delete
-                  </button>
-                </td>
-                <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content bg-danger">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        Ingin menghapus ?
-                      </div>
-                      <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-                        <form action="{{route('dokumen.destroy',21)}}" method="POST">
-                        @csrf
-                      @method('DELETE')
-                    <button type ="submit" class="btn btn-outline-light">Delete</button></form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </tr> 
-          @endforeach
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-  </section>
-  <!-- /.content -->
-</div> --}}
-
-
-{{-- @endsection --}}
 @extends('layout.layout')
 @section('content')
   <!-- Content Wrapper. Contains page content -->
@@ -142,7 +48,7 @@
                       <td>{{ $data->tanggal_surat }}</td>
                       <td>{{ $data->produk }}</td>
                       <td>{{ $data->asuransi->nama }}</td>
-                      <td>{{ $data->user->nama }}</td>
+                      <td>{{ $data->nama }}</td>
                       <td>
                           <a href="{{ route('dokumen.show',2) }}"class="btn btn-sm btn-primary">Download</a>
                           <a href="{{ route('dokumen.edit',$data->id) }}"class="btn btn-sm btn-warning">Edit</a>

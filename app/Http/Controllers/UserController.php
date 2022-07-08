@@ -114,11 +114,11 @@ class UserController extends Controller
         $this->validate($request, [
             'nama' => 'required',
             'email' => 'sometimes|required|email:dns|unique:users',
-            'kontak' => 'required',
-            'alamat' => 'required',
-            'role' => 'required',
-            'jabatan' => 'required',
-            'password' => 'required|min:8',
+            'kontak' => 'nullable',
+            'alamat' => 'nullable',
+            'role' => 'nullable',
+            'jabatan' => 'nullable',
+            'password' => 'nullable|min:8',
             'foto' => 'nullable|mimes:jpg,jpeg,bmp,png|max:10000',
 
         ]);

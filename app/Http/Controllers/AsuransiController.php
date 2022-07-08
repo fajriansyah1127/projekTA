@@ -27,6 +27,7 @@ class AsuransiController extends Controller
     public function create()
     {
         return view('Asuransi.Create');
+        
     }
 
     /**
@@ -63,7 +64,7 @@ class AsuransiController extends Controller
             alert()->error('Gagal', 'GAGAL BRO NDA BISA MASUK Di ulangi lagi');
             return redirect()->back();
         }
-        // return $request->all();
+        //return $request->all();
     }
 
     /**

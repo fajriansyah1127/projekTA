@@ -79,14 +79,14 @@ class ProfileController extends Controller
     public function update(Request  $request, User $profile)
     {
         $this->validate($request, [
-            'nama' => 'required',
-            'email' => 'required|email:dns',
-            'kontak' => 'required',
-            'alamat' => 'required',
+            'nama' => 'nullable',
+            'email' => 'sometimes|required|email:dns|unique:users',
+            'kontak' => 'nullable',
+            'alamat' => 'nullable',
             'role' => 'nullable',
-            'jabatan' => 'required',
-            'password' => 'required|confirmed|min:8',
-            'foto' => 'required|mimes:jpg,jpeg,bmp,png|max:10000',
+            'jabatan' => 'nullable',
+            'password' => 'nullable|min:8',
+            'foto' => 'nullable|mimes:jpg,jpeg,bmp,png|max:10000',
         ]);
         $request['password'] = hash::make($request['password']); 
         $inter = $request->all(); 
