@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Exception;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Asuransi;
 use Illuminate\Http\Request;
@@ -96,7 +97,7 @@ class AsuransiController extends Controller
      * @param  \App\Models\Asuransi  $asuransi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Asuransi $asuransi)
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
             'nama' => 'required',
@@ -105,6 +106,7 @@ class AsuransiController extends Controller
             'alamat' => 'required',
             'status' => 'required',
         ]); 
+        $asuransi = Asuransi::find($id);
         $inter = $request->all();  
         $asuransi->update($inter);
         if ($asuransi) {
@@ -123,10 +125,20 @@ class AsuransiController extends Controller
      * @param  \App\Models\Asuransi  $asuransi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Asuransi $asuransi)
+    public function destroy($id)
     {
-        $asuransi->delete();
-        Alert::alert('Data Berhasil DiHAPUS', 'success');
+        // $asuransi->delete();
+        // Alert::alert('Data Berhasil DiHAPUS', 'success');
+        // return redirect()->back();
+        $asuransi = Asuransi::find($id);
+        try {
+            $asuransi->delete();
+        } catch (Exception $e){
+            Alert::alert('ERROR', 'Asuransi Terdapat Pada Produk Atau Dokumen');
+            return redirect()->back();
+        }
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();
     }
 }

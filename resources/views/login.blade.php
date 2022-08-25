@@ -18,7 +18,7 @@
   @include('sweetalert::alert')
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{asset('template')}}/index2.html"><b>Sistem Informasi Manajemen Dokumen dan Barang</b></a>
+    <a href="{{asset('template')}}/index2.html"><b>Sistem Informasi Manajemen Doksssumen dan Barang</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">

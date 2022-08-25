@@ -46,9 +46,9 @@
                       <td>{{ $data->nama }}</td>
                       <td>{{ $data->nomor_surat }}</td>
                       <td>{{ $data->tanggal_surat }}</td>
-                      <td>{{ $data->produk }}</td>
-                      <td>{{ $data->asuransi->nama }}</td>
-                      <td>{{ $data->nama }}</td>
+                      <td>{{ $data->produk->nama }}</td>
+                      <td>{{ $data->produk->asuransi->nama }}</td>
+                      <td>{{ $data->user->nama }}</td>
                       <td>
                           <a href="{{ route('dokumen.show',2) }}"class="btn btn-sm btn-primary">Download</a>
                           <a href="{{ route('dokumen.edit',$data->id) }}"class="btn btn-sm btn-warning">Edit</a>

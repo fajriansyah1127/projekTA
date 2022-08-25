@@ -42,7 +42,7 @@
                             <div class="form-group row">
                                 <label for="Judul" class="col-sm-2 col-form-label">Email </label>
                                 <div class="col-sm-10">
-                                     <input type="text" id="email" name="email" class="form-control " placeholder="Masukkan Email" required value="{{ $profile->email }}">  
+                                     <input type="text" id="email" name="email" class="form-control " placeholder="Masukkan Email" required value="{{ old('email', Auth::user()->email) }}">  
                                      <div class ="text-danger">
                                       @error('email')
                                       {{ $message }}
@@ -86,11 +86,13 @@
                                       </div>
                                     </div>
                             </div>
-              
+
+                            <span class="small text-danger">*Jika tidak mengganti password, harap dikosongkan</span>
+
                             <div class="form-group row">
-                              <label for="Judul" class="col-sm-2 col-form-label"> Password </label>
+                              <label for="Judul" class="col-sm-2 col-form-label"> Current password </label>
                               <div class="col-sm-10">
-                                    <input type="password" id="password" name="password" class="form-control " placeholder="Masukkan Password" required >  
+                                    <input type="password" id="current_password" name="current_password" class="form-control " placeholder="Masukkan Password"  >  
                                     <div class ="text-danger">
                                       @error('password')
                                       {{ $message }}
@@ -100,16 +102,28 @@
                             </div>
 
                             <div class="form-group row">
-                              <label for="Judul" class="col-sm-2 col-form-label"> Confirm Password </label>
+                              <label for="Judul" class="col-sm-2 col-form-label"> New password </label>
                               <div class="col-sm-10">
-                                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control " placeholder="Masukkan Password" required >  
+                                    <input type="password" id="new_password" name="new_password" class="form-control " placeholder="Masukkan Password"  >  
                                     <div class ="text-danger">
                                       @error('password')
                                       {{ $message }}
                                       @enderror
                                     </div>
                                   </div>
-                          </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label for="Judul" class="col-sm-2 col-form-label"> Confirm password </label>
+                              <div class="col-sm-10">
+                                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control " placeholder="Masukkan Password" >  
+                                    <div class ="text-danger">
+                                      @error('password')
+                                      {{ $message }}
+                                      @enderror
+                                    </div>
+                                  </div>
+                            </div>
               
                             {{-- <div class="form-group row">
                                 <label for="Judul" class="col-sm-2 col-form-label">Role </label>

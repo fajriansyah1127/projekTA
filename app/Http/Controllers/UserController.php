@@ -19,7 +19,7 @@ class UserController extends Controller
     public function index(User $user )
     {
         $user = User::get();
-        return view('User.User', compact('user'));
+        return view('User.Index', compact('user'));
         
     }
 
@@ -49,7 +49,7 @@ class UserController extends Controller
             'Role' => 'required',
             'Jabatan' => 'required',
             'Password' => 'required|min:8',
-            'Foto' => 'required|mimes:jpg,jpeg,bmp,png|max:10000',
+            'Foto' => 'nullable|mimes:jpg,jpeg,bmp,png|max:10000',
 
         ]);
         $request['Password'] = hash::make($request['Password']); 
@@ -113,7 +113,6 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'nama' => 'required',
-            'email' => 'sometimes|required|email:dns|unique:users',
             'kontak' => 'nullable',
             'alamat' => 'nullable',
             'role' => 'nullable',

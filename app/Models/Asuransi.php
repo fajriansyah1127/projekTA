@@ -9,7 +9,7 @@ class Asuransi extends Model
 {
     use HasFactory;
 
-    protected $table = "Asuransis";
+    protected $table = "asuransis";
 
     protected $fillable = ["nama", "email", "kontak","alamat","status"];
     protected $guarded = ['id'];
@@ -17,6 +17,11 @@ class Asuransi extends Model
     public function dokumen()
     {
         return $this->hasMany(Dokumen::class);
+    }
+
+    public function produk()
+    {
+        return $this->hasMany(Produk::class);
     }
 
 }

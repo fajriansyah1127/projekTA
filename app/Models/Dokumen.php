@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Dokumen extends Model
 {
     use HasFactory;
-    protected $fillable = ["asuransi_id", "user_id", "nama","nomor_surat","produk","tanggal_surat","file"];
+    protected $fillable = ["produk_id", "user_id", "nama","nomor_surat","tanggal_surat","file"];
     protected $guarded =['id'];
 
-    public function asuransi()
+    public function produk()
     {
-        return $this->belongsTo(Asuransi::class);
+        return $this->belongsTo(Produk::class);
     }
 
     public function user()

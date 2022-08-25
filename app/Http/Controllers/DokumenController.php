@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dokumen;
 use App\Models\Asuransi;
+use App\Models\Produk;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class DokumenController extends Controller
      */
     public function index(Dokumen $dokumen)
     {
-        $dokumen = Dokumen::with('asuransi','user')->paginate();
+        $dokumen = Dokumen::with('user','produk')->paginate();
         return view('Dokumen.Index', compact('dokumen'));
     }
 
@@ -34,7 +35,7 @@ class DokumenController extends Controller
         //     'nama' => Auth::user()->name,
         //     'aktivitas' => 'Menambah Dokumen',
         // ]);
-        $dokumen = Asuransi::get();
+        $dokumen = Produk::with('asuransi')->paginate();
         //$dokumen = Dokumen::with('asuransi')->paginate(5);
         // $dokumen = Dokumen::get();
         return view('Dokumen.create', compact('dokumen'));
@@ -53,12 +54,10 @@ class DokumenController extends Controller
              'Nomor' => 'required',
              'Tanggal' => 'required',
              'Produk' => 'required',
-             'Tanggal' => 'required',
-             'Asuransi' => 'required',
              'File' => 'required|mimes:pdf|max:10000',
 
-         ]);
-        //  $request['Password'] = hash::make($request['Password']); 
+          ]);
+        // //  $request['Password'] = hash::make($request['Password']); 
          $file = Request()->File;
          $filename = Request()->Nama . '_'.Request()->Nomor.date('dmy').'.' . $file->extension();
          $file->move(public_path('filearsip'), $filename);
@@ -67,8 +66,7 @@ class DokumenController extends Controller
              'nama' => $request->Nama,
              'nomor_surat' => $request->Nomor,
              'tanggal_surat' => $request->Tanggal,
-             'produk' => $request->Produk,
-             'asuransi_id' => $request->Asuransi,
+             'produk_id' => $request->Produk,
              'file' => $filename,
              'user_id' => Auth::user()->id,
          ]);
@@ -83,7 +81,7 @@ class DokumenController extends Controller
             alert()->error('Gagal', 'GAGAL BRO NDA BISA MASUK Di ulangi lagi');
             return redirect()->back();
         }
-        // return request()->all();
+        //  return request()->all();
     }
 
     /**

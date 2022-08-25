@@ -8,6 +8,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AsuransiController;
+use App\Http\Controllers\IcipController;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\AuthenticateController;
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +22,8 @@ use App\Http\Controllers\AuthenticateController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
+// Route::get('/dokm', function () {
+//     return view('icip');
 // });
 Route::get('/forget', function () {
     return view('auth.passwords.email');
@@ -36,11 +38,9 @@ Route::group(['middleware' => 'guest'], function () {
     
     Route::get('/login', [LoginController::class,'index'])->name('login')->Middleware('guest');
     
-
+    Route::resource('/', LoginController::class);
 });
-
 Route::resource('/login', LoginController::class);
-Route::resource('/', LoginController::class);
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -48,11 +48,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/index', function () {
         return view('index');
     });
+    Route::get('/index2', function () {
+        return view('index2');
+    });
     Route::resource('/profile', ProfileController::class);
    
     Route::resource('/asuransi', AsuransiController::class)->Middleware('admin');
     Route::resource('/dokumen', DokumenController::class)->Middleware('admin','satpam');
-    Route::resource('/user', UserController::class)->Middleware('admin');
+    Route::resource('/user', UserController::class)->Middleware('admin');;
+    Route::resource('/produk', ProdukController::class)->Middleware('admin');
 });
 Auth::routes();
 

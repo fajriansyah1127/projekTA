@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="{{asset('template/')}}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="{{asset('template/')}}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="{{asset('template/')}}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
   @include('sweetalert::alert')
@@ -218,7 +219,7 @@
 <!-- AdminLTE App -->
 <script src="{{asset('template/')}}/dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{asset('template/')}}/dist/js/demo.js"></script>
+{{-- <script src="{{asset('template/')}}/dist/js/demo.js"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('template/')}}/dist/js/pages/dashboard.js"></script>
 <script src="{{asset('template/')}}/plugins/jquery/jquery.min.js"></script>

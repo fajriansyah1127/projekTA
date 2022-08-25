@@ -11,7 +11,7 @@
         </div>
       </div>
 @endauth
-{{-- INI BAGIAN ROLE Satpam --}}
+{{-- INI BAGIAN ROLE Admin --}}
 @if (auth()->user()->role == 'Admin')
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -26,6 +26,30 @@
                 Dashboard
               </p>
             </a>
+          </li>
+          <li class="nav-item ">
+               {{-- <li class="nav-item menu-open">  --}}
+            <a href="#" class="nav-link {{Request::is('asuransi')?'active':''}} {{Request::is('asuransi/create')?'active':''}}{{Request::is('asuransi.edit')?'active':''}}">
+              <i class="nav-icon fas fa-folder"></i>
+              <p>
+                Data Master
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('asuransi.index') }}" class="nav-link {{Request::is('asuransi')?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Unit Asuransi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('produk.index') }}" class="nav-link {{Request::is('produk')?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> Produk</p>
+                </a>
+              </li>
+            </ul>
           </li>
 
           <li class="nav-item ">
@@ -58,30 +82,8 @@
             </ul>
           </li>
 
-          <li class="nav-item ">
-               {{-- <li class="nav-item menu-open">  --}}
-            <a href="#" class="nav-link {{Request::is('asuransi')?'active':''}} {{Request::is('asuransi/create')?'active':''}}{{Request::is('asuransi.edit')?'active':''}}">
-              <i class="nav-icon fas fa-landmark"></i>
-              <p>
-                Asuransi
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('asuransi.index') }}" class="nav-link {{Request::is('asuransi')?'active':''}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Lihat Unit Asuransi</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('asuransi.create') }}" class="nav-link {{Request::is('asuransi/create')?'active':''}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Tambah Unit Asuransi</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+
+          
 
           <li class="nav-item">
             <a href="#" class="nav-link nav-link ">
@@ -117,7 +119,7 @@
             <a href="#" class="nav-link {{Request::is('user')?'active':''}}{{Request::is('user/create')?'active':''}}{{Request::is('user/5/edit')?'active':''}}"   >
               <i class="nav-icon fas fa-user "></i>
               <p>
-                User
+                Manajemen User
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

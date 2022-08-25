@@ -42,7 +42,7 @@
                       <div class="form-group row">
                           <label for="Judul" class="col-sm-2 col-form-label">Nomor Surat </label>
                           <div class="col-sm-10">
-                               <input type="number" id="nomor" name="Nomor" class="form-control" placeholder="Masukkan Nomor" required>  
+                               <input type="text" id="nomor" name="Nomor" class="form-control" placeholder="Masukkan Nomor" required>  
                           </div>
                         </div>
                        
@@ -62,27 +62,8 @@
          <select id="disabledSelect" name="Produk" class="form-control @error('unit') is-invalid @enderror" >
          {{-- @foreach($asuransi as $data)
          <option value="{{ $data->id }}">{{ $data->nama_asuransi }}</option>
-         @endforeach --}}
-          <option value="Kreasi Multi Guna">Kreasi Multi Guna</option>
-          <option value="Amanah">Amanah</option>
-          <option value="Kreasi">Kreasi</option>
-          <option value="Ultra Mikro">Ultra Mikro</option>
-          <option value="Rahn Tasjili Tanah">Rahn Tasjili Tanah</option>
-          <option value="Express Loan">Express Loan</option>
-         </select>
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="disabledSelect" class="col-sm-2 col-form-label">Unit Asuransi</label>
-          <div class="col-sm-10"> 
-         <select id="disabledSelect" name="Asuransi" class="form-control @error('unit') is-invalid @enderror" >
-         @foreach($dokumen as $data)
-         <option value="{{ $data->id }}">{{ $data->nama }}</option>
-         @endforeach
-          {{-- <option value="1">Jamkrindo</option>
-          <option value="2">Askrindo</option>
-          <option value="3">Jasa Raharja</option> --}}
+         @endforeach --}}@foreach($dokumen as $data)
+          <option value="{{ $data->id }}">{{ $data->nama}} || {{ $data->asuransi->nama}} </option>@endforeach 
          </select>
           </div>
         </div>
@@ -99,10 +80,10 @@
           </div>
       </div>     
         <!-- bagian tanggal -->    
-                        <div class="card-footer text-muted">
-                            <!-- bagian submit -->
-                            <button type="submit" class="btn btn-danger mb-3">Submit</button>
-                        </div>
+        <div class="card-footer">
+          <!-- bagian submit -->
+          <button type="submit" class="btn btn-danger float-right">Submit</button>
+      </div>
                     </form>
               
               

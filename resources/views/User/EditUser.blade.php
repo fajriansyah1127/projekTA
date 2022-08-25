@@ -43,7 +43,7 @@
                             <div class="form-group row">
                                 <label for="Judul" class="col-sm-2 col-form-label">Email </label>
                                 <div class="col-sm-10">
-                                     <input type="text" id="email" name="email" class="form-control " placeholder="Masukkan Email" required value="{{ $user->email }}">  
+                                     <input type="text" id="email" name="email" class="form-control " placeholder="{{ $user->email }}" disabled value="">  
                                      <div class ="text-danger">
                                       @error('email')
                                       {{ $message }}
@@ -103,20 +103,17 @@
                             <div class="form-group row">
                                 <label for="Judul" class="col-sm-2 col-form-label">Role </label>
                                 <div class="col-sm-10">  
-                                      <input type="radio" id="Admin" name="role" value="Admin" required>
+                                      <input type="radio" id="Admin" name="role" value="Admin" >
                                       <label for="Admin" class="col-sm-2 col-form-label">Admin</label>
-                                      <input type="radio" id="Pegawai" name="role" value="Pegawai" required>
+                                      <input type="radio" id="Pegawai" name="role" value="Pegawai" >
                                       <label for="Pegawai" class="col-sm-2 col-form-label">Pegawai</label>
-                                      <input type="radio" id="Magang" name="role" value="Magang" required>
+                                      <input type="radio" id="Magang" name="role" value="Magang" >
                                       <label for="Magang" class="col-sm-2 col-form-label">Magang</label>
-                                      <input type="radio" id="Satpam" name="role" value="Satpam" required >
+                                      <input type="radio" id="Satpam" name="role" value="Satpam">
                                       <label for="Satpam">Satpam</label><br>
-              
                                 </div>
                             </div>
-              
                           <br>
-              
                             <div class="card-footer text-muted">
                                 <div class="form-group">
                                     <label for="exampleFormControlFile1">Masukkan Foto</label>
