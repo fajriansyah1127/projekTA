@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Produk extends Model
 {
     use HasFactory;
-    protected $table = "produk";
-
-    protected $fillable = ["nama", "asuransi_id","user_id"];
+    protected $table = "produks";
+    
+    protected $fillable = ["nama", "asuransi_id"];
     protected $guarded = ['id'];
 
     public function asuransi()

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -15,7 +16,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class iterasi1 extends TestCase
 {
-    use WithFaker;
+   use WithFaker;
    use WithoutMiddleware;
 
     // public function test_Login_sebagai_admin()

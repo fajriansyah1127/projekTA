@@ -1564,6 +1564,11 @@ $.extend( _dtButtons, {
 		}
 		// Also the popover options, defined in Buttons.popover
 	},
+	tambah: function ( dt, conf ) {
+		if ( _dtButtons.copyHtml5 ) {
+			return 'copyHtml5';
+		}
+	},
 	copy: function ( dt, conf ) {
 		if ( _dtButtons.copyHtml5 ) {
 			return 'copyHtml5';

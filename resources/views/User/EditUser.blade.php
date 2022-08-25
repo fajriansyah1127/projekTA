@@ -17,7 +17,7 @@
                 <div class="container">
                             <div class="card mt-2">
                         <div class="card-header">
-                          <h4 style="text-align:center"><b>Edit Data USER </b></h4>
+                          <h4 style="text-align:center"><b>Edit Data User </b></h4>
                         </div>
                         <div class="card-body">
               
@@ -99,21 +99,27 @@
                                     </div>
                                   </div>
                           </div> --}}
-              
-                            <div class="form-group row">
-                                <label for="Judul" class="col-sm-2 col-form-label">Role </label>
-                                <div class="col-sm-10">  
-                                      <input type="radio" id="Admin" name="role" value="Admin" >
-                                      <label for="Admin" class="col-sm-2 col-form-label">Admin</label>
-                                      <input type="radio" id="Pegawai" name="role" value="Pegawai" >
-                                      <label for="Pegawai" class="col-sm-2 col-form-label">Pegawai</label>
-                                      <input type="radio" id="Magang" name="role" value="Magang" >
-                                      <label for="Magang" class="col-sm-2 col-form-label">Magang</label>
-                                      <input type="radio" id="Satpam" name="role" value="Satpam">
-                                      <label for="Satpam">Satpam</label><br>
-                                </div>
-                            </div>
-                          <br>
+                        <div class="form-group row">
+                          <label for="disabledSelect" class="col-sm-2 col-form-label">Role</label>
+                          <div class="col-sm-10"> 
+                         <select id="disabledSelect" name="role" class="form-control  @error('role') is-invalid @enderror" style="width: 100%; required>
+                          <option value="" selected>Pilih Produk dan Asuransi</option> 
+                          <option value="" selected>Pilih Role</option> 
+                          <option value="Admin">Admin</option> 
+                          <option value="Magang">Magang</option> 
+                          <option value="Pegawai">Pegawai</option> 
+                          <option value="Satpam">Satpam</option> 
+                         </select>
+                         <div class ="text-danger">
+                          @error('role')
+                          {{ $message }}
+                          @enderror
+                        </div>
+                          </div>
+                          
+                        </div>
+                        
+                         
                             <div class="card-footer text-muted">
                                 <div class="form-group">
                                     <label for="exampleFormControlFile1">Masukkan Foto</label>
@@ -126,9 +132,9 @@
                                 </div>
                             </div>             
                 
-                            <div class="card-footer text-muted">
-                              <button type="submit" class="btn btn-danger mb-3">Submit</button>
-                            </div>
+                           
+                            <button type="submit" class=" btn btn-success float-right">Submit</button>
+                           
                           </form>
                       
                 </div>

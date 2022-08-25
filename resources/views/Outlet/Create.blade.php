@@ -18,39 +18,26 @@
                 <div class="container">
                             <div class="card mt-2">
                         <div class="card-header">
-                          <h4 style="text-align:center"><b>TAMBAH PRODUK </b></h4>
+                          <h4 style="text-align:center"><b>TAMBAH OUTLET </b></h4>
                         </div>
                         <div class="card-body">
               
                 <!-- membuat formnya -->
                 <!-- bagian judul -->
               
-                <form  action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data">
+                <form  action="{{ route('outlet.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                       <div class="form-group row">
-                          <label for="Judul" class="col-sm-2 col-form-label">Nama Produk </label>
+                          <label for="Judul" class="col-sm-2 col-form-label">Nama Outlet </label>
                           <div class="col-sm-10">
-                               <input type="text" id="nama" name="Nama" class="form-control" placeholder="Masukkan Nama "required>
+                               <input type="text" name="nama_outlet" class="form-control" placeholder="Masukkan Nama "required>
                                <div class ="text-danger">
-                                @error('Nama')
+                                @error('nama_outlet')
                                 {{ $message }}
                                 @enderror
                               </div>
                           </div>
-                      </div>
-                        
-                      <div class="form-group row">
-                        <label for="disabledSelect" class="col-sm-2 col-form-label">Unit Asuransi</label>
-                        <div class="col-sm-10"> 
-                       <select id="disabledSelect" name="Asuransi" class="form-control select2 @error('asuransi') is-invalid @enderror" style="width: 100%;" >
-                       @foreach($asuransi as $data)
-                       <option value="{{ $data->id }}">{{ $data->nama }}</option>
-                       @endforeach
-                       </select>
-                        </div>
-                      </div>
-
-                        
+                      </div>                        
                             <!-- bagian submit -->
                             <button type="submit" class="btn btn-success float-right">Submit</button>
                         

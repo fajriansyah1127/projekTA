@@ -29,7 +29,7 @@
           </li>
           <li class="nav-item ">
                {{-- <li class="nav-item menu-open">  --}}
-            <a href="#" class="nav-link {{Request::is('asuransi')?'active':''}} {{Request::is('asuransi/create')?'active':''}}{{Request::is('asuransi.edit')?'active':''}}">
+            <a href="#" class="nav-link {{Request::is('produk/create')?'active':''}} {{Request::is('produk')?'active':''}}{{Request::is('asuransi')?'active':''}} {{Request::is('asuransi/create')?'active':''}}{{Request::is('asuransi.edit')?'active':''}} {{Request::is('outlet')?'active':''}} ">
               <i class="nav-icon fas fa-folder"></i>
               <p>
                 Data Master
@@ -38,35 +38,35 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('asuransi.index') }}" class="nav-link {{Request::is('asuransi')?'active':''}}">
+                <a href="{{ route('outlet.index') }}" class="nav-link {{Request::is('outlet/create')?'active':''}}  {{Request::is('outlet')?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Unit Asuransi</p>
+                  <p> Outlet</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('produk.index') }}" class="nav-link {{Request::is('produk')?'active':''}}">
+                <a href="{{ route('produk.index') }}" class="nav-link {{Request::is('produk/create')?'active':''}}  {{Request::is('produk')?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p> Produk</p>
+                  <p>Produk</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('asuransi.index') }}" class="nav-link {{Request::is('asuransi/create')?'active':''}} {{Request::is('asuransi')?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Unit Asuransi</p>
                 </a>
               </li>
             </ul>
           </li>
 
           <li class="nav-item ">
-            <a href="" class="nav-link {{Request::is('dokumen')?'active':''}}">
+            <a href="" class="nav-link {{Request::is('dokumen/create')?'active':''}} {{Request::is('peminjam/create')?'active':''}} {{Request::is('dokumen')?'active':''}}">
               <i class="nav-icon fas fa-file"></i>
               <p>
-                Dokumen
+                Dokumen Klaim
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('dokumen.create') }}" class="nav-link {{Request::is('dokumen/create')?'active':''}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Upload Dokumen</p>
-                </a>
-              </li>
               <li class="nav-item">
                 <a href="{{ route('dokumen.index') }}" class="nav-link {{Request::is('dokumen')?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
@@ -74,17 +74,14 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="{{ route('peminjam.index') }}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Peminjam</p>
                 </a>
               </li>
             </ul>
           </li>
-
-
           
-
           <li class="nav-item">
             <a href="#" class="nav-link nav-link ">
               <i class="nav-icon fas fa-chart-pie "></i>
@@ -110,6 +107,12 @@
                 <a href="pages/charts/inline.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Stok</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('satuan.index') }}" class="nav-link {{Request::is('satuan/create')?'active':''}} {{Request::is('satuan')?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Satuan</p>
                 </a>
               </li>
             </ul>

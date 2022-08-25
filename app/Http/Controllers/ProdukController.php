@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Asuransi;
 use App\Models\Produk;
 use Illuminate\Http\Request;
+use Exception;
 
 
 class ProdukController extends Controller
@@ -17,8 +18,9 @@ class ProdukController extends Controller
      */
     public function index(Produk $produk)
     {
-        $produk = Produk::with('asuransi')->paginate();
-        return view('Produk.Index', compact('produk'));
+        $asuransi = Asuransi::get();
+        $produk = Produk::with('asuransi')->get();
+        return view('Produk.Index', compact('produk','asuransi'));
     }
 
     /**
@@ -43,14 +45,14 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'Nama' => 'required',
-            'Asuransi' => 'required',
+            'nama_produk' => 'required',
+            'asuransi_produk' => 'required',
         ]);
 
         $notif = Produk::create([
-            'nama' => $request->Nama,
-            'asuransi_id' => $request->Asuransi,
-            'user_id' => Auth::user()->id,
+            'nama' => $request->nama_produk,
+            'asuransi_id' => $request->asuransi_produk,
+            // 'user_id' => Auth::user()->id,
             
         ]);
 
@@ -107,7 +109,7 @@ class ProdukController extends Controller
         $data =([
             'nama' => $request->Nama,
             'asuransi_id' => $request->Asuransi,
-            'user_id' => Auth::user()->id,
+            // 'user_id' => Auth::user()->id,
         ]);
         
         $produk = Produk::find($id);
@@ -131,12 +133,15 @@ class ProdukController extends Controller
      */
     public function destroy($id)
     {
-        // $produk->delete();
-        // Alert::alert('Data Berhasil DiHAPUS', 'success');
-        // return redirect()->back();
         $produk = Produk::find($id);
-       $produk->delete();
-        Alert::alert('Data Berhasil DiHAPUS', 'success');
+        try {
+            $produk->delete();
+        } catch (Exception $e){
+            Alert::alert('ERROR', 'Produk Terdapat Pada Dokumen');
+            return redirect()->back();
+        }
+
+        Alert::toast('Data Berhasil DiHAPUS', 'success');
         return redirect()->back();
     }
 }

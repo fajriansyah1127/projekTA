@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('produk', function (Blueprint $table) {
+        Schema::create('peminjams', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('asuransi_id');
-            $table->foreignId('user_id');
+            $table->foreignId('dokumen_id');
             $table->string('nama');
+            $table->date('tanggal');
             $table->timestamps();
         });
-        Schema::table('produk', function (Blueprint $table) {
-            $table->foreign('asuransi_id')->references('id')->on('asuransis')->ondelete('restrict');
-            $table->foreign('user_id')->references('id')->on('users')->ondelete('setnull');
+
+        Schema::table('peminjams', function (Blueprint $table) {
+            $table->foreign('dokumen_id')->references('id')->on('dokumens')->ondelete('restrict');
             // $table->foreign('produk_id')->references('id')->on('asuransis')->ondelete('cascade');
         });
     }
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produk');
+        Schema::dropIfExists('peminjam');
     }
 };

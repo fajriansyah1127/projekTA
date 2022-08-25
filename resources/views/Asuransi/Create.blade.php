@@ -30,7 +30,7 @@
                       <div class="form-group row">
                           <label for="Judul" class="col-sm-2 col-form-label">Nama Asuransi </label>
                           <div class="col-sm-10">
-                               <input type="text" id="nama" name="Nama" class="form-control" placeholder="Masukkan Nama "required>
+                               <input type="text" id="nama" name="nama_asuransi" class="form-control" placeholder="Masukkan Nama "required>
                                <div class ="text-danger">
                                 @error('Nama')
                                 {{ $message }}
@@ -40,11 +40,11 @@
                       </div>
                         
                       <div class="form-group row">
-                          <label for="Judul" class="col-sm-2 col-form-label">Email Asuransi </label>
+                          <label  class="col-sm-2 col-form-label">Email Asuransi </label>
                           <div class="col-sm-10">
-                               <input type="email" id="email" name="Email" class="form-control" placeholder="Masukkan Email" required>  
+                               <input type="email"  name="email_asuransi" class="form-control" placeholder="Masukkan Email" required>  
                                <div class ="text-danger">
-                                @error('Email')
+                                @error('email')
                                 {{ $message }}
                                 @enderror
                               </div>
@@ -55,33 +55,33 @@
         <!-- bagian unit -->
         
         <div class="form-group row">
-          <label for="Kontak" class="col-sm-2 col-form-label">Kontak</label>
+          <label  class="col-sm-2 col-form-label">Kontak</label>
           <div class="col-sm-10">
-            <input type="tel" id="kontak" name="Kontak" class="form-control" placeholder="Masukkan Kontak"  required>
+            <input type="tel"  name="kontak_asuransi" class="form-control" placeholder="Masukkan Kontak"  required>
           </div>
         </div>
         
         <div class="form-group row">
-          <label for="Judul" class="col-sm-2 col-form-label"> Alamat </label>
+          <label  class="col-sm-2 col-form-label"> Alamat </label>
           <div class="col-sm-10">
-               <input type="text" id="alamat" name="Alamat" class="form-control" placeholder="Masukkan Alamat"required>  
+               <input type="text" id="alamat" name="alamat_asuransi" class="form-control" placeholder="Masukkan Alamat"required>  
           </div>
         </div>
         
         <div class="form-group row">
           <label for="Judul" class="col-sm-2 col-form-label">Status </label>
           <div class="col-sm-10">  
-            <input type="radio" id="html" name="Status" value="Berlaku">
+            <input type="radio" id="html" name="status_asuransi" value="Berlaku">
             <label for="html" class="col-sm-2 col-form-label">Berlaku</label>
-            <input type="radio" id="css" name="Status" value="Tidak Berlaku">
+            <input type="radio" id="css" name="status_asuransi" value="Tidak Berlaku">
             <label for="css">Tidak Berlaku</label><br>
           </div>
         </div>
 
-                    <div class="card-footer">
+                    
                       <!-- bagian submit -->
-                      <button type="submit" class="btn btn-danger float-right">Submit</button>
-                  </div>
+                      <button type="submit" class="btn btn-success float-right">Submit</button>
+                 
                     </form>
                       
                 </div>

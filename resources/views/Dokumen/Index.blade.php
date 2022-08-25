@@ -11,7 +11,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <a class="btn btn-sm btn-primary" href="{{ route('dokumen.create') }}">Upload Dokumen</a>
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+             <li class="breadcrumb-item active">Dokumen</li>
             </ol>
           </div>
         </div>
@@ -25,18 +26,22 @@
           <div class="col-12">
             <!-- /.card -->
             <div class="card">
+              <div class="card-header">
+                <a class="btn btn-sm btn-primary" href="{{ route('dokumen.create') }}">Tambah Dokumen</a>
+              </div>
               <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+              <div class="card-body table-responsive">
+                <table id="exampledokumen1" class="table table-bordered text-nowrap">
                   <thead>
                     <tr>
-                      <th scope="col">id</th>
-                      <th scope="col">nama</th>
-                      <th scope="col">nomor surat</th>
-                      <th scope="col">tanggal surat</th>
-                      <th scope="col">produk</th>
-                      <th scope="col">asuransi</th>
-                      <th scope="col">nama Pengupload</th>
+                      <th scope="col">No</th>
+                      <th scope="col">Nama</th>
+                      <th scope="col">Nomor Akad</th>
+                      <th scope="col">Outlet</th>
+                      <th scope="col">Tanggal</th>
+                      <th scope="col">Produk</th>
+                      <th scope="col">Asuransi</th>
+                      <th scope="col">Nama Pengupload</th>
                       <th colspan="col">Action</th>
                     </tr>
                   </thead>
@@ -44,44 +49,40 @@
                     <tr>@foreach($dokumen as $data)
                       <td>{{ $data->id }}</td>
                       <td>{{ $data->nama }}</td>
-                      <td>{{ $data->nomor_surat }}</td>
-                      <td>{{ $data->tanggal_surat }}</td>
+                      <td>{{ $data->nomor_akad }}</td>
+                      <td>{{ $data->outlet->nama }}</td>
+                      <td>{{ $data->tanggal_klaim }}</td>
                       <td>{{ $data->produk->nama }}</td>
                       <td>{{ $data->produk->asuransi->nama }}</td>
                       <td>{{ $data->user->nama }}</td>
                       <td>
-                          <a href="{{ route('dokumen.show',2) }}"class="btn btn-sm btn-primary">Download</a>
+                          <a href="{{asset('filearsip/')}}/{{ $data->file }}" target ="_blank"class="btn btn-sm btn-primary">Download</a>
                           <a href="{{ route('dokumen.edit',$data->id) }}"class="btn btn-sm btn-warning">Edit</a>
-                          <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#staticBackdrop">
+                          <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#staticBackdropdelete{{$data->id}}">
                             Delete
                           </button>
                         </td>
-                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content bg-danger">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel"></h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                Ingin menghapus ?
-                              </div>
-                              <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-                                <form action="{{route('dokumen.destroy',$data->id)}}" method="POST">
-                                @csrf
-                              @method('DELETE')
-                            <button type ="submit" class="btn btn-outline-light">Delete</button></form>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
                     </tr> 
                     @endforeach
                   </tbody>
                 </table>
+                @foreach($dokumen as $data)
+                <div class="modal fade" id="staticBackdropdelete{{$data->id}}">
+                  <div class="modal-dialog" >
+                    <div class="modal-content bg-default">
+                      <div class="modal-body">
+                        Apakah anda yakin menghapus {{$data->nama}} ?
+                      </div>
+                      <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn  btn-sm btn-primary" data-dismiss="modal">Close</button>
+                        <form action="{{route('dokumen.destroy',$data->id)}}" method="POST">
+                          @csrf
+                          @method('DELETE')
+                          <button type ="submit" class="btn btn-sm btn-danger">Delete</button></form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>@endforeach
               </div>
               <!-- /.card-body -->
             </div>

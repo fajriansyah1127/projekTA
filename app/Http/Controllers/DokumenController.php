@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Exception;
 use App\Models\Dokumen;
 use App\Models\Asuransi;
+use App\Models\Outlet;
 use App\Models\Produk;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -20,8 +21,8 @@ class DokumenController extends Controller
      */
     public function index(Dokumen $dokumen)
     {
-        $dokumen = Dokumen::with('user','produk')->paginate();
-        return view('Dokumen.Index', compact('dokumen'));
+        $dokumen = Dokumen::with('user','produk','outlet')->get();
+        return view ('Dokumen.Index', compact('dokumen'));
     }
 
     /**
@@ -35,10 +36,11 @@ class DokumenController extends Controller
         //     'nama' => Auth::user()->name,
         //     'aktivitas' => 'Menambah Dokumen',
         // ]);
-        $dokumen = Produk::with('asuransi')->paginate();
+        $dokumen = Produk::with('asuransi')->get();
+        $dokumens = Outlet::get();
         //$dokumen = Dokumen::with('asuransi')->paginate(5);
         // $dokumen = Dokumen::get();
-        return view('Dokumen.create', compact('dokumen'));
+        return view('Dokumen.create', compact('dokumen','dokumens'));
     }
 
     /**
@@ -50,27 +52,27 @@ class DokumenController extends Controller
     public function store(Request $request)
     {
          $this->validate($request, [
-             'Nama' => 'required',
-             'Nomor' => 'required',
-             'Tanggal' => 'required',
-             'Produk' => 'required',
-             'File' => 'required|mimes:pdf|max:10000',
+             'nama_dokumen' => 'required',
+             'nomor_dokumen' => 'required',
+             'outlet_dokumen' => 'required',
+             'tanggal_dokumen' => 'required',
+             'produk_dokumen' => 'required',
+             'file_dokumen' => 'required|mimes:pdf|max:10000',
 
-          ]);
-        // //  $request['Password'] = hash::make($request['Password']); 
-         $file = Request()->File;
-         $filename = Request()->Nama . '_'.Request()->Nomor.date('dmy').'.' . $file->extension();
+          ]); 
+         $file = Request()->file_dokumen;
+         $filename = Request()->nama_dokumen . '_'.Request()->nomor_dokumen.date('dmy').'.' . $file->extension();
          $file->move(public_path('filearsip'), $filename);
 
          $notif = Dokumen::create([
-             'nama' => $request->Nama,
-             'nomor_surat' => $request->Nomor,
-             'tanggal_surat' => $request->Tanggal,
-             'produk_id' => $request->Produk,
+             'nama' => $request->nama_dokumen,
+             'nomor_akad' => $request->nomor_dokumen,
+             'outlet_id' => $request->outlet_dokumen,
+             'tanggal_klaim' => $request->tanggal_dokumen,
+             'produk_id' => $request->produk_dokumen,
              'file' => $filename,
              'user_id' => Auth::user()->id,
          ]);
-
 
         if ($notif) {
             //redirect dengan pesan sukses
@@ -81,7 +83,7 @@ class DokumenController extends Controller
             alert()->error('Gagal', 'GAGAL BRO NDA BISA MASUK Di ulangi lagi');
             return redirect()->back();
         }
-        //  return request()->all();
+         //return request()->all();
     }
 
     /**
@@ -104,8 +106,10 @@ class DokumenController extends Controller
      */
     public function edit(Dokumen $dokuman)
     {
-        $asuransi = Asuransi::get();
-        return view('Dokumen.edit', compact('dokuman','asuransi'));
+        
+        $dokumen = Produk::with('asuransi')->get();
+        $outlet = Outlet::get();
+        return view('Dokumen.edit', compact('dokuman','dokumen','outlet'));
     }
 
     /**
@@ -115,28 +119,44 @@ class DokumenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Dokumen $dokumen)
+    public function update(Request $request,$id)
     {
         $this->validate($request, [
-            'Nama' => 'required',
-            'Nomor' => 'required',
-            'Tanggal' => 'required',
-            'Produk' => 'required',
-            'Tanggal' => 'required',
-            'Asuransi' => 'required',
-            'File' => 'required|mimes:pdf|max:10000',
-
+            'nama' => 'required',
+            'nomor_akad' => 'required',
+            'outlet_id' => 'required',
+            'tanggal_klaim' => 'required',
+            'produk_id' => 'required',
+            'file' => 'file|mimes:pdf|max:10000',
         ]);
-        $data = $request->all();  
-        $dokumen->update($data);
+        $request->request->add(['user_id' => Auth::user()->id]);
+
+        $dokumen = Dokumen::find($id);
+        $doku =  $request->all();
+        
+
+        if ($file = $request->file('file')) {
+            File::delete('filearsip/'.$dokumen->file);  
+            $destinationPath = 'filearsip/';
+            $dokumenfile = Request()->nama.'_'.Request()->nomor_surat.date('dmy').'.' . $file->extension();
+            $file->move($destinationPath, $dokumenfile);
+            $doku['file'] = "$dokumenfile";
+        }else{
+            unset($doku['file']);
+        }
+
+        $dokumen->update($doku);
+
         if ($dokumen) {
             //redirect dengan pesan sukses
             Alert::alert('Data Berhasil Diubah', 'success');
-            return redirect()->route('asuransi.index');
+            return redirect()->route('dokumen.index');
         } else {
             //redirect dengan pesan error
-            return redirect()->route('asuransi.edit')->with(['error' => 'Data Gagal Disimpan!']);
+            return redirect()->route('Dokumen.edit')->with(['error' => 'Data Gagal Disimpan!']);
         }
+        //return $request->all();
+        
     }
 
     /**
@@ -147,6 +167,20 @@ class DokumenController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dokumen = Dokumen::find($id);
+        try {
+            $dokumen->delete();
+            File::delete('filearsip/' . $dokumen->file);
+        } catch (Exception $e){
+            Alert::alert('ERROR', 'Dokumen masih dipinjam');
+            return redirect()->back();
+        }
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+        // $user->delete();
+        // File::delete('foto/' . $user->foto);
+        // Alert::alert('Data Berhasil DiHAPUS', 'success');
+        // return redirect()->back();
     }
 }

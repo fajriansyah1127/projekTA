@@ -99,22 +99,27 @@
                                   </div>
                           </div>
               
-                            <div class="form-group row">
-                                <label for="Judul" class="col-sm-2 col-form-label">Role </label>
-                                <div class="col-sm-10">  
-                                      <input type="radio" id="Admin" name="Role" value="Admin" required>
-                                      <label for="Admin" class="col-sm-2 col-form-label">Admin</label>
-                                      <input type="radio" id="Pegawai" name="Role" value="Pegawai" required>
-                                      <label for="Pegawai" class="col-sm-2 col-form-label">Pegawai</label>
-                                      <input type="radio" id="Magang" name="Role" value="Magang" required>
-                                      <label for="Magang" class="col-sm-2 col-form-label">Magang</label>
-                                      <input type="radio" id="Satpam" name="Role" value="Satpam" required >
-                                      <label for="Satpam">Satpam</label><br>
-              
-                                </div>
+                          <div class="form-group row">
+                            <label for="disabledSelect" class="col-sm-2 col-form-label">Role</label>
+                            <div class="col-sm-10"> 
+                           <select id="disabledSelect" name="Role" class="form-control  @error('Role') is-invalid @enderror" style="width: 100%; required>
+                            <option value="" selected>Pilih Produk dan Asuransi</option> 
+                            <option value="" selected>Pilih Role</option> 
+                            <option value="Admin">Admin</option> 
+                            <option value="Magang">Magang</option> 
+                            <option value="Pegawai">Pegawai</option> 
+                            <option value="Satpam">Satpam</option> 
+                           </select>
+                           <div class ="text-danger">
+                            @error('Role')
+                            {{ $message }}
+                            @enderror
+                          </div>
                             </div>
+                            
+                          </div>
               
-                          <br>
+                         
               
                             <div class="card-footer text-muted">
                                 <div class="form-group">
@@ -128,9 +133,9 @@
                                 </div>
                             </div>             
                 
-                            <div class="card-footer text-muted">
-                              <button type="submit" class="btn btn-danger mb-3">Submit</button>
-                            </div>
+                           
+                              <button type="submit" class="btn btn-success float-right">Submit</button>
+                           
                           </form>
                       
                 </div>

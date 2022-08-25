@@ -11,6 +11,9 @@ use App\Http\Controllers\AsuransiController;
 use App\Http\Controllers\IcipController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\AuthenticateController;
+use App\Http\Controllers\PeminjamController;
+use App\Http\Controllers\SatuanController;
+use App\Http\Controllers\OutletController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,6 +60,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/dokumen', DokumenController::class)->Middleware('admin','satpam');
     Route::resource('/user', UserController::class)->Middleware('admin');;
     Route::resource('/produk', ProdukController::class)->Middleware('admin');
+    Route::resource('/peminjam', PeminjamController::class)->Middleware('admin');
+    Route::resource('/outlet', OutletController::class)->Middleware('admin');
+    Route::resource('/satuan', SatuanController::class)->Middleware('admin');
 });
 Auth::routes();
 

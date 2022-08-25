@@ -170,6 +170,7 @@ class ProfileController extends Controller
         $user->save();
         Alert::toast('Data Berhasil Diubah', 'success');
         return redirect()->route('profile.index');
+        // return $request->all();
     }
 
     /**

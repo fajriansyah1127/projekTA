@@ -17,15 +17,17 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('produk_id');
+            $table->foreignId('outlet_id');
             $table->string('nama');
-            $table->string('nomor_surat');
-            $table->date('tanggal_surat');
+            $table->string('nomor_akad');
+            $table->date('tanggal_klaim');
             $table->string('file');
             $table->timestamps();
         });
 
         Schema::table('dokumens', function (Blueprint $table) {
-            $table->foreign('produk_id')->references('id')->on('produk')->ondelete('restrict');
+            $table->foreign('produk_id')->references('id')->on('produks')->ondelete('restrict');
+            $table->foreign('outlet_id')->references('id')->on('outlets')->ondelete('restrict');
             $table->foreign('user_id')->references('id')->on('users')->ondelete('restrict');
             // $table->foreign('produk_id')->references('id')->on('asuransis')->ondelete('cascade');
         });

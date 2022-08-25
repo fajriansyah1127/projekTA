@@ -1,23 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-use Exception;
-use RealRashid\SweetAlert\Facades\Alert;
-use App\Models\Asuransi;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class AsuransiController extends Controller
+use App\Models\Outlet;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
+use Exception;
+use Illuminate\Http\Request;
+
+class OutletController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Asuransi $asuransi)
+    public function index()
     {
-        $asuransi = Asuransi::get();
-        return view('Asuransi.Index', compact('asuransi'));
+        $outlet = Outlet::get();
+        return view('Outlet.Index', compact('outlet'));
     }
 
     /**
@@ -27,8 +28,7 @@ class AsuransiController extends Controller
      */
     public function create()
     {
-        return view('Asuransi.Create');
-        
+        return view('Outlet.Create');
     }
 
     /**
@@ -40,100 +40,88 @@ class AsuransiController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama_asuransi' => 'required',
-            'email_asuransi' => 'required|email:dns',
-            'kontak_asuransi' => 'required',
-            'alamat_asuransi' => 'required',
-            'status_asuransi' => 'required',
+            'nama_outlet' => 'required',
+            
         ]);
 
-        $notif = Asuransi::create([
-            'nama' => $request->nama_asuransi,
-            'email' => $request->email_asuransi,
-            'kontak' => $request->kontak_asuransi,
-            'alamat' => $request->alamat_asuransi,
-            'status' => $request->status_asuransi,
+        $notif = Outlet::create([
+            'nama' => $request->nama_outlet,
+            
         ]);
 
         if ($notif) {
             //redirect dengan pesan sukses
             alert()->success('Success', 'JOSSS DATANYA SUDAH MASUK');
-            return redirect('/asuransi');
+            return redirect('/outlet');
         } else {
             //redirect dengan pesan error
             alert()->error('Gagal', 'GAGAL BRO NDA BISA MASUK Di ulangi lagi');
             return redirect()->back();
         }
-        //return $request->all();
+        // return request()->all();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Asuransi  $asuransi
+     * @param  \App\Models\Outlet  $outlet
      * @return \Illuminate\Http\Response
      */
-    public function show(Asuransi $asuransi)
+    public function show(Outlet $outlet)
     {
-        return view('Asuransi.Show', compact('asuransi'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Asuransi  $asuransi
+     * @param  \App\Models\Outlet  $outlet
      * @return \Illuminate\Http\Response
      */
-    public function edit(Asuransi $asuransi)
+    public function edit(Outlet $outlet)
     {
-        return view('Asuransi.Edit', compact('asuransi'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Asuransi  $asuransi
+     * @param  \App\Models\Outlet  $outlet
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
             'nama' => 'required',
-            'email' => 'required|email:dns',
-            'kontak' => 'required',
-            'alamat' => 'required',
-            'status' => 'required',
         ]); 
-        $asuransi = Asuransi::find($id);
-        $inter = $request->all();  
-        $asuransi->update($inter);
-        if ($asuransi) {
+
+        $outlet = Outlet::find($id);
+        $data = $request->all();  
+        $outlet->update($data);
+        if ($outlet) {
             //redirect dengan pesan sukses
             Alert::alert('Data Berhasil Diubah', 'success');
-            return redirect()->route('asuransi.index');
+            return redirect()->route('outlet.index');
         } else {
             //redirect dengan pesan error
-            return redirect()->route('asuransi.edit')->with(['error' => 'Data Gagal Disimpan!']);
+            return redirect()->route('outlet.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Asuransi  $asuransi
+     * @param  \App\Models\Outlet  $outlet
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        // $asuransi->delete();
-        // Alert::alert('Data Berhasil DiHAPUS', 'success');
-        // return redirect()->back();
-        $asuransi = Asuransi::find($id);
+        $outlet = Outlet::find($id);
         try {
-            $asuransi->delete();
+            $outlet->delete();
         } catch (Exception $e){
-            Alert::alert('ERROR', 'Asuransi Terdapat Pada Produk Atau Dokumen');
+            Alert::alert('ERROR', 'Terdapat Masalah Dalam Menghapus');
             return redirect()->back();
         }
 
