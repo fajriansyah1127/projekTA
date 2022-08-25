@@ -59,9 +59,7 @@
                                             <div class="col-sm-10">
                                                 <select id="disabledSelect" name="outlet_dokumen"
                                                     class="form-control select2 @error('outlet_dokumen') is-invalid @enderror"
-                                                    style="width: 100%; required>
-                                                    <option value=""
-                                                    selected="">Pilih Outlet</option>
+                                                     required>
                                                     <option value="" selected disabled>Pilih Outlet</option>
                                                     @foreach ($dokumens as $data)
                                                         <option value="{{ $data->id }}">{{ $data->nama }}

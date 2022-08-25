@@ -34,14 +34,8 @@
       <form action="/auth" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="email"  id="email"class="form-control" @error('email')
-          {{ $message }}
-          @enderror placeholder="Email" name ="email" autofocus required value="{{old('email')}}" >
-          <div class ="invalid-feedback">
-            @error('email')
-            {{ $message }}
-            @enderror
-          </div>
+          <input type="email"  id="email"class="form-control" placeholder="Email" name ="email" autofocus required value="{{old('email')}}" >
+          
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>

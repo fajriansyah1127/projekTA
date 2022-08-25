@@ -95,11 +95,7 @@
                                 <label>Nama Asuransi </label>
                                 <input type="text" id="nama" name="nama" class="form-control"
                                     placeholder="Masukkan Nama " required value="{{ $data->nama }}">
-                                <div class="text-danger">
-                                    @error('nama')
-                                        {{ $message }}
-                                    @enderror
-                                </div>
+                                
                                 <label>Email Asuransi </label>
                                 <input type="email" id="email" name="email" class="form-control"
                                     placeholder="Masukkan Email" required value="{{ $data->email }}">
@@ -114,15 +110,13 @@
 
                                 <label> Status </label>
                                 <select id="disabledSelect" name="status"
-                                    class="form-control  @error('status') is-invalid @enderror"
+                                    class="form-control "
                                     value="{{ $data->status }}">
                                     <option value="Berlaku" {{ $data->status == 'Berlaku' ? 'selected' : '' }}>
                                         Berlaku </option>
                                     <option value="Tidak Berlaku" {{ $data->status == 'Tidak Berlaku' ? 'selected' : '' }}>
                                         Tidak Berlaku </option>
                                 </select>
-
-
                         </div>
 
                         <div class="modal-footer justify-content-between">
@@ -153,7 +147,7 @@
             </div>
             @endforeach
 
-            {{-- <div class="modal fade" id="staticBackdroptambah" data-backdrop="static" tabindex="-1" role="dialog"
+            <div class="modal fade" id="staticBackdroptambah" data-backdrop="static" tabindex="-1" role="dialog"
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content bg-default">
@@ -168,52 +162,49 @@
                                 <input type="text" id="nama" name="nama_asuransi" class="form-control"
                                     placeholder="Masukkan Nama "required>
                                 <div class="text-danger">
-                                    @error('nama_asuransi')
+                                    {{-- @error('nama_asuransi')
                                         {{ $message }}
-                                    @enderror
+                                    @enderror --}}
                                 </div>
-
 
                                 <label>Email Asuransi </label>
                                 <input type="email" name="email_asuransi" class="form-control"
                                     placeholder="Masukkan Email" required>
                                 <div class="text-danger">
-                                    @error('email_asuransi')
+                                    {{-- @error('email_asuransi')
                                         {{ $message }}
-                                    @enderror
+                                    @enderror --}}
                                 </div>
-
-
 
                                 <label>Kontak</label>
                                 <input type="tel" name="kontak_asuransi" class="form-control"
                                     placeholder="Masukkan Kontak" required>
                                 <div class="text-danger">
-                                    @error('kontak_asuransi')
+                                    {{-- @error('kontak_asuransi')
                                         {{ $message }}
-                                    @enderror
+                                    @enderror --}}
                                 </div>
 
                                 <label> Alamat </label>
                                 <input type="text" id="alamat" name="alamat_asuransi" class="form-control"
                                     placeholder="Masukkan Alamat"required>
                                 <div class="text-danger">
-                                    @error('alamat_asuransi')
+                                    {{-- @error('alamat_asuransi')
                                         {{ $message }}
-                                    @enderror
+                                    @enderror --}}
                                 </div>
 
-                                <label> Status </label>
+                                <label> Status uy </label>
                                 <select id="disabledSelect" name="status_asuransi"
-                                    class="form-control  @error('status') is-invalid @enderror" value="">
+                                    class="form-control  is-invalid " value="">
                                     <option value="" selected disabled> Pilih Status </option>
                                     <option value="Berlaku">Berlaku
                                     </option>
                                     <option value="Tidak Berlaku">Tidak Berlaku </option>
                                     <div class="text-danger">
-                                        @error('status_asuransi')
+                                        {{-- @error('status_asuransi')
                                             {{ $message }}
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                 </select>
                                 <div class="modal-footer justify-content-between">
@@ -225,7 +216,7 @@
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </section>
     </div>
 @endsection

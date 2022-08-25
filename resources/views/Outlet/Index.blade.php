@@ -98,11 +98,11 @@
                                                 <input type="text" name="nama" class="form-control"
                                                     placeholder="Masukkan Nama Outlet" value="{{ $data->nama }}"
                                                     required>
-                                                <div class="text-danger mt-2">
+                                                {{-- <div class="text-danger mt-2">
                                                     @error('nama')
                                                         {{ $message }}
                                                     @enderror
-                                                </div>
+                                                </div> --}}
                                         </div>
                                         <div class="modal-footer justify-content-between">
                                             <button type="button" class="btn btn-sm btn-danger"
@@ -129,9 +129,9 @@
                                             <input type="text" id="nama" name="nama_outlet" class="form-control"
                                                 placeholder="Masukkan Nama Outlet" required>
                                             <div class="text-danger mt-2">
-                                                @error('nama_outlet')
+                                                {{-- @error('nama_outlet')
                                                     {{ $message }}
-                                                @enderror
+                                                @enderror --}}
                                             </div>
                                     </div>
                                     <div class="modal-footer justify-content-between">

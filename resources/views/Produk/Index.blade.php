@@ -77,19 +77,18 @@
                                                 {{ csrf_field() }}
 
                                                 <label>Nama Produk </label>
-
                                                 <input type="text" id="nama" name="Nama" class="form-control"
                                                     placeholder="Masukkan Nama" required value="{{ $data->nama }}">
-                                                <div class="text-danger mt-2">
+                                                {{-- <div class="text-danger mt-2">
                                                     @error('Nama')
                                                         {{ $message }}
                                                     @enderror
-                                                </div>
+                                                </div> --}}
 
                                                 <label>Unit Asuransi</label>
 
                                                 <select id="disabledSelect" name="Asuransi"
-                                                    class="form-control select2 @error('asuransi') is-invalid @enderror"
+                                                    class="form-control select2 "
                                                     style="width: 100%;" value="{{ $data->asuransi->id }}" required>
                                                     <option value="" selected disabled> Pilih Produk dan Asuransi
                                                     </option>
@@ -155,19 +154,18 @@
                                             {{ csrf_field() }}
 
                                             <label>Nama Produk </label>
-
                                             <input type="text" id="nama" name="nama_produk" class="form-control"
                                                 placeholder="Masukkan Nama "required>
-                                            <div class="text-danger mt-2">
+                                            {{-- <div class="text-danger mt-2">
                                                 @error('nama_produk')
                                                     {{ $message }}
                                                 @enderror
-                                            </div>
+                                            </div> --}}
 
                                             <label>Unit Asuransi</label>
 
                                             <select id="disabledSelect" name="asuransi_produk"
-                                                class="form-control select2 @error('asuransi_produk') is-invalid @enderror"
+                                                class="form-control select2"
                                                 style="width: 100%;">
                                                 <option value="" selected disabled> Pilih Asuransi
                                                 </option>

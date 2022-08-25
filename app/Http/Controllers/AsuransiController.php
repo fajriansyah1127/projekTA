@@ -6,6 +6,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Asuransi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\MessageBag;
 
 class AsuransiController extends Controller
 {
