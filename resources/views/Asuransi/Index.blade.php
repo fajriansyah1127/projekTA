@@ -143,7 +143,7 @@
                 </div>
             </div>   
 
-             {{-- <div class="modal fade" id="staticBackdropdelete{{ $data->id }}" data-backdrop="static">
+             <div class="modal fade" id="staticBackdropdelete{{ $data->id }}" data-backdrop="static">
                 <div class="modal-dialog">
                     <div class="modal-content bg-default">
                         <div class="modal-body">
@@ -239,7 +239,7 @@
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </section>
     </div>
 @endsection
