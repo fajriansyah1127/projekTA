@@ -39,19 +39,19 @@ class iterasi2 extends TestCase
 
     //     $response->assertStatus(200);
     //  }
-    public function testCreateAsuransi()
-    {
-        $user = User::where('role', 'Admin')->first();
-            $response = $this->actingAs($user)
-                ->post(route('asuransi.store'), [
-                    'nama_asuransi' => $this->faker->company(),
-                    'email_asuransi' => $this->faker->email(),
-                    'kontak_asuransi' =>  $this->faker->phoneNumber(),
-                    'alamat_asuransi' => $this->faker->address(),
-                    'status_asuransi' => 'Berlaku',
-                ]);
-            $response->assertStatus(302);
-    }
+    // public function testCreateAsuransi()
+    // {
+    //     $user = User::where('role', 'Admin')->first();
+    //         $response = $this->actingAs($user)
+    //             ->post(route('asuransi.store'), [
+    //                 'nama_asuransi' => $this->faker->company(),
+    //                 'email_asuransi' => $this->faker->email(),
+    //                 'kontak_asuransi' =>  $this->faker->phoneNumber(),
+    //                 'alamat_asuransi' => $this->faker->address(),
+    //                 'status_asuransi' => 'Berlaku',
+    //             ]);
+    //         $response->assertStatus(302);
+    // }
 
     // public function testEditAsuransi()
     // {
@@ -83,16 +83,16 @@ class iterasi2 extends TestCase
     //         ->assertSee('produk');
     // }
 
-    // public function testCreateProduk()
-    // {
-    //     $user = User::where('role', 'Admin')->first();
-    //         $response = $this->actingAs($user)
-    //             ->post(route('produk.store'), [
-    //                 'nama_produk' => $this->faker->company() ,
-    //                 'asuransi_produk' => '3',
-    //             ]);
-    //         $response->assertStatus(302);
-    // }
+    public function testCreateProduk()
+    {
+        $user = User::where('role', 'Admin')->first();
+            $response = $this->actingAs($user)
+                ->post(route('produk.store'), [
+                    'nama_produk' => $this->faker->company() ,
+                    'asuransi_produk' => '3',
+                ]);
+            $response->assertStatus(302);
+    }
 
     // public function testEditProduk()
     // {
