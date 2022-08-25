@@ -12,7 +12,7 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-md-12 p-5 pt-2">
+                    <div class="col-md-12 p-5 pt-2">sss
                         <!-- membuat form -->
                         <div class="container">
                             <div class="card mt-2">
@@ -51,24 +51,24 @@
                                         </div>
 
                                         <div class="form-group row">
-                                          <label for="disabledSelect" class="col-sm-2 col-form-label">Outlet</label>
-                                          <div class="col-sm-10">
-                                              <select id="disabledSelect" name="outlet_id"
-                                                  class="form-control select2 @error('outlet_id') is-invalid @enderror"
-                                                  style="width: 100%;" value="{{ $dokuman->outlet }}" required >
-                                                  @foreach ($outlet as $data)
-                                                  <option value="{{ $data->id }}"
-                                                      {{ $dokuman->outlet_id == $data->id ? 'selected' : '' }}>
-                                                      {{ $data->nama }}</option>
-                                              @endforeach
-                                              </select>
-                                              <div class="text-danger">
-                                                  @error('outlet_id')
-                                                      {{ $message }}
-                                                  @enderror
-                                              </div>
-                                          </div>
-                                      </div>
+                                            <label for="disabledSelect" class="col-sm-2 col-form-label">Outlet</label>
+                                            <div class="col-sm-10">
+                                                <select id="disabledSelect" name="outlet_id"
+                                                    class="form-control select2 @error('outlet_id') is-invalid @enderror"
+                                                    style="width: 100%;" value="{{ $dokuman->outlet }}" required>
+                                                    @foreach ($outlet as $data)
+                                                        <option value="{{ $data->id }}"
+                                                            {{ $dokuman->outlet_id == $data->id ? 'selected' : '' }}>
+                                                            {{ $data->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <div class="text-danger">
+                                                    @error('outlet_id')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="form-group row">
                                             <label for="Kontak" class="col-sm-2 col-form-label">Tanggal</label>

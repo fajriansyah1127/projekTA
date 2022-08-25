@@ -55,12 +55,11 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="disabledSelect" class="col-sm-2 col-form-label">Outlet</label>
+                                            <label class="col-sm-2 col-form-label">Outlet</label>
                                             <div class="col-sm-10">
                                                 <select id="disabledSelect" name="outlet_dokumen"
-                                                    class="form-control select2 @error('outlet_dokumen') is-invalid @enderror"
-                                                     required>
-                                                    <option value="" selected disabled>Pilih Outlet</option>
+                                                    class="form-control select2"required>
+
                                                     @foreach ($dokumens as $data)
                                                         <option value="{{ $data->id }}">{{ $data->nama }}
                                                         </option>
@@ -85,10 +84,10 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="disabledSelect" class="col-sm-2 col-form-label">Produk</label>
+                                            <label class="col-sm-2 col-form-label">Produk</label>
                                             <div class="col-sm-10">
                                                 <select id="disabledSelect" name="produk_dokumen"
-                                                    class="form-control select2 @error('produk_dokumen') is-invalid @enderror"
+                                                    class="form-control select2 "
                                                     style="width: 100%; required>
                                                     <option value=""
                                                     selected="">Pilih Produk dan Asuransi</option>
