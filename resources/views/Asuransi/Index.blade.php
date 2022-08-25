@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item active">Data Peminjam</li>
+                            <li class="breadcrumb-item active">Data Unit Asuransi</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -67,7 +67,7 @@
                                                     Delete
                                                 </button>
                                             </td>
-                                    </tr>
+                                    </tr>   @endforeach
 
                                 </tbody>
                             </table>
@@ -78,7 +78,7 @@
                 </div>
             </div>
 
-
+            @foreach ($asuransi as $data)
             <div class="modal fade" id="staticBackdrop1{{ $data->id }}" data-backdrop="static" tabindex="-1"
                 role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
