@@ -17,7 +17,7 @@ class PeminjamController extends Controller
      */
     public function index(Peminjam $peminjam)
     {
-        $peminjam = Peminjam::with('dokumen')->paginate();
+        $peminjam = Peminjam::with('dokumen')->get();
         $dokumen = Dokumen::get();
         return view('Peminjam.Index', compact('peminjam','dokumen'));
     }

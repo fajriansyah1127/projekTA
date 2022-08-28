@@ -90,9 +90,24 @@ class SatuanController extends Controller
      * @param  \App\Models\Satuan  $satuan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Satuan $satuan)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nama' => 'required',
+            'jenis' => 'required',
+            'detail' => 'required',
+        ]); 
+        $satuan = Satuan::find($id);
+        $data = $request->all();  
+        $satuan->update($data);
+        if ($satuan) {
+            //redirect dengan pesan sukses
+            Alert::alert('Data Berhasil Diubah', 'success');
+            return redirect()->route('satuan.index');
+        } else {
+            //redirect dengan pesan error
+            return redirect()->route('satuan.index')->with(['error' => 'Data Gagal Diubah!']);
+        }
     }
 
     /**
@@ -101,8 +116,16 @@ class SatuanController extends Controller
      * @param  \App\Models\Satuan  $satuan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Satuan $satuan)
+    public function destroy($id)
     {
-        //
+        $satuan = Satuan::find($id);
+        try {
+            $satuan->delete();
+        } catch (Exception $e){
+            Alert::alert('ERROR', 'Satuan Terdapat Pada Barang');
+            return redirect()->back();
+        }
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
     }
 }

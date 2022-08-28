@@ -7,7 +7,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Satuan</h1>
+          <h1 class="m-0 font-weight-bold text-primary">Satuan</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -43,7 +43,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>@foreach($satuan as $data)
+                  <tr>@foreach($barangmasuk as $data)
                     <td>{{ $loop->iteration}}</td>
                     <td>{{ $data->nama }}</td>
                     <td>{{ $data->jenis }}</td> 

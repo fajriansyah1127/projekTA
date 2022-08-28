@@ -14,6 +14,7 @@ use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\PeminjamController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\OutletController;
+Use App\Http\Controllers\BarangMasukController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,9 +39,7 @@ Route::group(['middleware' => 'guest'], function () {
     // Route::get('/', function () {
     //     return view('home');
     // });
-    
     Route::get('/login', [LoginController::class,'index'])->name('login')->Middleware('guest');
-    
     Route::resource('/', LoginController::class);
 });
 Route::resource('/login', LoginController::class);
@@ -55,7 +54,6 @@ Route::group(['middleware' => 'auth'], function () {
         return view('index2');
     });
     Route::resource('/profile', ProfileController::class);
-   
     Route::resource('/asuransi', AsuransiController::class)->Middleware('admin');
     Route::resource('/dokumen', DokumenController::class)->Middleware('admin','satpam');
     Route::resource('/user', UserController::class)->Middleware('admin');;
@@ -63,6 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/peminjam', PeminjamController::class)->Middleware('admin');
     Route::resource('/outlet', OutletController::class)->Middleware('admin');
     Route::resource('/satuan', SatuanController::class)->Middleware('admin');
+    Route::resource('/barangmasuk', BarangMasukController::class)->Middleware('admin');
 });
 Auth::routes();
 

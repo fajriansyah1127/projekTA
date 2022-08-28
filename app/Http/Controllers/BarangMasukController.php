@@ -14,7 +14,8 @@ class BarangMasukController extends Controller
      */
     public function index()
     {
-        //
+        $barangmasuk = BarangMasuk::get();
+        return view('BarangMasuk.Index', compact('barangmasuk'));
     }
 
     /**

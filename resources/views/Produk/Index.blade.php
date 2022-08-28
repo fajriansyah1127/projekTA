@@ -79,14 +79,8 @@
                                                 <label>Nama Produk </label>
                                                 <input type="text" id="nama" name="Nama" class="form-control"
                                                     placeholder="Masukkan Nama" required value="{{ $data->nama }}">
-                                                {{-- <div class="text-danger mt-2">
-                                                    @error('Nama')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </div> --}}
 
                                                 <label>Unit Asuransi</label>
-
                                                 <select id="disabledSelect" name="Asuransi"
                                                     class="form-control select2 "
                                                     style="width: 100%;" value="{{ $data->asuransi->id }}" required>
