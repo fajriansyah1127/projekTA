@@ -194,18 +194,13 @@
                                     @enderror --}}
                                 </div>
 
-                                <label> Status uy </label>
+                                <label> Status </label>
                                 <select id="disabledSelect" name="status_asuransi"
-                                    class="form-control  is-invalid " value="">
+                                    class="form-control  " value="">
                                     <option value="" selected disabled> Pilih Status </option>
                                     <option value="Berlaku">Berlaku
                                     </option>
                                     <option value="Tidak Berlaku">Tidak Berlaku </option>
-                                    <div class="text-danger">
-                                        {{-- @error('status_asuransi')
-                                            {{ $message }}
-                                        @enderror --}}
-                                    </div>
                                 </select>
                                 <div class="modal-footer justify-content-between">
                                     <button type="button" class="btn btn-sm btn-danger"

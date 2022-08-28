@@ -12,7 +12,7 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-md-12 p-5 pt-2">sss
+                    <div class="col-md-12 p-5 pt-2">
                         <!-- membuat form -->
                         <div class="container">
                             <div class="card mt-2">
@@ -136,7 +136,7 @@
 
                                             <!-- bagian submit -->
 
-                                            <button type="submit" class="btn btn-danger float-right">Submit</button>
+                                            <button type="submit" class="btn btn-success float-right">Submit</button>
 
                                         </div>
 

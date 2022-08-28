@@ -110,6 +110,41 @@
               {{-- @endforeach   --}}
             <!-- /.card-body -->
   <!-- /.content -->
+  <div class="modal fade" id="staticBackdroptambah" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content bg-default">
+            <div class="modal-header">
+                <h4 class="modal-title">Tambah Satuan</h4>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('satuan.store') }}" method="POST">
+                    {{ csrf_field() }}
+
+                    <label>Nama Satuan </label>
+                    <input type="text" name="nama_satuan" class="form-control"
+                        placeholder="Masukkan Nama Satuan "required>
+
+                        <label>Jenis  </label>
+                        <input type="text"  name="jenis_satuan" class="form-control"
+                            placeholder="Masukkan Jenis  "required>
+
+                            <label>Detail  </label>
+                    <input type="text" name="detail_satuan" class="form-control"
+                        placeholder="Masukkan Detail "required>
+
+
+                    <br/>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-sm btn-danger"
+                            data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                    </div>
+            </div>
+
+            </form>
+        </div>
+    </div>
+</div>
 </section>
 </div>
 @endsection

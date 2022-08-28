@@ -91,7 +91,7 @@
                                                     style="width: 100%; required>
                                                     <option value=""
                                                     selected="">Pilih Produk dan Asuransi</option>
-                                                    <option value="" selected>Pilih Produk dan Asuransi</option>
+                                                    <option value="" selected disabled>Pilih Produk dan Asuransi</option>
                                                     @foreach ($dokumen as $data)
                                                         <option value="{{ $data->id }}">{{ $data->nama }} ||
                                                             {{ $data->asuransi->nama }} </option>
@@ -105,16 +105,6 @@
                                             </div>
                                         </div>
 
-
-                                        {{-- <div class="form-group">
-              <label for="exampleFormControlFile1">File</label>
-              <input type="file" name="File" class="form-control"  value="{{old('File')}}">
-              <div class ="text-danger">
-                @error('File')
-                {{ $message }}
-                @enderror
-              </div>
-          </div> --}}
 
                                         <div class="form-group">
                                             <label for="exampleInputFile">File input</label>

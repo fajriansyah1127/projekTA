@@ -10,7 +10,8 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a class="btn btn-sm btn-primary" href="{{ route('user.create') }}">Tambah User</a></li>
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">User</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -27,7 +28,7 @@
         <div class="card">
           <!-- /.card-header -->
           <div class="card-body ">
-            <table id="example1" class="table table-bordered table-striped">
+            <table id="exampledokumen1" class="table table-bordered table-striped">
             {{-- <table class="table  table-hover text-nowrap"> --}}
               <thead>
                 <tr>
@@ -49,9 +50,31 @@
                   <td>
                       <a href="{{route('user.show',$data->id) }} "class="btn btn-sm btn-success">Detail</a>
                       <a href="{{route('user.edit',$data->id) }}"class="btn btn-sm btn-warning">Edit</a>
-                      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#staticBackdrop{{ $data->id }}">
+                      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#staticBackdropdelete{{ $data->id }}">
                         Delete
                       </button>
+                      <div class="modal fade" id="staticBackdropdelete{{ $data->id }}"
+                        data-backdrop="static" tabindex="-1" role="dialog"
+                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content bg-default">
+                                <div class="modal-body">
+                                    Apaknah anda yakin menghapus {{ $data->nama }} ?
+                                </div>
+                                <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn  btn-sm btn-primary"
+                                        data-dismiss="modal">Close</button>
+                                    <form action="{{ route('outlet.destroy', $data->id) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                       <div class="modal fade" id="staticBackdrop{{ $data->id }}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content bg-danger">

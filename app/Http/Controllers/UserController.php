@@ -53,9 +53,15 @@ class UserController extends Controller
 
         ]);
         $request['Password'] = hash::make($request['Password']); 
-        $file = Request()->Foto;
-        $filename = Request()->Nama . date('dmy') . '.' . $file->extension();
-        $file->move(public_path('foto'), $filename);
+        
+        if ( $file = Request()->Foto) {
+            $filename = Request()->Nama . date('dmy') . '.' . $file->extension();
+            $file->move(public_path('foto'), $filename);
+        }else{
+            $filename = 'User'.'.'.'jpg';
+        }
+       
+        
 
         $notif = User::create([
             'nama' => $request->Nama,
@@ -147,11 +153,23 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,User $user)
+    public function destroy($id)
     {
+        $user = User::find($id);
+        
+        if ( $user = User::find($id)) {
+            if($user->foto = "user"){
+                $user->delete();
+                Alert::alert('Data Berhasil DiHAPUS', 'success');
+                return redirect()->back();
+            }
+        }else{
         $user->delete();
         File::delete('foto/' . $user->foto);
         Alert::alert('Data Berhasil DiHAPUS', 'success');
         return redirect()->back();
+        }
+
+        
     }
 }

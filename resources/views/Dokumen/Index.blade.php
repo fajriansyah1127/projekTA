@@ -47,7 +47,7 @@
                   </thead>
                   <tbody>
                     <tr>@foreach($dokumen as $data)
-                      <td>{{ $data->id }}</td>
+                      <td>{{ $loop->iteration }}</td>
                       <td>{{ $data->nama }}</td>
                       <td>{{ $data->nomor_akad }}</td>
                       <td>{{ $data->outlet->nama }}</td>
