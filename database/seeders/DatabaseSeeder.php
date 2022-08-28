@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Asuransi;
+use App\Models\Outlet;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
@@ -17,6 +18,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\User::factory(2)->create();
+        \App\Models\Asuransi::factory(10)->create();
 
         User::create([
             'Nama' => 'Fajriansyah',
@@ -71,6 +73,78 @@ class DatabaseSeeder extends Seeder
             'Jabatan' => 'mahasiswa',
             'Password' => bcrypt('asdfghjkl'),
             'Foto' => 'user.jpg',
+        ]);
+
+        Outlet::create([
+            'nama_outlet' => 'CP Batu Ampar',
+        ]);
+
+        Outlet::create([
+            'nama_outlet' => 'CP Gunung Kawi',
+        ]);
+
+        Outlet::create([
+            'nama_outlet' => 'CP Damai',
+        ]);
+
+        Outlet::create([
+            'nama_outlet' => 'CP Rapak',
+        ]);
+
+        Outlet::create([
+            'nama_outlet' => 'CP Tanah Grogot',
+        ]);
+
+        Outlet::create([
+            'nama_outlet' => 'CP Kampung Baru',
+        ]);
+
+        Outlet::create([
+            'nama_outlet' => 'CP Manggar',
+        ]);
+
+        Outlet::create([
+            'nama_outlet' => 'CP Penajam',
+        ]);
+
+        Outlet::create([
+            'nama_outlet' => 'CP Balikpapan Baru',
+        ]);
+
+        Outlet::create([
+            'nama_outlet' => 'CPS Gunung Sari',
+        ]);
+
+        Asuransi::create([
+            'nama_asuransi' => 'Jamsyar',
+            'email_asuransi' => $this->faker->email(),
+            'kontak_asuransi' => $this->faker->phoneNumber(),
+            'alamat_asuransi' => $this->faker->address(),
+            'status_asuransi' => 'Berlaku',
+        ]);
+
+        Asuransi::create([
+            'nama_asuransi' => 'Jamkrindo',
+            'email_asuransi' => 'indriany.jamsyar@gmail.com',
+            'kontak_asuransi' => $this->faker->phoneNumber(),
+            'alamat_asuransi' => $this->faker->address(),
+            'status_asuransi' => 'Berlaku',
+        ]);
+
+        Asuransi::create([
+            'nama_asuransi' => 'Askrindo',
+            'email_asuransi' => $this->faker->email(),
+            'kontak_asuransi' => $this->faker->phoneNumber(),
+            'alamat_asuransi' => $this->faker->address(),
+            'status_asuransi' => 'Berlaku',
+        ]);
+
+        Asuransi::create([
+            'nama_asuransi' => 'Jasa Raharja Putra',
+            'email_asuransi' => $this->faker->email(),
+            'kontak_asuransi' => $this->faker->phoneNumber(),
+            'alamat_asuransi' => $this->faker->address(),
+            'status_asuransi' => 'Berlaku',
         ]);
     }
 }

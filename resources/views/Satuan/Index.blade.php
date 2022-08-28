@@ -26,11 +26,13 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <a class="btn btn-sm btn-primary" href="{{ route('satuan.create') }}">Tambah Satuan</a>
+              {{-- <a class="btn btn-sm btn-primary" href="{{ route('satuan.create') }}">Tambah Satuan</a> --}}
+              <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#staticBackdroptambah">Tambah
+                Satuan</a>
               </div>
             <!-- /.card-header -->
             <div class="card-body ">
-              <table id="" class="table table-bordered table-hover ">
+              <table id="exampledokumen1" class="table table-bordered table-hover ">
                 <thead>
                   <tr>
                     <th>No</th>

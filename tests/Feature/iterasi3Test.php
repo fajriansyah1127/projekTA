@@ -38,7 +38,7 @@ class iterasi3 extends TestCase
                 ->post(route('dokumen.store'), [
                     'nama_dokumen' => $this->faker->name(),
                     'nomor_dokumen' => $this->faker->ean13(),
-                    'outlet_dokumen' => '5',
+                    'outlet_dokumen' => '50',
                     'tanggal_dokumen' =>  $this->faker->date(),
                     'produk_dokumen' => '14',
                     'file_dokumen' => UploadedFile::fake()->create('test4.pdf', 1024),
