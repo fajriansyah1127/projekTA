@@ -126,10 +126,10 @@
 
                         <label>Jenis  </label>
                         <input type="text"  name="jenis_satuan" class="form-control"
-                            placeholder="Masukkan Jenis  "required>
+                        placeholder="Masukkan Jenis  "required>
 
                             <label>Detail  </label>
-                    <input type="text" name="detail_satuan" class="form-control"
+                        <input type="text" name="detail_satuan" class="form-control"
                         placeholder="Masukkan Detail "required>
 
 
