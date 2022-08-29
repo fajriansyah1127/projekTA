@@ -247,19 +247,13 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('dokumen.create') }}" class="nav-link {{Request::is('dokumen/create')?'active':''}}">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Upload Dokumen</p>
-              </a>
-            </li>
-            <li class="nav-item">
               <a href="{{ route('dokumen.index') }}" class="nav-link {{Request::is('dokumen')?'active':''}}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>List Dokumen</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="./index3.html" class="nav-link">
+              <a href="/peminjam" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Data Peminjam</p>
               </a>

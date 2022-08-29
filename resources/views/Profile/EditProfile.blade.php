@@ -94,7 +94,7 @@
                               <div class="col-sm-10">
                                     <input type="password" id="current_password" name="current_password" class="form-control " placeholder="Masukkan Password"  >  
                                     <div class ="text-danger">
-                                      @error('password')
+                                      @error('current_password')
                                       {{ $message }}
                                       @enderror
                                     </div>
@@ -106,7 +106,7 @@
                               <div class="col-sm-10">
                                     <input type="password" id="new_password" name="new_password" class="form-control " placeholder="Masukkan Password"  >  
                                     <div class ="text-danger">
-                                      @error('password')
+                                      @error('new_password')
                                       {{ $message }}
                                       @enderror
                                     </div>
@@ -118,7 +118,7 @@
                               <div class="col-sm-10">
                                     <input type="password" id="password_confirmation" name="password_confirmation" class="form-control " placeholder="Masukkan Password" >  
                                     <div class ="text-danger">
-                                      @error('password')
+                                      @error('password_confirmation')
                                       {{ $message }}
                                       @enderror
                                     </div>

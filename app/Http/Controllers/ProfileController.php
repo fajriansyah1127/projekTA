@@ -127,12 +127,11 @@ class ProfileController extends Controller
             'email' => 'required|string|email|max:255|unique:users,email,' . Auth::user()->id,
             'kontak' => 'nullable',
             'alamat' => 'nullable',
-            'role' => 'nullable',
             'jabatan' => 'nullable',
             'current_password' => 'nullable|required_with:new_password',
             'new_password' => 'nullable|min:8|max:12|required_with:current_password',
             'password_confirmation' => 'nullable|min:8|max:12|required_with:new_password|same:new_password',
-            'foto' => 'file|mimes:jpg,png,jpeg,gif,svg,jfif|max:2048',
+            'foto' => 'nullable|file|mimes:jpg,png,jpeg,gif,svg,jfif|max:2048',
         ]);
 
         $user = User::findOrFail(Auth::user()->id);

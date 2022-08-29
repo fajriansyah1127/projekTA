@@ -48,8 +48,8 @@ class UserController extends Controller
             'Alamat' => 'required',
             'Role' => 'required',
             'Jabatan' => 'required',
-            'Password' => 'required|min:8',
-            'Foto' => 'nullable|mimes:jpg,jpeg,bmp,png|max:10000',
+            'Password' => 'required|min:12',
+            'Foto' => 'required|mimes:jpg,jpeg,bmp,png|max:10000',
 
         ]);
         $request['Password'] = hash::make($request['Password']); 
@@ -158,17 +158,11 @@ class UserController extends Controller
         $user = User::find($id);
         
         if ( $user = User::find($id)) {
-            if($user->foto = "user"){
                 $user->delete();
+                File::delete('foto/' .$user->foto);
                 Alert::alert('Data Berhasil DiHAPUS', 'success');
                 return redirect()->back();
-            }
-        }else{
-        $user->delete();
-        File::delete('foto/' . $user->foto);
-        Alert::alert('Data Berhasil DiHAPUS', 'success');
-        return redirect()->back();
-        }
+                }
 
         
     }

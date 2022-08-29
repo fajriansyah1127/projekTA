@@ -66,5 +66,7 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\IsAdmin::class,
         'satpam' => \App\Http\Middleware\IsSatpam::class,
         'akses' => \App\Http\Middleware\akses::class,
+        'magang' => \App\Http\Middleware\IsMagang::class,
+        'hakakses' => \App\Http\Middleware\HakAkses::class,
     ];
 }
