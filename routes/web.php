@@ -75,6 +75,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware'=> 'hakakses:Admin,Satpam'],function(){
         Route::resource('/satuan', SatuanController::class);
         Route::resource('/barangmasuk', BarangMasukController::class);
+        Route::resource('/barangkeluar', BarangMasukController::class);
     });
 
     Route::group(['middleware'=> 'hakakses:Admin,Satpam,Pegawai,Magang'],function(){

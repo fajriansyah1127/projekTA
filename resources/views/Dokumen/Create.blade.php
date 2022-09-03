@@ -59,7 +59,7 @@
                                             <div class="col-sm-10">
                                                 <select id="disabledSelect" name="outlet_dokumen"
                                                     class="form-control select2"required>
-
+                                                    <option value="" selected disabled>Pilih Outlet</option>
                                                     @foreach ($dokumens as $data)
                                                         <option value="{{ $data->id }}">{{ $data->nama }}
                                                         </option>
@@ -105,7 +105,8 @@
                                             </div>
                                         </div>
 
-
+<br>
+                                    <div class="card-footer text-muted">
                                         <div class="form-group">
                                             <label for="exampleInputFile">File input</label>
                                             <div class="input-group">
@@ -122,8 +123,15 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <button type="submit" class=" btn btn-success float-right">Submit</button>
+                                        <div class="card-footer">
+
+                                            <!-- bagian submit -->
+
+                                            <button type="submit" class="btn btn-success float-right">Submit</button>
+
+                                        </div>
 
                                         <!-- bagian tanggal -->
                                     </form>

@@ -96,11 +96,6 @@
                                                             {{ $data->nama }} || {{ $data->asuransi->nama }} </option>
                                                     @endforeach
                                                 </select>
-                                                <div class="text-danger">
-                                                    @error('produk_id')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </div>
                                             </div>
                                         </div>
                                         <span class="small text-danger">*Jika tidak ada perubahan pada isi dokumen, harap

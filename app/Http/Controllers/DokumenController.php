@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Vinkla\Hashids\Facades\Hashids;
 
 class DokumenController extends Controller
 {
@@ -21,8 +23,11 @@ class DokumenController extends Controller
      */
     public function index(Dokumen $dokumen)
     {
+        $DokumenRole = Dokumen::with('user','produk','outlet')
+        ->where('user_id', Auth::user()->id)
+        ->get();
         $dokumen = Dokumen::with('user','produk','outlet')->get();
-        return view ('Dokumen.Index', compact('dokumen'));
+        return view ('Dokumen.Index', compact('dokumen','DokumenRole'));
     }
 
     /**
@@ -38,8 +43,6 @@ class DokumenController extends Controller
         // ]);
         $dokumen = Produk::with('asuransi')->get();
         $dokumens = Outlet::get();
-        //$dokumen = Dokumen::with('asuransi')->paginate(5);
-        // $dokumen = Dokumen::get();
         return view('Dokumen.create', compact('dokumen','dokumens'));
     }
 
@@ -104,13 +107,32 @@ class DokumenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dokumen $dokuman)
-    {
-        
+    // public function edit(Dokumen $dokuman)
+    // {
+    //     $dokuman =
+    //     $dokumen = Produk::with('asuransi')->get();
+    //     $outlet = Outlet::get();
+    //     return view('Dokumen.edit', compact('dokuman','dokumen','outlet'));
+    // }
+    public function edit($dokuman)
+    {  
+        try {
+            $decoded_id = Hashids::decode($dokuman);
+            $dokuman = Dokumen::find($decoded_id[0]);
+        } catch (Exception $e){
+            abort(404);
+        }
         $dokumen = Produk::with('asuransi')->get();
         $outlet = Outlet::get();
         return view('Dokumen.edit', compact('dokuman','dokumen','outlet'));
     }
+    // public function editmagang(Dokumen $magang)
+    // {
+        
+    //     $dokumen = Produk::with('asuransi')->get();
+    //     $outlet = Outlet::get();
+    //     return view('Dokumen.edit', compact('dokuman','dokumen','outlet'));
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -130,8 +152,9 @@ class DokumenController extends Controller
             'file' => 'file|mimes:pdf|max:10000',
         ]);
         $request->request->add(['user_id' => Auth::user()->id]);
-
-        $dokumen = Dokumen::find($id);
+        
+        $decoded_id = Hashids::decode($id);
+        $dokumen = Dokumen::find($decoded_id[0]);
         $doku =  $request->all();
         
 
@@ -167,7 +190,8 @@ class DokumenController extends Controller
      */
     public function destroy($id)
     {
-        $dokumen = Dokumen::find($id);
+        $decoded_id = Hashids::decode($id);
+        $dokumen = Dokumen::find($decoded_id[0]);
         try {
             $dokumen->delete();
             File::delete('filearsip/' . $dokumen->file);

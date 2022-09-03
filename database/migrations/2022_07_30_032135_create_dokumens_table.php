@@ -28,7 +28,7 @@ return new class extends Migration
         Schema::table('dokumens', function (Blueprint $table) {
             $table->foreign('produk_id')->references('id')->on('produks')->ondelete('restrict');
             $table->foreign('outlet_id')->references('id')->on('outlets')->ondelete('restrict');
-            $table->foreign('user_id')->references('id')->on('users')->ondelete('restrict');
+            $table->foreign('user_id')->references('id')->on('users')->ondelete('noaction');
             // $table->foreign('produk_id')->references('id')->on('asuransis')->ondelete('cascade');
         });
     }

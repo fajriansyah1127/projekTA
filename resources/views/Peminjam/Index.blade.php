@@ -103,7 +103,7 @@
                                 <h4 class="modal-title">Edit Peminjam</h4>
                             </div>
                             <div class="modal-body">
-                                <form action="{{ route('peminjam.edit', $data->id) }}" method="POST"
+                                <form action="{{ route('peminjam.update', $data->id) }}" method="POST"
                                     enctype="multipart/form-data">
                                     @method('PUT')
                                     {{ csrf_field() }}
@@ -112,25 +112,40 @@
                                         placeholder="Masukkan Nama Outlet" value="{{ $data->nama }}"required>
 
                                     <label>Nomor Akad </label>
-                                    <select id="disabledSelect" name="Nomor_akad"
-                                    class="form-control select2 "
+                                    {{-- <select id="disabledSelect" name="dokumen_id"
+                                    class="form-control select2"
+                                    style="width: 100%; required >
+                                    <option value="" selected="">Pilih Nomor Akad dan Nama Nasabah</option>
+                                    @foreach ($dokumen as $datas)
+                                    <option value="{{ $data->dokumen_id }}"
+                                        {{ $data->dokumen_id == $data->id ? 'selected' : '' }}>
+                                        {{ $datas->nomor_akad }}||{{ $datas->nama }}</option>
+                                @endforeach
+                                </select> --}}
+
+                                 <select id="disabledSelect" name="dokumen_id"
+                                    class="form-control select2"
                                     style="width: 100%;" value="{{ $data->dokumen->id }}" required>
                                     <option value="" selected disabled> Pilih Nomor Akad dan Nama Nasabah
                                     </option>
+                                    {{-- @foreach ($dokumen as $data)
+                                        <option value="{{ $data->id }}">{{ $data->nomor_akad }} ||
+                                            {{ $data->nama }}</option>
+                                    @endforeach  --}}
                                     @foreach ($dokumen as $datas)
                                         @if ($data->dokumen->id == $datas->id)
                                             <option value="{{ $datas->id }}" selected>{{ $datas->nomor_akad }} ||
                                               {{ $datas->nama }} </option>
                                         @else
-                                            <option value="{{ $datas->id }}">{{ $data->nomor_akad }} ||
-                                              {{ $data->nama }}
+                                            <option value="{{ $datas->id }}">{{ $datas->nomor_akad }} ||
+                                              {{ $datas->nama }}
                                             </option>
                                         @endif
-                                    @endforeach
+                                    @endforeach 
                                 </select>
 
                                     <label>Tanggal Pinjam</label>
-                                    <input type="date" id="date" name="Tanggal_pinjam" class="form-control"
+                                    <input type="date" id="date" name="tanggal" class="form-control"
                                       value="{{ $data->tanggal }}"  required>
                             </div>
                             <div class="modal-footer justify-content-between">
@@ -159,7 +174,7 @@
 
                                 <label for="disabledSelect">Nomor Akad </label>
                                 <select id="disabledSelect" name="Nomor_akad"
-                                    class="form-control select2  @error('Nomor_akad') is-invalid @enderror"
+                                    class="form-control select2"
                                     style="width: 100%; required >
                               <option value="1"
                                     selected="">Pilih Nomor Akad dan Nama Nasabah</option>

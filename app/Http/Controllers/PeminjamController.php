@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dokumen;
+use App\Models\DokumenPeminjam;
 use App\Models\Peminjam;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Exception;
-
+use Vinkla\Hashids\Facades\Hashids;
 class PeminjamController extends Controller
 {
     /**
@@ -17,8 +18,10 @@ class PeminjamController extends Controller
      */
     public function index(Peminjam $peminjam)
     {
+        // $decoded_id = Hashids::decode($peminjam);
+        // $dokumen = Dokumen::get($decoded_id);
         $peminjam = Peminjam::with('dokumen')->get();
-        $dokumen = Dokumen::get();
+        $dokumen = DokumenPeminjam::get();
         return view('Peminjam.Index', compact('peminjam','dokumen'));
     }
 
@@ -83,7 +86,7 @@ class PeminjamController extends Controller
      */
     public function edit(Peminjam $peminjam)
     {
-        $dokumen = Dokumen::get();
+        $dokumen = DokumenPeminjam::get();
         return view('Peminjam.Edit', compact('peminjam','dokumen'));
     }
 

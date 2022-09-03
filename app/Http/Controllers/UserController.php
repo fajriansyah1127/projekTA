@@ -8,6 +8,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Exception;
 
 class UserController extends Controller
 {
@@ -157,13 +158,19 @@ class UserController extends Controller
     {
         $user = User::find($id);
         
-        if ( $user = User::find($id)) {
+        try {
                 $user->delete();
                 File::delete('foto/' .$user->foto);
                 Alert::alert('Data Berhasil DiHAPUS', 'success');
                 return redirect()->back();
                 }
-
+                catch (Exception $e){
+                    Alert::alert('ERROR', 'Terdapat Masalah Dalam Menghapus');
+                    return redirect()->back();
+                }
+        
+                Alert::toast('Data Berhasil Dihapus', 'success');
+                return redirect()->back();
         
     }
 }

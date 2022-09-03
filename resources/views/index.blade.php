@@ -36,67 +36,50 @@
               <div class="icon">
                 <i class="ion ion-document-text"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/dokumen" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-yellow">
+            <div class="small-box bg-info">
               <div class="inner">
-                <h3>44</h3>
-                <p>Unit Asuransi</p>
-              </div>
-              <div class="icon">
-                <i class="nav-icon fas fa-landmark"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>65</h3>
-
-                <p>Barang Masuk</p>
-              </div>
-              <div class="icon">
-                <i class="nav-icon fas fa-plus-square"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>65</h3>
-
-                <p>Barang Keluar</p>
-              </div>
-              <div class="icon">
-                <i class="nav-icon fas fa-minus-square"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>65</h3>
-
-                <p>Stok Barang</p>
+                <h3>{{$BanyakPeminjam}}</h3>
+                <p>Peminjam</p>
               </div>
               <div class="icon">
                 <i class="nav-icon fas fa-users"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/dokumen" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>65</h3>
+                <p>Barang Masuk</p>
+              </div>
+              <div class="icon">
+                <i class="nav-icon fas fa-dolly"></i>
+              </div>
+              <a href="{{ route('barangmasuk.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>65</h3>
+                <p>Barang Keluar</p>
+              </div>
+              <div class="icon">
+                <i class="nav-icon fas fa-warehouse"></i>
+              </div>
+              <a href="{{ route('barangkeluar.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
@@ -144,13 +127,12 @@
             <div class="small-box bg-success">
               <div class="inner">
                 <h3>65</h3>
-
                 <p>Barang Masuk</p>
               </div>
               <div class="icon">
-                <i class="nav-icon fas fa-plus-square"></i>
+                <i class="nav-icon fas fa-dolly"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('barangmasuk.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
@@ -159,22 +141,20 @@
             <div class="small-box bg-success">
               <div class="inner">
                 <h3>65</h3>
-
                 <p>Barang Keluar</p>
               </div>
               <div class="icon">
-                <i class="nav-icon fas fa-minus-square"></i>
+                <i class="nav-icon fas fa-warehouse"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('barangkeluar.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-6">
+          {{-- <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
                 <h3>65</h3>
-
                 <p>Stok Barang</p>
               </div>
               <div class="icon">
@@ -184,7 +164,7 @@
             </div>
           </div>
           <!-- ./col -->
-        </div>
+        </div> --}}
 
         @elseif (auth()->user()->role == 'Pegawai')
         <!-- Small boxes (Stat box) -->
@@ -207,15 +187,15 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-yellow">
+            <div class="small-box bg-info">
               <div class="inner">
                 <h3>{{$BanyakPeminjam}}</h3>
                 <p>Peminjam</p>
               </div>
               <div class="icon">
-                <i class="nav-icon fas fa-user"></i>
+                <i class="nav-icon fas fa-users"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/dokumen" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -234,7 +214,7 @@
               <div class="icon">
                 <i class="ion ion-document-text"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/dokumen" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
         </div>

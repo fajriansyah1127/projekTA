@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Vinkla\Hashids\Facades\Hashids;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Dokumen extends Model
 {
@@ -12,6 +14,12 @@ class Dokumen extends Model
     
     protected $fillable = ["produk_id","outlet_id", "user_id", "nama","nomor_akad","tanggal_klaim","file"];
     protected $guarded =['id'];
+    protected function id(): Attribute
+    {
+        return  Attribute::make(
+            get: fn ($value) => Hashids::encode($value)
+        );
+    }
 
     public function produk()
     {

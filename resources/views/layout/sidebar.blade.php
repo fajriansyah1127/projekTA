@@ -20,7 +20,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item ">
                {{-- <li class="nav-item menu-open">  --}}
-            <a href="/index" class="nav-link {{Request::is('index')?'active':''}}">
+            <a href="/dashboard" class="nav-link {{Request::is('dashboard')?'active':''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -70,7 +70,7 @@
               <li class="nav-item">
                 <a href="{{ route('dokumen.index') }}" class="nav-link {{Request::is('dokumen')?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List Dokumen</p>
+                  <p>Dokumen</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -92,13 +92,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="{{ route('barangmasuk.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Barang Masuk</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="{{ route('barangmasuk.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Barang Keluar</p>
                 </a>
@@ -152,7 +152,7 @@
              with font-awesome or any other icon font library -->
         <li class="nav-item ">
              {{-- <li class="nav-item menu-open">  --}}
-          <a href="/index" class="nav-link {{Request::is('index')?'active':''}}">
+          <a href="/dashboard" class="nav-link {{Request::is('dashboard')?'active':''}}">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Dashboard
@@ -170,21 +170,9 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('dokumen.create') }}" class="nav-link {{Request::is('dokumen/create')?'active':''}}">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Upload Dokumen</p>
-              </a>
-            </li>
-            <li class="nav-item">
               <a href="{{ route('dokumen.index') }}" class="nav-link {{Request::is('dokumen')?'active':''}}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>List Dokumen</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="./index3.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Data Peminjam</p>
+                <p>Dokumen</p>
               </a>
             </li>
           </ul>
@@ -200,13 +188,13 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="pages/charts/chartjs.html" class="nav-link">
+              <a href="" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Barang Masuk</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/charts/flot.html" class="nav-link">
+              <a href="{{ route('barangkeluar.index') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Barang Keluar</p>
               </a>
@@ -229,7 +217,7 @@
              with font-awesome or any other icon font library -->
         <li class="nav-item ">
              {{-- <li class="nav-item menu-open">  --}}
-          <a href="/index" class="nav-link {{Request::is('index')?'active':''}}">
+          <a href="/dashboard" class="nav-link {{Request::is('dashboard')?'active':''}}">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Dashboard
@@ -249,7 +237,7 @@
             <li class="nav-item">
               <a href="{{ route('dokumen.index') }}" class="nav-link {{Request::is('dokumen')?'active':''}}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>List Dokumen</p>
+                <p>Dokumen</p>
               </a>
             </li>
             <li class="nav-item">
@@ -270,7 +258,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item ">
                {{-- <li class="nav-item menu-open">  --}}
-            <a href="/index" class="nav-link {{Request::is('index')?'active':''}}">
+            <a href="/dashboard" class="nav-link {{Request::is('dashboard')?'active':''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -288,21 +276,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('dokumen.create') }}" class="nav-link {{Request::is('dokumen/create')?'active':''}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Upload Dokumen</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="{{ route('dokumen.index') }}" class="nav-link {{Request::is('dokumen')?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List Dokumen</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Peminjam</p>
+                  <p>Dokumen</p>
                 </a>
               </li>
             </ul>
