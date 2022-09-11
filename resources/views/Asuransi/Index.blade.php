@@ -97,9 +97,13 @@
                                     placeholder="Masukkan Nama " required value="{{ $data->nama }}">
                                 
                                 <label>Email Asuransi </label>
-                                <input type="email" id="email" name="email" class="form-control"
+                                <input type="email" id="email"  name="email" class="form-control @error('email') is-invalid @enderror"
                                     placeholder="Masukkan Email" required value="{{ $data->email }}">
-
+                                    <div class ="text-danger">
+                                        @error('email')
+                                        {{ $message }}
+                                        @enderror
+                                      </div>
                                 <label>Kontak</label>
                                 <input type="tel" id="kontak" name="kontak" class="form-control"
                                     placeholder="Contoh 0542" required value="{{ $data->kontak }}">
@@ -168,12 +172,12 @@
                                 </div>
 
                                 <label>Email Asuransi </label>
-                                <input type="email" name="email_asuransi" class="form-control"
+                                <input type="email" name="email_asuransi" class="form-control @error('email_asuransi') is-invalid @enderror"
                                     placeholder="Masukkan Email" required>
                                 <div class="text-danger">
-                                    {{-- @error('email_asuransi')
+                                    @error('email_asuransi')
                                         {{ $message }}
-                                    @enderror --}}
+                                    @enderror
                                 </div>
 
                                 <label>Kontak</label>

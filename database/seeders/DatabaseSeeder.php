@@ -7,6 +7,7 @@ use App\Models\Outlet;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use WithFaker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'Alamat' => 'jln Mesjid Ar raudah rt 19 no 30 kelurahan damai bahagia ',
             'Role' => 'Admin',
             'Jabatan' => 'mahasiswa',
-            'Password' => bcrypt('asdfghjkl'),
+            'Password' => bcrypt('asdfghjklkjh'),
             'Foto' => 'user.jpg',
         ]);
 
@@ -38,7 +39,7 @@ class DatabaseSeeder extends Seeder
             'Alamat' => 'jln Mesjid Ar raudah rt 19 no 30 kelurahan damai bahagia ',
             'Role' => 'Satpam',
             'Jabatan' => 'Satpam',
-            'Password' => bcrypt('asdfghjkl'),
+            'Password' => bcrypt('asdfghjklkjh'),
             'Foto' => 'user.jpg',
         ]);
 
@@ -49,7 +50,7 @@ class DatabaseSeeder extends Seeder
             'Alamat' => 'jln Mesjid Ar raudah rt 19 no 30 kelurahan damai bahagia ',
             'Role' => 'Pegawai',
             'Jabatan' => 'Sales chanel',
-            'Password' => bcrypt('asdfghjkl'),
+            'Password' => bcrypt('asdfghjklkjh'),
             'Foto' => 'user.jpg',
         ]);
 
@@ -60,7 +61,7 @@ class DatabaseSeeder extends Seeder
             'Alamat' => 'jln Mesjid Ar raudah rt 19 no 30 kelurahan damai bahagia ',
             'Role' => 'Magang',
             'Jabatan' => 'mahasiswa',
-            'Password' => bcrypt('asdfghjkl'),
+            'Password' => bcrypt('asdfghjklkjh'),
             'Foto' => 'user.jpg',
         ]);
 
@@ -71,80 +72,80 @@ class DatabaseSeeder extends Seeder
             'Alamat' => 'jln Mesjid Ar raudah rt 19 no 30 kelurahan damai bahagia ',
             'Role' => 'Magang',
             'Jabatan' => 'mahasiswa',
-            'Password' => bcrypt('asdfghjkl'),
+            'Password' => bcrypt('asdfghjklkjh'),
             'Foto' => 'user.jpg',
         ]);
 
         Outlet::create([
-            'nama_outlet' => 'CP Batu Ampar',
+            'nama' => 'CP Batu Ampar',
         ]);
 
         Outlet::create([
-            'nama_outlet' => 'CP Gunung Kawi',
+            'nama' => 'CP Gunung Kawi',
         ]);
 
         Outlet::create([
-            'nama_outlet' => 'CP Damai',
+            'nama' => 'CP Damai',
         ]);
 
         Outlet::create([
-            'nama_outlet' => 'CP Rapak',
+            'nama' => 'CP Rapak',
         ]);
 
         Outlet::create([
-            'nama_outlet' => 'CP Tanah Grogot',
+            'nama' => 'CP Tanah Grogot',
         ]);
 
         Outlet::create([
-            'nama_outlet' => 'CP Kampung Baru',
+            'nama' => 'CP Kampung Baru',
         ]);
 
         Outlet::create([
-            'nama_outlet' => 'CP Manggar',
+            'nama' => 'CP Manggar',
         ]);
 
         Outlet::create([
-            'nama_outlet' => 'CP Penajam',
+            'nama' => 'CP Penajam',
         ]);
 
         Outlet::create([
-            'nama_outlet' => 'CP Balikpapan Baru',
+            'nama' => 'CP Balikpapan Baru',
         ]);
 
         Outlet::create([
-            'nama_outlet' => 'CPS Gunung Sari',
+            'nama' => 'CPS Gunung Sari',
         ]);
 
-        Asuransi::create([
-            'nama_asuransi' => 'Jamsyar',
-            'email_asuransi' => $this->faker->email(),
-            'kontak_asuransi' => $this->faker->phoneNumber(),
-            'alamat_asuransi' => $this->faker->address(),
-            'status_asuransi' => 'Berlaku',
-        ]);
+        // Asuransi::create([
+        //     'nama_asuransi' => 'Jamsyar',
+        //     'email_asuransi' => $this->faker->email(),
+        //     'kontak_asuransi' => $this->faker->phoneNumber(),
+        //     'alamat_asuransi' => $this->faker->address(),
+        //     'status_asuransi' => 'Berlaku',
+        // ]);
 
-        Asuransi::create([
-            'nama_asuransi' => 'Jamkrindo',
-            'email_asuransi' => 'indriany.jamsyar@gmail.com',
-            'kontak_asuransi' => $this->faker->phoneNumber(),
-            'alamat_asuransi' => $this->faker->address(),
-            'status_asuransi' => 'Berlaku',
-        ]);
+        // Asuransi::create([
+        //     'nama_asuransi' => 'Jamkrindo',
+        //     'email_asuransi' => 'indriany.jamsyar@gmail.com',
+        //     'kontak_asuransi' => $this->faker->phoneNumber(),
+        //     'alamat_asuransi' => $this->faker->address(),
+        //     'status_asuransi' => 'Berlaku',
+        // ]);
 
-        Asuransi::create([
-            'nama_asuransi' => 'Askrindo',
-            'email_asuransi' => $this->faker->email(),
-            'kontak_asuransi' => $this->faker->phoneNumber(),
-            'alamat_asuransi' => $this->faker->address(),
-            'status_asuransi' => 'Berlaku',
-        ]);
+        // Asuransi::create([
+        //     'nama_asuransi' => 'Askrindo',
+        //     'email_asuransi' => $this->faker->email(),
+        //     'kontak_asuransi' => $this->faker->phoneNumber(),
+        //     'alamat_asuransi' => $this->faker->address(),
+        //     'status_asuransi' => 'Berlaku',
+        // ]);
 
-        Asuransi::create([
-            'nama_asuransi' => 'Jasa Raharja Putra',
-            'email_asuransi' => $this->faker->email(),
-            'kontak_asuransi' => $this->faker->phoneNumber(),
-            'alamat_asuransi' => $this->faker->address(),
-            'status_asuransi' => 'Berlaku',
-        ]);
+        // Asuransi::create([
+        //     'nama_asuransi' => 'Jasa Raharja Putra',
+        //     'email_asuransi' => $this->faker->email(),
+        //     'kontak_asuransi' => $this->faker->phoneNumber(),
+        //     'alamat_asuransi' => $this->faker->address(),
+        //     'status_asuransi' => 'Berlaku',
+        // ]);
     }
 }

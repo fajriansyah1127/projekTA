@@ -205,6 +205,12 @@
                 <p>Stok</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ route('satuan.index') }}" class="nav-link {{Request::is('satuan/create')?'active':''}} {{Request::is('satuan')?'active':''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Satuan</p>
+              </a>
+            </li>
           </ul>
         </li>
       </nav>

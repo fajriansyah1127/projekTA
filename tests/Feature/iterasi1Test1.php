@@ -19,104 +19,104 @@ class iterasi1 extends TestCase
    use WithFaker;
    use WithoutMiddleware;
 
-    // public function test_Login_sebagai_admin()
-    // {
-    //      $response = $this->post('/auth', [
-    //         'email' => 'fajriansyah573@gmail.com',
-    //         'password' => 'qwertyuiop',
-    //     ]);
+    public function test_Login()
+    {
+         $response = $this->post('/auth', [
+            'email' => 'fajriansyah573@gmail.com',
+            'password' => 'asdfghjkl',
+        ]);
 
-    //     $this->assertAuthenticated();
-    //     $response->assertRedirect(RouteServiceProvider::HOME);
-    // }
+        $this->assertAuthenticated();
+        // $response->assertRedirect(RouteServiceProvider::HOME);
+    }
 
-    public function test_tambah_data_user_()
+    public function test_tambah_user_()
     {
         $user = User::where('role', 'Admin')->first();
             $response = $this->actingAs($user)
                 ->post(route('user.store'), [
                     'Nama' => $this->faker->name(),
-                    'Email' => $this->faker->email(),
+                    'Email' => 'admin@gmail.com',
                     'Kontak' =>  $this->faker->phoneNumber(),
                     'Alamat' => $this->faker->address(),
                     'Role' => 'Admin',
                     'Jabatan' => $this->faker->jobTitle,
-                    'Password' => 'asdfghjkl',
-                    'Foto' => $this->faker->imageUrl($width = 640, $height = 480),
+                    'Password' => 'asdfghjklkjh',
+                    'Foto' => UploadedFile::fake()->create('test4.jpg', 1024),
                     
                 ]);
-
+                $this->withoutExceptionHandling();
              $response->assertStatus(302);
             //$response->assertSuccessful();
     }
 
 
-    // public function test_lihat_data_user()
-    // {
-    //     // Storage::fake('avatars');
-    //     // $file = UploadedFile::fake()->image('avatar.jpg');
-    //     $user = User::where('role','Admin')->first();
-    //         $response = $this->actingAs($user)
-    //             ->get(route('user.show', [ 'user' => 1, ]));
+    public function test_lihat_data_user()
+    {
+        // Storage::fake('avatars');
+        // $file = UploadedFile::fake()->image('avatar.jpg');
+        $user = User::where('role','Admin')->first();
+            $response = $this->actingAs($user)
+                ->get(route('user.show', [ 'user' => 1, ]));
 
-    //         $response->assertStatus(200);
-    // }
+            $response->assertStatus(200);
+    }
 
-    // public function test_edit_user()
-    // {
-    //     $user = User::where('id','55')->first();
-    //     $response = $this->actingAs($user)
-    //         ->put(route('user.update', '58'), [
-    //         'nama' => 'Riki Pernanda',
-    //         'kontak' =>  $this->faker->phoneNumber(),
-    //         'alamat' => $this->faker->address(),
-    //         'role' => 'Admin',
-    //         'jabatan' => $this->faker->jobTitle,
-    //         'foto' => UploadedFile::fake()->create('testing3.jpg', 1024),
-    //         ]);
+    public function test_edit_user()
+    {
+        $user = User::where('id','1')->first();
+        $response = $this->actingAs($user)
+            ->put(route('user.update', '2'), [
+            'nama' => 'Riki Pernanda',
+            'kontak' =>  $this->faker->phoneNumber(),
+            'alamat' => $this->faker->address(),
+            'role' => 'Admin',
+            'jabatan' => $this->faker->jobTitle,
+            'foto' => UploadedFile::fake()->create('testing3.jpg', 1024),
+            ]);
 
-    //     $response->assertStatus(302);
-    // }
+        $response->assertStatus(302);
+    }
 
-    // public function test_hapus_user()
-    // {
-    //     $user = User::where('role','Admin')->first();
-    //     $response = $this->actingAs($user)->delete(route('user.destroy','101'));
-    //     $response->assertStatus(302);
-    // }
+    public function test_hapus_user()
+    {
+        $user = User::where('role','Admin')->first();
+        $response = $this->actingAs($user)->delete(route('user.destroy','8'));
+        $response->assertStatus(302);
+    }
 
-    // public function test_lihat_profil()
-    //  {
-    //     $user = User::where('id','55')
-    //     ->first();
+    public function test_lihat_profil()
+     {
+        $user = User::where('id','1')
+        ->first();
 
-    //     $response = $this->actingAs($user)
-    //     ->get(route('profile.show','fasriansya'));
+        $response = $this->actingAs($user)
+        ->get(route('profile.show','fajriansyah'));
         
-    //     $response->assertSuccessful()
-    //     ->assertSee('fasriansya')
-    //     ->assertSee('Biodata');
-    //  }
+        $response->assertSuccessful()
+        ->assertSee('fajriansyah')
+        ->assertSee('Biodata');
+     }
 
-    // public function test_edit_profile()
-    // {
-    //     $user = User::where('id','57')->first();
-    //     $response = $this->actingAs($user)
-    //         ->put(route('profile.update', '57'), [
-    //         'nama' => $this->faker->name(),
-    //         'email' => 'kelapaaa224@gmail.com',
-    //         'kontak' =>  $this->faker->phoneNumber(),
-    //         'alamat' => $this->faker->address(),
-    //         'role' => 'Admin',
-    //         'jabatan' => $this->faker->jobTitle,
-    //         'current_password' => 'asdfghjkl',
-    //         'new_password' => 'bacotsyim',
-    //         'password_confirmation' => 'bacotsyim',
-    //         'foto' => UploadedFile::fake()->create('testing3.jpg', 1024),
-    //         ]);
+    public function test_edit_profile()
+    {
+        $user = User::where('id','2')->first();
+        $response = $this->actingAs($user)
+            ->put(route('profile.update', '2'), [
+            'nama' => $this->faker->name(),
+            'email' => 'kelapaaa224@gmail.com',
+            'kontak' =>  $this->faker->phoneNumber(),
+            'alamat' => $this->faker->address(),
+            'role' => 'Admin',
+            'jabatan' => $this->faker->jobTitle,
+            'current_password' => 'asdfghjk',
+            'new_password' => 'asdfghjklkjh',
+            'password_confirmation' => 'asdfghjklkjh',
+            'foto' => UploadedFile::fake()->create('testing3.jpg', 1024),
+            ]);
 
-    //     $response->assertStatus(302);
-    // }
+        $response->assertStatus(302);
+    }
 
     // public function test_lihat_data_user_dengan_role_satpam()
     // {

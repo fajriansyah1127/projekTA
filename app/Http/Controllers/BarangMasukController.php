@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BarangMasuk;
+use App\Models\Satuan;
 use Illuminate\Http\Request;
 
 class BarangMasukController extends Controller
@@ -25,7 +26,8 @@ class BarangMasukController extends Controller
      */
     public function create()
     {
-        //
+        $satuan = Satuan::get();
+        return view('BarangMasuk.Create', compact('satuan'));
     }
 
     /**

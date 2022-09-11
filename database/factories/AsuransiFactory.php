@@ -17,11 +17,11 @@ class AsuransiFactory extends Factory
     public function definition()
     {
         return [
-            'nama_asuransi' =>  $this->faker->company(),
-            'email_asuransi' => $this->faker->email(),
-            'kontak_asuransi' => $this->faker->phoneNumber(),
-            'alamat_asuransi' => $this->faker->address(),
-            'status_asuransi' => 'Tidak Berlaku',
+            'nama' =>  $this->faker->company(),
+            'email' => $this->faker->email(),
+            'kontak' => $this->faker->phoneNumber(),
+            'alamat' => $this->faker->address(),
+            'status' => 'Berlaku',
         ];
     }
 }

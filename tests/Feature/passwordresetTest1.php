@@ -122,7 +122,7 @@ public function testSubmitPasswordReset()
 
     $token = Password::broker()->createToken($user);
 
-    $password = 'qwertyuiop';
+    $password = 'qwertyuiopoiu';
 
     $this
         ->followingRedirects()

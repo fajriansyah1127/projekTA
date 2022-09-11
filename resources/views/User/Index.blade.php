@@ -50,53 +50,9 @@
                   <td>
                       <a href="{{route('user.show',$data->id) }} "class="btn btn-sm btn-success">Detail</a>
                       <a href="{{route('user.edit',$data->id) }}"class="btn btn-sm btn-warning">Edit</a>
-                      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#staticBackdropdelete{{ $data->id }}">
-                        Delete
+                      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                      data-target="#deleteuser{{$data->id}}">Delete
                       </button>
-                      <div class="modal fade" id="staticBackdropdelete{{ $data->id }}"
-                        data-backdrop="static" tabindex="-1" role="dialog"
-                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content bg-default">
-                                <div class="modal-body">
-                                    Apaknah anda yakin menghapus {{ $data->nama }} ?
-                                </div>
-                                <div class="modal-footer justify-content-between">
-                                    <button type="button" class="btn  btn-sm btn-primary"
-                                        data-dismiss="modal">Close</button>
-                                    <form action="{{ route('user.destroy', $data->id) }}"
-                                        method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            class="btn btn-sm btn-danger">Delete</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                      <div class="modal fade" id="staticBackdrop{{ $data->id }}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content bg-danger">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="staticBackdropLabel">{{ $data->nama }}</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              Ingin menghapus ?
-                            </div>
-                            <div class="modal-footer justify-content-between">
-                              <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-                              <form action="{{route('user.destroy',$data->id)}}" method="POST">
-                              @csrf
-                            @method('DELETE')
-                          <button type ="submit" class="btn btn-outline-light">Delete</button></form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
                     </td>
                 </tr>
                 @endforeach
@@ -106,13 +62,31 @@
           <!-- /.card-body -->
         </div>
         <!-- /.card -->
-        </div>
-        <!-- /.card -->
       </div>
-   
+      <!-- /.card -->
     </div>
-  </section>
+    @foreach($user as $data)
+    <div class="modal fade" id="deleteuser{{$data->id}}" data-backdrop="static">
+      <div class="modal-dialog">
+          <div class="modal-content bg-default">
+              <div class="modal-body">
+                  Apakah anda yakin menghapus {{ $data->nama }} ?
+              </div>
+              <div class="modal-footer justify-content-between">
+                  <button type="button" class="btn  btn-sm btn-primary" data-dismiss="modal">Close</button>
+                  <form action="{{ route('user.destroy', $data->id) }}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  @endforeach
+  </div>
+</section>
 
-  <!-- /.content -->
+<!-- /.content -->
 </div>
 @endsection

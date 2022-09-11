@@ -161,7 +161,6 @@ class UserController extends Controller
         try {
                 $user->delete();
                 File::delete('foto/' .$user->foto);
-                Alert::alert('Data Berhasil DiHAPUS', 'success');
                 return redirect()->back();
                 }
                 catch (Exception $e){

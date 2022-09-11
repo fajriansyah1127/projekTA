@@ -151,7 +151,7 @@ class DokumenController extends Controller
             'produk_id' => 'required',
             'file' => 'file|mimes:pdf|max:10000',
         ]);
-        $request->request->add(['user_id' => Auth::user()->id]);
+       
         
         $decoded_id = Hashids::decode($id);
         $dokumen = Dokumen::find($decoded_id[0]);
@@ -161,6 +161,7 @@ class DokumenController extends Controller
         if ($file = $request->file('file')) {
             File::delete('filearsip/'.$dokumen->file);  
             $destinationPath = 'filearsip/';
+            $request->request->add(['user_id' => Auth::user()->id]);
             $dokumenfile = Request()->nama.'_'.Request()->nomor_surat.date('dmy').'.' . $file->extension();
             $file->move($destinationPath, $dokumenfile);
             $doku['file'] = "$dokumenfile";

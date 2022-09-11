@@ -26,10 +26,8 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              {{-- <a class="btn btn-sm btn-primary" href="{{ route('satuan.create') }}">Tambah Satuan</a> --}}
-              <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#staticBackdroptambah">Tambah
-                Satuan</a>
-              </div>
+              <a class="btn btn-sm btn-primary" href="{{ route('barangmasuk.create') }}">Tambah Barang Masuk</a>
+            </div>
             <!-- /.card-header -->
             <div class="card-body ">
               <table id="exampledokumen1" class="table table-bordered table-hover ">
@@ -38,7 +36,11 @@
                     <th>No</th>
                     <th>Nama</th>
                     <th>Jenis</th>
+                    <th>Jumlah</th>
+                    <th>Satuan</th>
                     <th>Detail</th>
+                    <th>Foto</th>
+                    <th>Penerima</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -47,6 +49,10 @@
                     <td>{{-- $loop->iteration--}}</td>
                     <td>{{-- $data->nama --}}</td>
                     <td>{{-- $data->jenis --}}</td> 
+                    <td>{{-- $data->detail --}}</td> 
+                    <td>{{-- $data->detail --}}</td> 
+                    <td>{{-- $data->detail --}}</td> 
+                    <td>{{-- $data->detail --}}</td> 
                     <td>{{-- $data->detail --}}</td> 
                     <td>
                       <button type="button" id="id" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#staticBackdropedit{{--$data->id--}}">

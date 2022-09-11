@@ -7,6 +7,7 @@ use App\Models\Asuransi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\Auth;
 
 class AsuransiController extends Controller
 {
@@ -55,16 +56,18 @@ class AsuransiController extends Controller
             'alamat' => $request->alamat_asuransi,
             'status' => $request->status_asuransi,
         ]);
+       
 
-        if ($notif) {
+        
+        if($notif){
             //redirect dengan pesan sukses
             alert()->success('Success', 'JOSSS DATANYA SUDAH MASUK');
             return redirect('/asuransi');
-        } else {
+        }else{
             //redirect dengan pesan error
-            alert()->error('Gagal', 'GAGAL BRO NDA BISA MASUK Di ulangi lagi');
-            return redirect()->back();
+            return redirect()->route('asuransi.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
+       
         //return $request->all();
     }
 
@@ -109,13 +112,14 @@ class AsuransiController extends Controller
         $asuransi = Asuransi::find($id);
         $inter = $request->all();  
         $asuransi->update($inter);
-        if ($asuransi) {
+        
+        if($asuransi){
             //redirect dengan pesan sukses
-            Alert::alert('Data Berhasil Diubah', 'success');
-            return redirect()->route('asuransi.index');
-        } else {
+            alert()->success('Success', 'JOSSS DATANYA BERHASIL TERUBAH');
+            return redirect('/asuransi');
+        }else{
             //redirect dengan pesan error
-            return redirect()->route('asuransi.edit')->with(['error' => 'Data Gagal Disimpan!']);
+            return redirect()->route('asuransi.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
 
@@ -134,7 +138,7 @@ class AsuransiController extends Controller
         try {
             $asuransi->delete();
         } catch (Exception $e){
-            Alert::alert('ERROR', 'Asuransi Terdapat Pada Produk Atau Dokumen');
+            alert()->error('ERROR', 'Asuransi Terdapat Pada Produk Atau Dokumen');
             return redirect()->back();
         }
 

@@ -18,23 +18,49 @@
                         <div class="container">
                             <div class="card mt-2">
                                 <div class="card-header">
-                                    <h4 style="text-align:center"><b>TAMBAH DOKUMEN </b></h4>
+                                    <h4 style="text-align:center"><b>Tambah Barang Masuk </b></h4>
                                 </div>
                                 <div class="card-body">
 
                                     <!-- membuat formnya -->
                                     <!-- bagian judul -->
 
-                                    <form action="{{ route('dokumen.store') }}" method="POST"
+                                    <form action="{{ route('barangmasuk.store') }}" method="POST"
                                         enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Nama </label>
                                             <div class="col-sm-10">
-                                                <input type="text" id="nama" name="nama_dokumen"
-                                                    class="form-control" placeholder="Masukkan Nama "required value="{{old('nama_dokumen')}}">
+                                                <input type="text"  name="nama_barangmasuk"
+                                                    class="form-control" placeholder="Masukkan Nama "required>
                                                 <div class="text-danger">
-                                                    @error('nama_dokumen')
+                                                    @error('nama_barangmasuk')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Jenis </label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="jenis_barangmasuk" class="form-control"
+                                                placeholder="Masukkan Jenis" required>
+                                                <div class="text-danger">
+                                                    @error('jenis_barangmasuk')
+                                                    {{ $message }}
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Jumlah</label>
+                                            <div class="col-sm-10">
+                                                <input type="number" name="jumlah_barangmasuk" class="form-control @error('jumlah_barangmasuk') is-invalid @enderror">
+                                                <div class="text-danger">
+                                                    @error('jumlah_barangmasuk')
                                                         {{ $message }}
                                                     @enderror
                                                 </div>
@@ -42,31 +68,31 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Nomor Akad </label>
+                                            <label class="col-sm-2 col-form-label">Satuan </label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="nomor_dokumen" class="form-control"
-                                                    placeholder="Masukkan Nomor Akad" required value="{{old('nomor_dokumen')}}">
+                                                <input type="text" name="satuan_barangmasuk" class="form-control"
+                                                placeholder="Masukkan Jenis" required>
                                                 <div class="text-danger">
-                                                    @error('nomor_dokumen')
-                                                        {{ $message }}
+                                                    @error('jenis_barangmasuk')
+                                                    {{ $message }}
                                                     @enderror
                                                 </div>
                                             </div>
                                         </div>
-
+                                        
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Outlet</label>
+                                            <label class="col-sm-2 col-form-label">Satuan</label>
                                             <div class="col-sm-10">
-                                                <select id="disabledSelect" name="outlet_dokumen"
+                                                <select id="disabledSelect" name="satuan_barangmasuk"
                                                     class="form-control select2"required>
-                                                    <option value="" selected disabled>Pilih Outlet</option>
-                                                    @foreach ($dokumens as $data)
+                                                    <option value="" selected disabled>Satuan</option>
+                                                    @foreach ($satuan as $data)
                                                         <option value="{{ $data->id }}">{{ $data->nama }}
                                                         </option>
                                                     @endforeach
                                                 </select>
                                                 <div class="text-danger">
-                                                    @error('outlet_dokumen')
+                                                    @error('satuan_barangmasuk')
                                                         {{ $message }}
                                                     @enderror
                                                 </div>
@@ -78,7 +104,7 @@
                                         <div class="form-group row">
                                             <label for="Kontak" class="col-sm-2 col-form-label">Tanggal</label>
                                             <div class="col-sm-10">
-                                                <input type="date" id="tanggal" name="tanggal_dokumen"
+                                                <input type="date" id="tanggal" name="tanggal_barangmasuk"
                                                     class="form-control" required>
                                             </div>
                                         </div>
@@ -87,12 +113,15 @@
                                             <label class="col-sm-2 col-form-label">Produk</label>
                                             <div class="col-sm-10">
                                                 <select id="disabledSelect" name="produk_dokumen"
-                                                    class="form-control select2" required>
+                                                    class="form-control select2 "
+                                                    style="width: 100%; required>
+                                                    <option value=""
+                                                    selected="">Pilih Produk dan Asuransi</option>
                                                     <option value="" selected disabled>Pilih Produk dan Asuransi</option>
-                                                    @foreach ($dokumen as $data)
+                                                    {{-- @foreach ($satuan as $data)
                                                         <option value="{{ $data->id }}">{{ $data->nama }} ||
                                                             {{ $data->asuransi->nama }} </option>
-                                                    @endforeach
+                                                    @endforeach --}}
                                                 </select>
                                                 <div class="text-danger">
                                                     @error('produk_dokumen')
@@ -103,29 +132,32 @@
                                         </div>
 
 <br>
-                                   
+                                    <div class="card-footer text-muted">
                                         <div class="form-group">
-                                            <label for="exampleInputFile">File input</label>
+                                            <label for="exampleInputFile">Foto input</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="form-control" id="exampleInputFile"
-                                                        name="file_dokumen" required>
-                                                        <div class="text-danger">
-                                                            @error('file_dokumen')
-                                                                {{ $message }}
-                                                            @enderror
-                                                        </div>
+                                                        name="file_dokumen">
                                                     <label class="custom-file-label" for="exampleInputFile">Choose
-                                                        file</label>
+                                                        Foto</label>
+                                                    <div class="text-danger">
+                                                        @error('file_dokumen')
+                                                            {{ $message }}
+                                                        @enderror
                                                     </div>
+                                                </div>
                                             </div>
                                         </div>
-                                   
-                                        <br>
-                                        
-                                        
+                                    </div>
+
+                                        <div class="card-footer">
+
+                                            <!-- bagian submit -->
+
                                             <button type="submit" class="btn btn-success float-right">Submit</button>
-                                     
+
+                                        </div>
 
                                         <!-- bagian tanggal -->
                                     </form>
