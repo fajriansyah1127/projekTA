@@ -27,7 +27,7 @@ class StokController extends Controller
      */
     public function create()
     {
-        return view('Asuransi.Create');
+        return view('Stok.Create');
         
     }
 
@@ -40,33 +40,29 @@ class StokController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama_asuransi' => 'required',
-            'email_asuransi' => 'required|email:dns',
-            'kontak_asuransi' => 'required',
-            'alamat_asuransi' => 'required',
-            'status_asuransi' => 'required',
+            'nama_barang' => 'required',
+            'jenis_barang' => 'required|email:dns',
+            'jumlah' => 'required',
+            'satuan' => 'required',
         ]);
 
-        $id = IdGenerator::generate(['table' => 'pengajuan', 'length' => 15, 'prefix' =>'P-']);
+        $id = IdGenerator::generate(['table' => 'stok', 'length' => 8, 'prefix' =>'BAR-']);
 
         $notif = Stok::create([
-            'id' => $request->nama_asuransi,
-            'nama' => $request->nama_asuransi,
-            'email' => $request->email_asuransi,
-            'kontak' => $request->kontak_asuransi,
-            'alamat' => $request->alamat_asuransi,
-            'status' => $request->status_asuransi,
+            'id' => $id,
+            'nama_barang' => $request->nama_barang,
+            'jenis_barang' => $request->jenis_barang,
+            'jumlah' => $request->jumlah,
+            'satuan' => $request->satuan,
         ]);
        
-
-        
         if($notif){
             //redirect dengan pesan sukses
             alert()->success('Success', 'JOSSS DATANYA SUDAH MASUK');
-            return redirect('/asuransi');
+            return redirect('/stok');
         }else{
             //redirect dengan pesan error
-            return redirect()->route('asuransi.index')->with(['error' => 'Data Gagal Disimpan!']);
+            return redirect()->route('Stok.Index')->with(['error' => 'Data Gagal Disimpan!']);
         }
        
         //return $request->all();
