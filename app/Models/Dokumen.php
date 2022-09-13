@@ -12,7 +12,7 @@ class Dokumen extends Model
     use HasFactory;
     protected $table = "dokumens";
     
-    protected $fillable = ["produk_id","outlet_id", "user_id", "nama","nomor_akad","tanggal_klaim","file"];
+    protected $fillable = ["produk_id","outlet_id", "user_id","nama_pengupload", "nama","nomor_akad","tanggal_klaim","file"];
     protected $guarded =['id'];
     protected function id(): Attribute
     {

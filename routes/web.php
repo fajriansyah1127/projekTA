@@ -16,6 +16,7 @@ use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\OutletController;
 Use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StokController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -76,6 +77,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/satuan', SatuanController::class);
         Route::resource('/barangmasuk', BarangMasukController::class);
         Route::resource('/barangkeluar', BarangMasukController::class);
+        Route::resource('/stok', StokController::class);
     });
 
     Route::group(['middleware'=> 'hakakses:Admin,Satpam,Pegawai,Magang'],function(){

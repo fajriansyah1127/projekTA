@@ -55,7 +55,7 @@
                       <td>{{ $data->tanggal_klaim }}</td>
                       <td>{{ $data->produk->nama }}</td>
                       <td>{{ $data->produk->asuransi->nama }}</td>
-                      <td>{{ $data->user->nama }}</td>
+                      <td>{{ $data->nama_pengupload }}</td>
                       <td>
                           <a href="{{asset('filearsip/')}}/{{ $data->file }}" target ="_blank"class="btn btn-sm btn-primary">Download</a>
                           <a href="{{ route('dokumen.edit',$data->id) }}"class="btn btn-sm btn-warning">Edit</a>
@@ -237,7 +237,7 @@
                       <th scope="col">Tanggal</th>
                       <th scope="col">Produk</th>
                       <th scope="col">Asuransi</th>
-                      <th scope="col">Nama Pengupload</th>
+                      
                       <th colspan="col">Action</th>
                     </tr>
                   </thead>
@@ -250,7 +250,7 @@
                       <td>{{ $data->tanggal_klaim }}</td>
                       <td>{{ $data->produk->nama }}</td>
                       <td>{{ $data->produk->asuransi->nama }}</td>
-                      <td>{{ $data->user->nama }}</td>
+                      
                       <td>
                           <a href="{{asset('filearsip/')}}/{{ $data->file }}" target ="_blank"class="btn btn-sm btn-primary">Download</a>
                           <a href="{{ route('dokumen.edit',$data->id) }}"class="btn btn-sm btn-warning">Edit</a>

@@ -18,9 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(2)->create();
-        \App\Models\Asuransi::factory(10)->create();
-
+        
         User::create([
             'Nama' => 'Fajriansyah',
             'Email' => 'fajriansyah573@gmail.com',
@@ -116,36 +114,36 @@ class DatabaseSeeder extends Seeder
             'nama' => 'CPS Gunung Sari',
         ]);
 
-        // Asuransi::create([
-        //     'nama_asuransi' => 'Jamsyar',
-        //     'email_asuransi' => $this->faker->email(),
-        //     'kontak_asuransi' => $this->faker->phoneNumber(),
-        //     'alamat_asuransi' => $this->faker->address(),
-        //     'status_asuransi' => 'Berlaku',
-        // ]);
+        Asuransi::create([
+            'nama' => 'Jamsyar',
+            'email' => 'indriany.jamsyar@gmail.com',
+            'kontak' => '082350476227',
+            'alamat' => 'Ki. Cikutra Barat No. 8, Administrasi Jakarta Pusat 89343, Sumsel',
+            'status' => 'Berlaku',
+        ]);
 
-        // Asuransi::create([
-        //     'nama_asuransi' => 'Jamkrindo',
-        //     'email_asuransi' => 'indriany.jamsyar@gmail.com',
-        //     'kontak_asuransi' => $this->faker->phoneNumber(),
-        //     'alamat_asuransi' => $this->faker->address(),
-        //     'status_asuransi' => 'Berlaku',
-        // ]);
+        Asuransi::create([
+            'nama' => 'Jamkrindo',
+            'email' => 'indriany.jamsyar@gmail.com',
+            'kontak' => '082350476227',
+            'alamat' => 'Ki. Cikutra Barat No. 8, Administrasi Jakarta Pusat 89343, Sumsel',
+            'status' => 'Berlaku',
+        ]);
 
-        // Asuransi::create([
-        //     'nama_asuransi' => 'Askrindo',
-        //     'email_asuransi' => $this->faker->email(),
-        //     'kontak_asuransi' => $this->faker->phoneNumber(),
-        //     'alamat_asuransi' => $this->faker->address(),
-        //     'status_asuransi' => 'Berlaku',
-        // ]);
+        Asuransi::create([
+            'nama' => 'Askrindo',
+            'email' => 'indriany.jamsyar@gmail.com',
+            'kontak' => '082350476227',
+            'alamat' => 'Ki. Cikutra Barat No. 8, Administrasi Jakarta Pusat 89343, Sumsel',
+            'status' => 'Berlaku',
+        ]);
 
-        // Asuransi::create([
-        //     'nama_asuransi' => 'Jasa Raharja Putra',
-        //     'email_asuransi' => $this->faker->email(),
-        //     'kontak_asuransi' => $this->faker->phoneNumber(),
-        //     'alamat_asuransi' => $this->faker->address(),
-        //     'status_asuransi' => 'Berlaku',
-        // ]);
+        Asuransi::create([
+            'nama' => 'Jasa Raharja Putra',
+            'email' => 'indriany.jamsyar@gmail.com',
+            'kontak' => '082350476227',
+            'alamat' => 'Ki. Cikutra Barat No. 8, Administrasi Jakarta Pusat 89343, Sumsel',
+            'status' => 'Berlaku',
+        ]);
     }
 }

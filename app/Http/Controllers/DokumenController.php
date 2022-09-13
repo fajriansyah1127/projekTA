@@ -74,6 +74,7 @@ class DokumenController extends Controller
              'tanggal_klaim' => $request->tanggal_dokumen,
              'produk_id' => $request->produk_dokumen,
              'file' => $filename,
+             'nama_pengupload' => Auth::user()->nama,
              'user_id' => Auth::user()->id,
          ]);
 

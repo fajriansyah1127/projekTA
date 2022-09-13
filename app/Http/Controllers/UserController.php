@@ -158,18 +158,25 @@ class UserController extends Controller
     {
         $user = User::find($id);
         
-        try {
-                $user->delete();
-                File::delete('foto/' .$user->foto);
-                return redirect()->back();
-                }
-                catch (Exception $e){
-                    Alert::alert('ERROR', 'Terdapat Masalah Dalam Menghapus');
-                    return redirect()->back();
-                }
+        // try {
+        //         $user->delete();
+        //         File::delete('foto/' .$user->foto);
+        //         return redirect()->back();
+        //         }
+        //         catch (Exception $e){
+        //             Alert::alert('ERROR', 'Terdapat Masalah Dalam Menghapus');
+        //             return redirect()->back();
+        //         }
         
-                Alert::toast('Data Berhasil Dihapus', 'success');
-                return redirect()->back();
+        //         Alert::toast('Data Berhasil Dihapus', 'success');
+        //         return redirect()->back();
+              
+                    $user->delete();
+                    File::delete('foto/' .$user->foto);
+                    
+            
+                    Alert::toast('Data Berhasil Dihapus', 'success');
+                    return redirect()->back();
         
     }
 }
