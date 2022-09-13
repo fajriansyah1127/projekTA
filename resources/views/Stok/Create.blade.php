@@ -22,15 +22,15 @@
                                     <!-- membuat formnya -->
                                     <!-- bagian judul -->
 
-                                    <form action="{{ route('satuan.store') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('stok.store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group row">
-                                            <label  class="col-sm-2 col-form-label">Nama Satuan </label>
+                                            <label  class="col-sm-2 col-form-label">Nama Barang </label>
                                             <div class="col-sm-10">
-                                                <input type="text"  name="nama_satuan" class="form-control"
+                                                <input type="text"  name="nama_barang" class="form-control"
                                                     placeholder="Masukkan Nama Satuan "required>
                                                 <div class="text-danger">
-                                                    @error('nama_satuan')
+                                                    @error('nama_barang')
                                                         {{ $message }}
                                                     @enderror
                                                 </div>
@@ -38,12 +38,12 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label  class="col-sm-2 col-form-label">Jenis </label>
+                                            <label  class="col-sm-2 col-form-label">Jenis</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="jenis_satuan" class="form-control"
-                                                    placeholder="Masukkan Jenis "required>
+                                                <input type="text" name="jenis_barang" class="form-control"
+                                                    placeholder="Masukkan Jenis Barang"required>
                                                 <div class="text-danger">
-                                                    @error('jenis_satuan')
+                                                    @error('jenis_barang')
                                                         {{ $message }}
                                                     @enderror
                                                 </div>
