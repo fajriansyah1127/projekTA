@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Satuan;
 use Exception;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Stok;
@@ -16,8 +18,9 @@ class StokController extends Controller
      */
     public function index(Stok $stok)
     {
-        $stok = Stok::get();
-        return view('Stok.Index', compact('stok'));
+        $stok = Stok::with('satuan')->get();
+        $satuan = Satuan::get();
+        return view('Stok.Index', compact('stok','satuan'));
     }
 
     /**
@@ -41,19 +44,19 @@ class StokController extends Controller
     {
         $this->validate($request, [
             'nama_barang' => 'required',
-            'jenis_barang' => 'required|email:dns',
+            'jenis_barang' => 'required',
             'jumlah' => 'required',
             'satuan' => 'required',
         ]);
 
-        $id = IdGenerator::generate(['table' => 'stok', 'length' => 8, 'prefix' =>'BAR-']);
+        $id = IdGenerator::generate(['table' => 'stoks', 'length' => 8, 'prefix' =>'BAR-']);
 
         $notif = Stok::create([
             'id' => $id,
             'nama_barang' => $request->nama_barang,
             'jenis_barang' => $request->jenis_barang,
             'jumlah' => $request->jumlah,
-            'satuan' => $request->satuan,
+            'satuan_id' => $request->satuan,
         ]);
        
         if($notif){
@@ -87,7 +90,7 @@ class StokController extends Controller
      */
     public function edit(Stok $asuransi)
     {
-        return view('Asuransi.Edit', compact('asuransi'));
+        // return view('Asuransi.Edit', compact('asuransi'));
     }
 
     /**
@@ -100,24 +103,23 @@ class StokController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama' => 'required',
-            'email' => 'required|email:dns',
-            'kontak' => 'required',
-            'alamat' => 'required',
-            'status' => 'required',
+            'nama_barang' => 'required',
+            'jenis_barang' => 'required',
+            'satuan_id' => 'required',
         ]); 
-        $asuransi = Stok::find($id);
+        $stok = Stok::find($id);
         $inter = $request->all();  
-        $asuransi->update($inter);
+        $stok->update($inter);
         
-        if($asuransi){
+        if($stok){
             //redirect dengan pesan sukses
             alert()->success('Success', 'JOSSS DATANYA BERHASIL TERUBAH');
-            return redirect('/asuransi');
+            return redirect('/stok');
         }else{
             //redirect dengan pesan error
-            return redirect()->route('asuransi.index')->with(['error' => 'Data Gagal Disimpan!']);
+            return redirect()->route('stok.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
+         return $request->all();
     }
 
     /**
@@ -131,11 +133,11 @@ class StokController extends Controller
         // $asuransi->delete();
         // Alert::alert('Data Berhasil DiHAPUS', 'success');
         // return redirect()->back();
-        $asuransi = Stok::find($id);
+        $stok = Stok::find($id);
         try {
-            $asuransi->delete();
+            $stok->delete();
         } catch (Exception $e){
-            alert()->error('ERROR', 'Asuransi Terdapat Pada Produk Atau Dokumen');
+            alert()->error('ERROR', 'Terdapat Masalah Dalam Menghapus');
             return redirect()->back();
         }
 

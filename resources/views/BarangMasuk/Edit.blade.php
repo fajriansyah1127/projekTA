@@ -18,21 +18,22 @@
                         <div class="container">
                             <div class="card mt-2">
                                 <div class="card-header">
-                                    <h4 style="text-align:center"><b>Tambah Barang Masuk </b></h4>
+                                    <h4 style="text-align:center"><b>Edit Barang Masuk </b></h4>
                                 </div>
                                 <div class="card-body">
 
                                     <!-- membuat formnya -->
                                     <!-- bagian judul -->
                                    
-                                    <form action="{{ route('barangmasuk.store') }}" method="POST"
+                                    <form action="{{ route('barangmasuk.update',3) }}" method="POST"
                                         enctype="multipart/form-data">
-                                        @csrf
+                                        @method('PUT')
+                                        {{ csrf_field() }}
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Tanggal Masuk </label>
                                             <div class="col-sm-10">
                                                 <input type="date"  name="tanggal_barangmasuk"
-                                                    class="form-control"required>
+                                                    class="form-control" value ="{{$barangmasuk -> tanggal_masuk}}"required>
                                                 <div class="text-danger">
                                                     @error('tanggal_barangmasuk')
                                                         {{ $message }}
@@ -47,7 +48,7 @@
                                             <label class="col-sm-2 col-form-label">Kode Barang </label>
                                             <div class="col-sm-10">
                                                 <input type="text" name="kodebarang_barangmasuk" class="form-control"
-                                                 value="{{ $data->id }}" readonly>
+                                                 value="{{$data->id }}" readonly>
                                                 <div class="text-danger">
                                                     @error('nama_barangmasuk')
                                                     {{ $message }}
@@ -99,7 +100,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Jumlah</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="total_barangmasuk" id="jumlah_total" class="form-control @error('jumlah') is-invalid @enderror" onkeyup="sum()">
+                                                <input type="number" name="total_barangmasuk" id="jumlah_total" class="form-control @error('jumlah') is-invalid @enderror" value="{{$barangmasuk -> total_barangmasuk}}" onkeyup="sum()">
                                                 <div class="text-danger">
                                                     @error('jumlah')
                                                         {{ $message }}
@@ -139,7 +140,7 @@
                                         <div class="form-group row">
                                             <label  class="col-sm-2 col-form-label">Penerima</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="penerima_barangmasuk"
+                                                <input type="text" name="penerima_barangmasuk" value="{{$barangmasuk -> penerima}}"
                                                     class="form-control" required>
                                             </div>
                                         </div>
@@ -153,7 +154,7 @@
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="form-control" id="exampleInputFile"
-                                                        name="foto_barangmasuk">
+                                                        name="foto_barangmasuk" value="{{$barangmasuk -> foto}}">
                                                     <label class="custom-file-label" for="exampleInputFile">Choose
                                                         Foto</label>
                                                     <div class="text-danger">
@@ -163,6 +164,8 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <a href="{{ asset('foto_barangmasuk/') }}/{{ $barangmasuk->foto }}" target="_blank">
+                                                Lihat File</a>
                                         </div>
                                     </div>
 

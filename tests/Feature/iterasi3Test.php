@@ -33,7 +33,7 @@ class iterasi3 extends TestCase
     
     public function testCreateDokumen()
     {
-        $user = User::where('role', 'Magang')->first();
+        $user = User::where('role', 'Satpam')->first();
             $response = $this->actingAs($user)
                 ->post(route('dokumen.store'), [
                     'nama_dokumen' => $this->faker->name(),

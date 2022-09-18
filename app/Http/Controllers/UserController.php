@@ -61,8 +61,6 @@ class UserController extends Controller
         }else{
             $filename = 'User'.'.'.'jpg';
         }
-       
-        
 
         $notif = User::create([
             'nama' => $request->Nama,

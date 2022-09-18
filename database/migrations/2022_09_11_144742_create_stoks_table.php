@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('id',32)->primarykey();
             $table->string('nama_barang');
             $table->string('jenis_barang');
-            $table->string('jumlah');
+            $table->integer('jumlah');
             $table->foreignId('satuan_id');
             $table->timestamps();
         });

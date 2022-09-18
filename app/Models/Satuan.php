@@ -11,4 +11,9 @@ class Satuan extends Model
     protected $table = "satuans";
     protected $fillable = ["nama", "jenis", "detail"];
     protected $guarded = ['id'];
+
+    public function stok()
+    {
+        return $this->hasMany(Stok::class);
+    }
 }
