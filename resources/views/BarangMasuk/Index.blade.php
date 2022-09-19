@@ -11,8 +11,8 @@
         </div><! /.col >
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Satuan</li>
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">Barang Masuk</li>
           </ol>
         </div><! /.col >
       </div><! /.row >
@@ -40,6 +40,7 @@
                     <th>Satuan</th>
                     <th>Foto</th>
                     <th>Penerima</th>
+                    <th>Tanggal Masuk</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -50,8 +51,9 @@
                     <td>{{ $data->jenis }}</td> 
                     <td>{{ $data->total_barangmasuk }}</td> 
                     <td>{{ $data->satuan }}</td> 
-                    <td>{{ $data->foto }}</td> 
+                    <td><img src="{{ url('foto_barangmasuk/'.$data->foto) }}" alt="foto" width="100px" ></td> 
                     <td>{{ $data->penerima }}</td> 
+                    <td>{{ $data->tanggal_masuk }}</td> 
                     <td>
                       <a href="{{ route('barangmasuk.edit',$data->id) }}"class="btn btn-sm btn-warning">Edit</a>
                       <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#staticBackdropdelete{{$data->id}}">
@@ -65,7 +67,7 @@
                               </div>
                               <div class="modal-footer justify-content-between">
                                 <button type="button" class="btn  btn-sm btn-primary" data-dismiss="modal">Close</button>
-                                <form action="{{route('satuan.destroy',1)}}" method="POST"> 
+                                <form action="{{route('barangmasuk.destroy',$data->id)}}" method="POST"> 
                                   @csrf
                                   @method('DELETE')
                                   <button type ="submit" class="btn btn-sm btn-danger">Delete</button></form>
@@ -91,8 +93,8 @@
                   
                        {{ csrf_field() }} 
                         <label>Nama Barang</label>
-                        <select id="disabledSelect" name="id"
-                            class="form-control  "
+                        <select  name="id"
+                            class="form-control select2  "
                             style="width: 100%;" value="{{ $data->nama_barang }}" required>
                             <option value="" selected disabled> Pilih Barang </option>
                             @foreach($stok as $data)

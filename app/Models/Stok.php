@@ -17,4 +17,9 @@ class Stok extends Model
     {
         return $this->belongsTo(Satuan::class);
     }
+
+    public function barangmasuk()
+    {
+        return $this->hasMany(BarangMasuk::class);
+    }
 }

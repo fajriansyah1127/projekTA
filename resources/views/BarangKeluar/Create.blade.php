@@ -14,26 +14,25 @@
                 <div class="row">
                     <div class="col-md-12 p-5 pt-2">
 
-                        {{-- <!-- membuat form --> @foreach($stok as $barangmasuk) --}}
+                        {{-- <!-- membuat form --> @foreach($stok as $data) --}}
                         <div class="container">
                             <div class="card mt-2">
                                 <div class="card-header">
-                                    <h4 style="text-align:center"><b>Edit Data Barang Masuk </b></h4>
+                                    <h4 style="text-align:center"><b>Tambah Barang Masuk </b></h4>
                                 </div>
                                 <div class="card-body">
 
                                     <!-- membuat formnya -->
                                     <!-- bagian judul -->
                                    
-                                    <form action="{{ route('barangmasuk.update',$barangmasuk->id) }}" method="POST"
+                                    <form action="{{ route('barangmasuk.store') }}" method="POST"
                                         enctype="multipart/form-data">
-                                        @method('PUT')
-                                        {{ csrf_field() }}
+                                        @csrf
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Tanggal Masuk </label>
                                             <div class="col-sm-10">
                                                 <input type="date"  name="tanggal_barangmasuk"
-                                                    class="form-control" value ="{{$barangmasuk -> tanggal_masuk}}"required>
+                                                    class="form-control"required>
                                                 <div class="text-danger">
                                                     @error('tanggal_barangmasuk')
                                                         {{ $message }}
@@ -42,13 +41,13 @@
                                             </div>
                                         </div>
 
-                                        
+                                        @foreach($stok as $data)
 
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Kode Barang </label>
                                             <div class="col-sm-10">
                                                 <input type="text" name="kodebarang_barangmasuk" class="form-control"
-                                                 value="{{$barangmasuk->stok_id }}" readonly>
+                                                 value="{{ $data->id }}" readonly>
                                                 <div class="text-danger">
                                                     @error('nama_barangmasuk')
                                                     {{ $message }}
@@ -61,7 +60,7 @@
                                             <label class="col-sm-2 col-form-label">Barang </label>
                                             <div class="col-sm-10">
                                                 <input type="text" name="nama_barangmasuk" class="form-control"
-                                                 value="{{ $barangmasuk->nama }}" readonly>
+                                                 value="{{ $data->nama_barang }}" readonly>
                                                 <div class="text-danger">
                                                     @error('nama_barangmasuk')
                                                     {{ $message }}
@@ -74,7 +73,7 @@
                                             <label class="col-sm-2 col-form-label">Jenis Barang </label>
                                             <div class="col-sm-10">
                                                 <input type="text" name="jenis_barangmasuk" class="form-control"
-                                                 value="{{ $barangmasuk->jenis}}" readonly>
+                                                 value="{{ $data->jenis_barang }}" readonly>
                                                 <div class="text-danger">
                                                     @error('jenis_barangmasuk')
                                                     {{ $message }}
@@ -84,35 +83,35 @@
                                         </div>
                                         
                                         
-                                        {{-- <div class="form-group row">
+                                        <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Stok</label>
                                             <div class="col-sm-10">
                                                 <input type="number" name="stok_barangmasuk" id="stok" class="form-control"
-                                                value="{{ $barangmasuk->jumlah }}" readonly>
-                                                 <div class="text-danger">
+                                                value="{{ $data->jumlah }}" readonly>
+                                                {{-- <div class="text-danger">
                                                     @error('jenis_barangmasuk')
                                                     {{ $message }}
                                                     @enderror
-                                                </div> 
+                                                </div> --}}
                                             </div>
-                                        </div>  --}}
+                                        </div>
 
-                                        {{-- <div class="form-group row">
+                                        <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Jumlah</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="total_barangmasuk" id="jumlah_total" class="form-control @error('jumlah') is-invalid @enderror" value="{{$barangmasuk -> total_barangmasuk}}" onkeyup="sum()">
+                                                <input type="number" name="total_barangmasuk" id="jumlah_total" class="form-control @error('jumlah') is-invalid @enderror" onkeyup="sum()">
                                                 <div class="text-danger">
                                                     @error('jumlah')
                                                         {{ $message }}
                                                     @enderror
                                                 </div>
                                             </div>
-                                        </div> --}}
+                                        </div>
 
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Jumlah</label>
+                                            <label class="col-sm-2 col-form-label">Total Stok</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="jumlah" value="{{$barangmasuk -> total_barangmasuk}}" id="jumlah"class="form-control" readonly >
+                                                <input type="number" name="jumlah" id="jumlah"class="form-control" readonly >
                                                 <div class="text-danger">
                                                     @error('total_barangmasuk')
                                                         {{ $message }}
@@ -126,12 +125,12 @@
                                             <label class="col-sm-2 col-form-label">Satuan </label>
                                             <div class="col-sm-10">
                                                 <input type="text" name="satuan" class="form-control"
-                                                placeholder="{{ $barangmasuk->satuan}}" value="{{ $barangmasuk->satuan}}" readonly>
-                                                <div class="text-danger">
+                                                placeholder="{{ $data->satuan->id}}" value="{{ $data->satuan->nama}}" readonly>
+                                                {{-- <div class="text-danger">
                                                     @error('jenis_barangmasuk')
                                                     {{ $message }}
                                                     @enderror
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
 
@@ -140,7 +139,7 @@
                                         <div class="form-group row">
                                             <label  class="col-sm-2 col-form-label">Penerima</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="penerima_barangmasuk" value="{{$barangmasuk ->penerima}}"
+                                                <input type="text" name="penerima_barangmasuk"
                                                     class="form-control" required>
                                             </div>
                                         </div>
@@ -154,7 +153,7 @@
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="form-control" id="exampleInputFile"
-                                                        name="foto_barangmasuk" value="{{$barangmasuk ->foto}}">
+                                                        name="foto_barangmasuk">
                                                     <label class="custom-file-label" for="exampleInputFile">Choose
                                                         Foto</label>
                                                     <div class="text-danger">
@@ -164,8 +163,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a href="{{ asset('foto_barangmasuk/') }}/{{ $barangmasuk->foto }}" target="_blank">
-                                                Lihat File</a>
                                         </div>
                                     </div>
 
@@ -188,7 +185,7 @@
 
                                     <!-- /.row (main row) -->
                                 </div><!-- /.container-fluid -->
-                                
+                                 @endforeach 
         </section>
 
         <!-- /.content -->

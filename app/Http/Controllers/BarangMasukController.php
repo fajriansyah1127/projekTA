@@ -7,6 +7,7 @@ use App\Models\Satuan;
 use App\Models\Stok;
 use Exception;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
 class BarangMasukController extends Controller
@@ -74,6 +75,7 @@ class BarangMasukController extends Controller
         $file->move(public_path('foto_barangmasuk'), $filename);
        
          $notif = BarangMasuk::create([
+            'stok_id' => $request->kodebarang_barangmasuk,
             'nama' => $request->nama_barangmasuk,
             'jenis' => $request->jenis_barangmasuk,
             'total_barangmasuk' => $request->total_barangmasuk,
@@ -118,9 +120,11 @@ class BarangMasukController extends Controller
     public function edit($barangMasuk)
     {
         $barangmasuk = BarangMasuk::find($barangMasuk);
-        $stok = Stok::with('satuan')->where('nama_barang', $barangMasuk)->get();
+        $stok = Stok::with('satuan')->where('id','BAR-0002')->get();
         return view('BarangMasuk.Edit', compact('stok','barangmasuk'));
     }
+
+    
 
     /**
      * Update the specified resource in storage.
@@ -129,9 +133,45 @@ class BarangMasukController extends Controller
      * @param  \App\Models\BarangMasuk  $barangMasuk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BarangMasuk $barangMasuk)
+    public function update(Request $request, $id)
     {
-        //
+       
+        // $file = Request()->foto_barangmasuk;
+        // $filename = Request()->nama_barangmasuk.date('dmy').'.'.$file->extension();
+        // $file->move(public_path('foto_barangmasuk'), $filename);
+
+        $dokumen = BarangMasuk::find($id);
+
+        if ($file = Request()->foto_barangmasuk) {
+            File::delete('foto_barangmasuk/'.$dokumen->foto);  
+            $destinationPath = 'foto_barangmasuk/';
+            // $request->request->add(['user_id' => Auth::user()->id]);
+            $dokumenfile = Request()->nama_barangmasuk.date('his').'.'.$file->extension();
+            $file->move($destinationPath, $dokumenfile);
+            $doku['foto'] = "$dokumenfile";
+        }else{
+            unset($doku['foto']);
+        }
+
+       $notif= BarangMasuk::where('id', $id)->update([
+        'stok_id' => $request->kodebarang_barangmasuk,
+        'nama' => $request->nama_barangmasuk,
+        'jenis' => $request->jenis_barangmasuk,
+        'satuan' => $request->satuan,
+        'penerima' => $request->penerima_barangmasuk,
+        'tanggal_masuk' => $request->tanggal_barangmasuk,
+        'foto' => $dokumenfile,
+        ]);
+
+        if ($notif) {
+            //redirect dengan pesan sukses
+            Alert::alert('Data Berhasil Diubah', 'success');
+            return redirect()->route('barangmasuk.index');
+        } else {
+            //redirect dengan pesan error
+            return redirect()->route('barangmasuk.edit')->with(['error' => 'Data Gagal Disimpan!']);
+        }
+       // return $request->all();
     }
 
     /**
@@ -140,8 +180,18 @@ class BarangMasukController extends Controller
      * @param  \App\Models\BarangMasuk  $barangMasuk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BarangMasuk $barangMasuk)
+    public function destroy($id)
     {
-        //
+        $barangMasuk = BarangMasuk::find($id);
+        try {
+            $barangMasuk->delete();
+            File::delete('foto_barangmasuk/' . $barangMasuk->foto);
+        } catch (Exception $e){
+            Alert::alert('ERROR', 'masih dipinjam');
+            return redirect()->back();
+        }
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
     }
 }
