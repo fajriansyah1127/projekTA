@@ -9,8 +9,8 @@ class Stok extends Model
 {
     use HasFactory;
     protected $table = "stoks";
-    public $incrementing = false;
-    protected $keyType = 'string';
+    // public $incrementing = false;
+    // protected $keyType = 'string';
     protected $fillable = ["id","nama_barang", "jenis_barang","jumlah","satuan_id"];
 
     public function satuan()
@@ -21,5 +21,15 @@ class Stok extends Model
     public function barangmasuk()
     {
         return $this->hasMany(BarangMasuk::class);
+    }
+
+    public function barangkeluar()
+    {
+        return $this->hasMany(BarangKeluar::class);
+    }
+
+    public function peminjambarang()
+    {
+        return $this->hasMany(PeminjamBarang::class);
     }
 }

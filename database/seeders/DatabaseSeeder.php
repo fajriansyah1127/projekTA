@@ -1,7 +1,8 @@
 <?php
 
 namespace Database\Seeders;
-
+use App\Models\Stok;
+use App\Models\Satuan;
 use App\Models\Asuransi;
 use App\Models\Outlet;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -145,5 +146,92 @@ class DatabaseSeeder extends Seeder
             'alamat' => 'Ki. Cikutra Barat No. 8, Administrasi Jakarta Pusat 89343, Sumsel',
             'status' => 'Berlaku',
         ]);
+
+        Satuan::create([
+            'nama' => 'KG',
+            'jenis' => 'Berat',
+            'detail' => 'Barang',
+        ]);
+
+        Satuan::create([
+            'nama' => 'PCS',
+            'jenis' => 'Barang',
+            'detail' => 'Barang',
+        ]);
+
+        Satuan::create([
+            'nama' => 'Lembar',
+            'jenis' => 'Lembar',
+            'detail' => 'Lembar',
+        ]);
+
+        Satuan::create([
+            'nama' => 'Kotak',
+            'jenis' => 'Kotak',
+            'detail' => 'Kotak',
+        ]);
+
+        Satuan::create([
+            'nama' => 'Kantong',
+            'jenis' => 'Kantong',
+            'detail' => 'Kantong',
+        ]);
+
+        Satuan::create([
+            'nama' => 'Karung',
+            'jenis' => 'Karung',
+            'detail' => 'Karung',
+        ]);
+
+        // Stok::create([
+        //     'nama_barang' => 'Buku KCA',
+        //     'jenis_barang' => 'Barang Cetak',
+        //     'jumlah' => '0',
+        //     'satuan_id' => '2',
+        // ]);
+
+        // Stok::create([
+        //     'nama_barang' => 'Buku Agenda',
+        //     'jenis_barang' => 'Barang Cetak',
+        //     'jumlah' => '0',
+        //     'satuan_id' => '2',
+        // ]);
+
+        // Stok::create([
+        //     'nama_barang' => 'Brosur Amanah',
+        //     'jenis_barang' => 'Promosi',
+        //     'jumlah' => '0',
+        //     'satuan_id' => '2',
+        // ]);
+
+        // Stok::create([
+        //     'nama_barang' => 'Formulir Transfer Tabungan Emas',
+        //     'jenis_barang' => 'Barang Cetak',
+        //     'jumlah' => '0',
+        //     'satuan_id' => '2',
+        // ]);
+
+        // Stok::create([
+        //     'nama_barang' => 'Formulir Pembukaan Tabungan Emas',
+        //     'jenis_barang' => 'Barang Cetak',
+        //     'jumlah' => '0',
+        //     'satuan_id' => '2',
+        // ]);
+
+        // Stok::create([
+        //     'nama_barang' => 'Formulir Pemasar',
+        //     'jenis_barang' => 'Barang Cetak',
+        //     'jumlah' => '0',
+        //     'satuan_id' => '2',
+        // ]);
+
+        // Stok::create([
+        //     'nama_barang' => 'Karungi',
+        //     'jenis_barang' => 'Karung',
+        //     'jumlah' => '0',
+        //     'satuan_id' => '1',
+        // ]);
+
+       
     }
 }

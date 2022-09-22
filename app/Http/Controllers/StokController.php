@@ -49,10 +49,9 @@ class StokController extends Controller
             'satuan' => 'required',
         ]);
 
-        $id = IdGenerator::generate(['table' => 'stoks', 'length' => 8, 'prefix' =>'BAR-']);
+        // $id = IdGenerator::generate(['table' => 'stoks', 'length' => 8, 'prefix' =>'BAR-']);
 
         $notif = Stok::create([
-            'id' => $id,
             'nama_barang' => $request->nama_barang,
             'jenis_barang' => $request->jenis_barang,
             'jumlah' => $request->jumlah,

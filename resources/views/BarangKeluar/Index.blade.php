@@ -7,12 +7,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Barang Masuk</h1>
+          <h1 class="m-0">Barang Keluar</h1>
         </div><! /.col >
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Satuan</li>
+            <li class="breadcrumb-item active">Barang Keluar</li>
           </ol>
         </div><! /.col >
       </div><! /.row >
@@ -26,7 +26,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#tambah">Tambah Barang Masuk</a>
+              <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#tambah">Tambah Barang Keluar</a>
             </div>
           
             <div class="card-body ">
@@ -38,24 +38,22 @@
                     <th>Jenis</th>
                     <th>Jumlah</th>
                     <th>Satuan</th>
-                    <th>Foto</th>
                     <th>Penerima</th>
-                    <th>Tanggal Masuk</th>
+                    <th>Tanggal Keluar</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                   <tr>@foreach($barangmasuk as $data)
-                    <td>{{ $loop->iteration}}</td>
-                    <td>{{ $data->nama}}</td> 
+                   <tr>@foreach($barangkeluar as $data)
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $data->nama }}</td> 
                     <td>{{ $data->jenis }}</td> 
-                    <td>{{ $data->total_barangmasuk }}</td> 
+                    <td>{{ $data->total_barangkeluar}}</td> 
                     <td>{{ $data->satuan }}</td> 
-                    <td><img src="{{ url('foto_barangmasuk/'.$data->foto) }}" alt="foto" width="100px" ></td> 
-                    <td>{{ $data->penerima }}</td> 
-                    <td>{{ $data->tanggal_masuk }}</td> 
+                    <td>{{$data->pengambil }}</td> 
+                    <td>{{ $data->tanggal_keluar }}</td> 
                     <td>
-                      <a href="{{ route('barangmasuk.edit',$data->id) }}"class="btn btn-sm btn-warning">Edit</a>
+                      <a href="{{ route('barangkeluar.edit',$data->id ) }}"class="btn btn-sm btn-warning">Edit</a>
                       <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#staticBackdropdelete{{$data->id}}">
                         Delete
                       </button>
@@ -67,7 +65,7 @@
                               </div>
                               <div class="modal-footer justify-content-between">
                                 <button type="button" class="btn  btn-sm btn-primary" data-dismiss="modal">Close</button>
-                                <form action="{{route('barangmasuk.destroy',$data->id)}}" method="POST"> 
+                                <form action="{{route('barangkeluar.destroy',$data->id )}}" method="POST"> 
                                   @csrf
                                   @method('DELETE')
                                   <button type ="submit" class="btn btn-sm btn-danger">Delete</button></form>
@@ -76,7 +74,7 @@
                             </div>
                           </div>
                     </td> 
-                  </tr> @endforeach
+                   </tr> @endforeach
                 </tbody>
               </table>
             </div>
@@ -86,10 +84,10 @@
               <div class="modal-dialog">
                 <div class="modal-content bg-default">
                   <div class="modal-header">
-                    <h4 class="modal-title">Tambah Barang Masuk</h4>
+                    <h4 class="modal-title">Tambah Barang Keluar</h4>
                   </div>
                   <div class="modal-body">
-                    <form action="{{route('barangmasuk.create' )}}" method="GET" enctype="multipart/form-data">
+                    <form action="{{route('barangkeluar.create' )}}" method="GET" enctype="multipart/form-data">
                   
                        {{ csrf_field() }} 
                         <label>Nama Barang</label>

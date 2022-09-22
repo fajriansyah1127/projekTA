@@ -34,11 +34,11 @@
                                             <div class="col-sm-10">
                                                 <input type="date"  name="tanggal_barangmasuk"
                                                     class="form-control" value ="{{$barangmasuk -> tanggal_masuk}}"required>
-                                                <div class="text-danger">
+                                                {{-- <div class="text-danger">
                                                     @error('tanggal_barangmasuk')
                                                         {{ $message }}
                                                     @enderror
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
 
@@ -49,11 +49,11 @@
                                             <div class="col-sm-10">
                                                 <input type="text" name="kodebarang_barangmasuk" class="form-control"
                                                  value="{{$barangmasuk->stok_id }}" readonly>
-                                                <div class="text-danger">
+                                                {{-- <div class="text-danger">
                                                     @error('nama_barangmasuk')
                                                     {{ $message }}
                                                     @enderror
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
 
@@ -62,11 +62,11 @@
                                             <div class="col-sm-10">
                                                 <input type="text" name="nama_barangmasuk" class="form-control"
                                                  value="{{ $barangmasuk->nama }}" readonly>
-                                                <div class="text-danger">
+                                                {{-- <div class="text-danger">
                                                     @error('nama_barangmasuk')
                                                     {{ $message }}
                                                     @enderror
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
 
@@ -75,11 +75,11 @@
                                             <div class="col-sm-10">
                                                 <input type="text" name="jenis_barangmasuk" class="form-control"
                                                  value="{{ $barangmasuk->jenis}}" readonly>
-                                                <div class="text-danger">
+                                                {{-- <div class="text-danger">
                                                     @error('jenis_barangmasuk')
                                                     {{ $message }}
                                                     @enderror
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                         
@@ -113,11 +113,11 @@
                                             <label class="col-sm-2 col-form-label">Jumlah</label>
                                             <div class="col-sm-10">
                                                 <input type="number" name="jumlah" value="{{$barangmasuk -> total_barangmasuk}}" id="jumlah"class="form-control" readonly >
-                                                <div class="text-danger">
+                                                {{-- <div class="text-danger">
                                                     @error('total_barangmasuk')
                                                         {{ $message }}
                                                     @enderror
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
 
@@ -127,11 +127,11 @@
                                             <div class="col-sm-10">
                                                 <input type="text" name="satuan" class="form-control"
                                                 placeholder="{{ $barangmasuk->satuan}}" value="{{ $barangmasuk->satuan}}" readonly>
-                                                <div class="text-danger">
+                                                {{-- <div class="text-danger">
                                                     @error('jenis_barangmasuk')
                                                     {{ $message }}
                                                     @enderror
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
 
@@ -157,11 +157,11 @@
                                                         name="foto_barangmasuk" value="{{$barangmasuk ->foto}}">
                                                     <label class="custom-file-label" for="exampleInputFile">Choose
                                                         Foto</label>
-                                                    <div class="text-danger">
+                                                    {{-- <div class="text-danger">
                                                         @error('foto_barangmasuk')
                                                             {{ $message }}
                                                         @enderror
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                             <a href="{{ asset('foto_barangmasuk/') }}/{{ $barangmasuk->foto }}" target="_blank">

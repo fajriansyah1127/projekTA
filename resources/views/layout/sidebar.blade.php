@@ -98,9 +98,15 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('barangmasuk.index') }}" class="nav-link">
+                <a href="{{ route('barangkeluar.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Barang Keluar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('peminjambarang.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Peminjam Barang</p>
                 </a>
               </li>
               <li class="nav-item">

@@ -15,8 +15,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('auth.login');
-        Alert::toast('Semoga Hari mu Menyenangkan', 'success');
+        return view('home');
     }
 
     /**
@@ -26,6 +25,8 @@ class LoginController extends Controller
      */
     public function create()
     {
+        return view('auth.login');
+        Alert::toast('Semoga Hari mu Menyenangkan', 'success');
     }
 
     /**

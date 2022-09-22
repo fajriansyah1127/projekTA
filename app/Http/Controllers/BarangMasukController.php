@@ -120,8 +120,8 @@ class BarangMasukController extends Controller
     public function edit($barangMasuk)
     {
         $barangmasuk = BarangMasuk::find($barangMasuk);
-        $stok = Stok::with('satuan')->where('id','BAR-0002')->get();
-        return view('BarangMasuk.Edit', compact('stok','barangmasuk'));
+        // $stok = Stok::with('satuan')->where('id','BAR-0002')->get();
+        return view('BarangMasuk.Edit', compact('barangmasuk'));
     }
 
     
@@ -148,9 +148,9 @@ class BarangMasukController extends Controller
             // $request->request->add(['user_id' => Auth::user()->id]);
             $dokumenfile = Request()->nama_barangmasuk.date('his').'.'.$file->extension();
             $file->move($destinationPath, $dokumenfile);
-            $doku['foto'] = "$dokumenfile";
+            $request->foto = "$dokumenfile";
         }else{
-            unset($doku['foto']);
+            unset($request->foto);
         }
 
        $notif= BarangMasuk::where('id', $id)->update([
@@ -160,7 +160,7 @@ class BarangMasukController extends Controller
         'satuan' => $request->satuan,
         'penerima' => $request->penerima_barangmasuk,
         'tanggal_masuk' => $request->tanggal_barangmasuk,
-        'foto' => $dokumenfile,
+        'foto' => $request->foto,
         ]);
 
         if ($notif) {

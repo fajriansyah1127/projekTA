@@ -6,17 +6,22 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DokumenController;
+use App\Http\Controllers\CariDokumenController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AsuransiController;
 use App\Http\Controllers\IcipController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\PeminjamController;
+use App\Http\Controllers\PeminjamBarangController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\OutletController;
 Use App\Http\Controllers\BarangMasukController;
+Use App\Http\Controllers\BarangkeluarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StokController;
+use App\Models\CariBarang;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,8 +46,12 @@ Route::group(['middleware' => 'guest'], function () {
     // Route::get('/', function () {
     //     return view('home');
     // });
-    Route::get('/login', [LoginController::class,'index'])->name('login');
-    Route::resource('/', LoginController::class);
+    Route::get('/login', [LoginController::class,'create'])->name('login');
+    //Route::get('/', [CariDokumenController::class,'index']);
+    Route::resource('/', CariDokumenController::class);
+//     Route::get('/', function () {
+//     return view('home');
+// });
 });
 Route::resource('/login', LoginController::class);
 
@@ -76,14 +85,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware'=> 'hakakses:Admin,Satpam'],function(){
         Route::resource('/satuan', SatuanController::class);
         Route::resource('/barangmasuk', BarangMasukController::class);
-        Route::resource('/barangkeluar', BarangMasukController::class);
+        Route::resource('/barangkeluar', BarangKeluarController::class);
         Route::resource('/stok', StokController::class);
+        Route::resource('/peminjambarang', PeminjamBarangController::class);
     });
 
     Route::group(['middleware'=> 'hakakses:Admin,Satpam,Pegawai,Magang'],function(){
       
         Route::resource('/dokumen', DokumenController::class);
         Route::resource('/profile', ProfileController::class);
+        // Route::resource('/caridokumen', CariDokumenController::class);
         // Route::resource('/riwayat', RiwayatController::class);
     });
 

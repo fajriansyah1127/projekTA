@@ -63,45 +63,47 @@
         <h4 style="text-align:center"><b>CARI DOKUMEN </b></h4>
       </div>
       <div class="card-body"  >
-      <form action="" method="GET">
-  
+        <form action="{{ route('store') }}" method="POST"
+        enctype="multipart/form-data">
+        @csrf
         <div class="form-row">
-            <div class="form-group col">
+            <div class="form-group col-sm-4">
                 <label for="judul">Nama</label>
-                <input id="judul" type="text" name="judul" class="form-control"
+                <input  type="text" name="nama" class="form-control"
                     placeholder="Nama ">
             </div>
-            <div class="form-group col-sm-3">
-                <label for="Status">Unit Asuransi</label>
-                <select class="form-control" id="status" name="status">
-                    <option disabled selected>Semua</option>
-                                                            <option value="1">Jamsar</option>
-                                                            <option value="2">Jamkrindo</option>
-                                                            <option value="3">Askrindo</option>
-                                                            <option value="4">Jasa Raharja</option>
-                                                        </select>
-            </div>
+
+            <div class="form-group col-sm-4">
+              <label for="Status">Produk</label>
+              <select class="form-control" id="status" name="produk">
+                  <option disabled selected>Pilih Produk</option>
+                  @foreach ($dokumenproduk as $data)
+                  <option value="{{ $data->id }}">{{ $data->nama }} || {{ $data->asuransi->nama }} </option>
+              @endforeach
+              </select>
+          </div>
+
+            <div class="form-group col-sm-4">
+              <label for="Status">Outlet</label>
+              <select class="form-control" id="status" name="outlet">
+                  <option disabled selected>Pilih Outlet</option>
+                  @foreach ($dokumenoutlet as $data)
+                  <option value="{{ $data->id }}">{{ $data->nama }} </option>
+                  @endforeach
+              </select>
+          </div>
         </div>
 
         <div class="form-row">
-            <div class="form-group col-sm-3">
+            <div class="form-group col-sm-4">
                 <label for="nomor">Nomor</label>
                 <input id="nomor" type="text" class="form-control" name="nomor" placeholder="Nomor">
             </div>
 
-            {{-- <div class="form-group col-sm-3">
-                <label for="jenis">Jenis</label>
-                <select name="jenis" class="selectpicker form-control" id="jenis" data-live-search="true"
-                    title="Pilih jenis Dokumen">
-                    <option value="2" >Asuransi </option>
-                    <option value="3" >Surat Otorisasi </option>
-                                                        </select>
-            </div> --}}
-
-            <div class="form-group col-sm-3">
-                <label for="tahun">Tahun</label>
+            <div class="form-group col-sm-4">
+                <label for="tahun">Tanggal</label>
                 <div class="input-group">
-                        <input type="text" class="form-control" name="datepicker" id="datepicker" placeholder="Pilih tahun berlaku"/>
+                        <input type="date" class="form-control" name="tanggal" placeholder="Pilih tanggal berlaku"/>
 
                 </div>
             </div>
@@ -171,8 +173,10 @@
         <div class="col-md-6 mt-md-0 mt-3">
   
           <!-- Content -->
-          <h5 class="text-uppercase">Footer Content</h5>
-          <p>Here you can use rows and columns to organize your footer content.</p>
+          <h5 class="text-uppercase">Pegadaian Kantor Area Balikpapan</h5>
+          <p>Jln Soekarno Hatta Kilo 4.5 Batu Ampar Balikpapan</p>
+          {{-- <p>Here you can use rows and columns to organize your footer content.</p>
+          <p>Here you can use rows and columns to organize your footer content.</p> --}}
   
         </div>
         <!-- Grid column -->
@@ -183,17 +187,17 @@
         <div class="col-md-3 mb-md-0 mb-3">
   
           <!-- Links -->
-          <h5 class="text-uppercase">Links</h5>
+          <h5 class="text-uppercase">Tentang Pegadaian</h5>
   
           <ul class="list-unstyled">
             <li>
-              <a href="#!">Link 1</a>
+              <a href="https://instagram.com/pegadaian_id?igshid=YmMyMTA2M2Y=">Instagram</a>
             </li>
             <li>
-              <a href="#!">Link 2</a>
+              <a href="#!">Youtube</a>
             </li>
             <li>
-              <a href="#!">Link 3</a>
+              <a href="#!">Facebook</a>
             </li>
             <li>
               <a href="#!">Link 4</a>
@@ -207,17 +211,17 @@
         <div class="col-md-3 mb-md-0 mb-3">
   
           <!-- Links -->
-          <h5 class="text-uppercase">Links</h5>
+          <h5 class="text-uppercase">Social Media</h5>
   
           <ul class="list-unstyled">
             <li>
-              <a href="#!">Link 1</a>
+              <a href="https://instagram.com/pegadaian_id?igshid=YmMyMTA2M2Y=">Instagram</a>
             </li>
             <li>
-              <a href="#!">Link 2</a>
+              <a href="#!">Youtube</a>
             </li>
             <li>
-              <a href="#!">Link 3</a>
+              <a href="#!">Facebook</a>
             </li>
             <li>
               <a href="#!">Link 4</a>

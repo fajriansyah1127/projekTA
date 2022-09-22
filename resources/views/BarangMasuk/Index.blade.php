@@ -51,7 +51,7 @@
                     <td>{{ $data->jenis }}</td> 
                     <td>{{ $data->total_barangmasuk }}</td> 
                     <td>{{ $data->satuan }}</td> 
-                    <td><img src="{{ url('foto_barangmasuk/'.$data->foto) }}" alt="foto" width="100px" ></td> 
+                    <td><a href="{{ url('foto_barangmasuk/'.$data->foto) }} "target="_blank"><img src="{{ url('foto_barangmasuk/'.$data->foto) }}" alt="foto" width="100px" ></a></td> 
                     <td>{{ $data->penerima }}</td> 
                     <td>{{ $data->tanggal_masuk }}</td> 
                     <td>

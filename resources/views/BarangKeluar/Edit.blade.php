@@ -14,28 +14,28 @@
                 <div class="row">
                     <div class="col-md-12 p-5 pt-2">
 
-                        {{-- <!-- membuat form --> @foreach($stok as $barangmasuk) --}}
+                        {{-- <!-- membuat form --> @foreach($stok as $barangkeluar) --}}
                         <div class="container">
                             <div class="card mt-2">
                                 <div class="card-header">
-                                    <h4 style="text-align:center"><b>Edit Data Barang Masuk </b></h4>
+                                    <h4 style="text-align:center"><b>Edit Data Barang Keluar </b></h4>
                                 </div>
                                 <div class="card-body">
 
                                     <!-- membuat formnya -->
                                     <!-- bagian judul -->
                                    
-                                    <form action="{{ route('barangmasuk.update',$barangmasuk->id) }}" method="POST"
+                                    <form action="{{ route('barangkeluar.update',$barangkeluar->id) }}" method="POST"
                                         enctype="multipart/form-data">
                                         @method('PUT')
                                         {{ csrf_field() }}
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Tanggal Masuk </label>
+                                            <label class="col-sm-2 col-form-label">Tanggal Keluar </label>
                                             <div class="col-sm-10">
-                                                <input type="date"  name="tanggal_barangmasuk"
-                                                    class="form-control" value ="{{$barangmasuk -> tanggal_masuk}}"required>
+                                                <input type="date"  name="tanggal_barangkeluar"
+                                                    class="form-control" value ="{{$barangkeluar -> tanggal_keluar}}"required>
                                                 <div class="text-danger">
-                                                    @error('tanggal_barangmasuk')
+                                                    @error('tanggal_barangkeluar')
                                                         {{ $message }}
                                                     @enderror
                                                 </div>
@@ -47,10 +47,10 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Kode Barang </label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="kodebarang_barangmasuk" class="form-control"
-                                                 value="{{$barangmasuk->stok_id }}" readonly>
+                                                <input type="text" name="kodebarang_barangkeluar" class="form-control"
+                                                 value="{{$barangkeluar->stok_id }}" readonly>
                                                 <div class="text-danger">
-                                                    @error('nama_barangmasuk')
+                                                    @error('nama_barangkeluar')
                                                     {{ $message }}
                                                     @enderror
                                                 </div>
@@ -60,10 +60,10 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Barang </label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="nama_barangmasuk" class="form-control"
-                                                 value="{{ $barangmasuk->nama }}" readonly>
+                                                <input type="text" name="nama_barangkeluar" class="form-control"
+                                                 value="{{ $barangkeluar->nama }}" readonly>
                                                 <div class="text-danger">
-                                                    @error('nama_barangmasuk')
+                                                    @error('nama_barangkeluar')
                                                     {{ $message }}
                                                     @enderror
                                                 </div>
@@ -73,10 +73,10 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Jenis Barang </label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="jenis_barangmasuk" class="form-control"
-                                                 value="{{ $barangmasuk->jenis}}" readonly>
+                                                <input type="text" name="jenis_barangkeluar" class="form-control"
+                                                 value="{{ $barangkeluar->jenis}}" readonly>
                                                 <div class="text-danger">
-                                                    @error('jenis_barangmasuk')
+                                                    @error('jenis_barangkeluar')
                                                     {{ $message }}
                                                     @enderror
                                                 </div>
@@ -87,10 +87,10 @@
                                         {{-- <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Stok</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="stok_barangmasuk" id="stok" class="form-control"
-                                                value="{{ $barangmasuk->jumlah }}" readonly>
+                                                <input type="number" name="stok_barangkeluar" id="stok" class="form-control"
+                                                value="{{ $barangkeluar->jumlah }}" readonly>
                                                  <div class="text-danger">
-                                                    @error('jenis_barangmasuk')
+                                                    @error('jenis_barangkeluar')
                                                     {{ $message }}
                                                     @enderror
                                                 </div> 
@@ -100,7 +100,7 @@
                                         {{-- <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Jumlah</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="total_barangmasuk" id="jumlah_total" class="form-control @error('jumlah') is-invalid @enderror" value="{{$barangmasuk -> total_barangmasuk}}" onkeyup="sum()">
+                                                <input type="number" name="total_barangkeluar" id="jumlah_total" class="form-control @error('jumlah') is-invalid @enderror" value="{{$barangkeluar -> total_barangkeluar}}" onkeyup="sum()">
                                                 <div class="text-danger">
                                                     @error('jumlah')
                                                         {{ $message }}
@@ -112,9 +112,9 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Jumlah</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="jumlah" value="{{$barangmasuk -> total_barangmasuk}}" id="jumlah"class="form-control" readonly >
+                                                <input type="number" name="jumlah" value="{{$barangkeluar -> total_barangkeluar}}" id="jumlah"class="form-control" readonly >
                                                 <div class="text-danger">
-                                                    @error('total_barangmasuk')
+                                                    @error('total_barangkeluar')
                                                         {{ $message }}
                                                     @enderror
                                                 </div>
@@ -126,9 +126,9 @@
                                             <label class="col-sm-2 col-form-label">Satuan </label>
                                             <div class="col-sm-10">
                                                 <input type="text" name="satuan" class="form-control"
-                                                placeholder="{{ $barangmasuk->satuan}}" value="{{ $barangmasuk->satuan}}" readonly>
+                                                placeholder="{{ $barangkeluar->satuan}}" value="{{ $barangkeluar->satuan}}" readonly>
                                                 <div class="text-danger">
-                                                    @error('jenis_barangmasuk')
+                                                    @error('jenis_barangkeluar')
                                                     {{ $message }}
                                                     @enderror
                                                 </div>
@@ -138,9 +138,9 @@
                                         <!-- bagian unit -->
 
                                         <div class="form-group row">
-                                            <label  class="col-sm-2 col-form-label">Penerima</label>
+                                            <label  class="col-sm-2 col-form-label">Pengambil</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="penerima_barangmasuk" value="{{$barangmasuk ->penerima}}"
+                                                <input type="text" name="pengambil_barangkeluar" value="{{$barangkeluar ->pengambil}}"
                                                     class="form-control" required>
                                             </div>
                                         </div>
@@ -148,27 +148,6 @@
                                         
 
 <br>
-                                    <div class="card-footer text-muted">
-                                        <div class="form-group">
-                                            <label for="exampleInputFile">Foto input</label>
-                                            <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input type="file" class="form-control" id="exampleInputFile"
-                                                        name="foto_barangmasuk" value="{{$barangmasuk ->foto}}">
-                                                    <label class="custom-file-label" for="exampleInputFile">Choose
-                                                        Foto</label>
-                                                    <div class="text-danger">
-                                                        @error('foto_barangmasuk')
-                                                            {{ $message }}
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <a href="{{ asset('foto_barangmasuk/') }}/{{ $barangmasuk->foto }}" target="_blank">
-                                                Lihat File</a>
-                                        </div>
-                                    </div>
-
                                         <div class="card-footer">
 
                                             <!-- bagian submit -->
@@ -196,8 +175,8 @@
     <script>
         function sum() {
             var stok = document.getElementById('stok').value;
-            var jumlahmasuk = document.getElementById('jumlah_total').value;
-            var result = parseInt(stok) + parseInt(jumlahmasuk);
+            var jumlahkeluar = document.getElementById('jumlah_total').value;
+            var result = parseInt(stok) + parseInt(jumlahkeluar);
             if (!isNaN(result)) {
                 document.getElementById('jumlah').value = result;
             }

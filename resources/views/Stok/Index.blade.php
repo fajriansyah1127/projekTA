@@ -36,7 +36,6 @@
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Kode Barang</th>
                     <th>Nama Barang</th>
                     <th>Jenis Barang</th>
                     <th>Jumlah</th>
@@ -47,7 +46,6 @@
                 <tbody>
                   <tr>@foreach($stok as $data)
                     <td>{{ $loop->iteration}}</td>
-                    <td>{{ $data->id}}</td>
                     <td>{{ $data->nama_barang}}</td> 
                     <td>{{ $data->jenis_barang}}</td> 
                     <td>{{ $data->jumlah}}</td> 
