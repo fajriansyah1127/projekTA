@@ -31,7 +31,13 @@ class DashboardController extends Controller
         ->count('id');
         $BanyakUser = DB::table('users')
         ->count('id');
-        $BanyakPeminjam  = DB::table('peminjams')
+        $BanyakPeminjamDokumen  = DB::table('peminjams')
+        ->count('id');
+        $BanyakPeminjamBarang  = DB::table('peminjam_barangs')
+        ->count('id');
+        $BanyakBarangMasuk  = DB::table('barang_masuk')
+        ->count('id');
+        $BanyakBarangKeluar  = DB::table('barang_keluar')
         ->count('id');
         // $BarangMasuk = BarangMasuk::get()->count();
         // $BarangKeluar = BarangKeluar::get()->count();
@@ -43,7 +49,7 @@ class DashboardController extends Controller
         // $Satuan = Satuan::get()->count();
 
         // return view('index', compact('karwa', 'bah', 'supp', 'res'));
-        return view('index', compact('DokumenSatpamdanMagang','DokumenAdmindanPegawai','BanyakUser','BanyakPeminjam'));
+        return view('index', compact('DokumenSatpamdanMagang','DokumenAdmindanPegawai','BanyakUser','BanyakPeminjamDokumen','BanyakBarangMasuk','BanyakBarangKeluar','BanyakPeminjamBarang'));
     }
 
     /**

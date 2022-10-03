@@ -175,8 +175,8 @@
           <!-- Content -->
           <h5 class="text-uppercase">Pegadaian Kantor Area Balikpapan</h5>
           <p>Jln Soekarno Hatta Kilo 4.5 Batu Ampar Balikpapan</p>
-          {{-- <p>Here you can use rows and columns to organize your footer content.</p>
-          <p>Here you can use rows and columns to organize your footer content.</p> --}}
+          <p>Jam Operasional Kantor Senin - Jumat : 08.00 - 15.00 Sabtu : 08.00 - 12.00</p>
+          {{-- <p>Here you can use rows and columns to organize your footer content.</p> --}}
   
         </div>
         <!-- Grid column -->
@@ -187,7 +187,7 @@
         <div class="col-md-3 mb-md-0 mb-3">
   
           <!-- Links -->
-          <h5 class="text-uppercase">Tentang Pegadaian</h5>
+          {{-- <h5 class="text-uppercase">Tentang Pegadaian</h5>
   
           <ul class="list-unstyled">
             <li>
@@ -202,7 +202,7 @@
             <li>
               <a href="#!">Link 4</a>
             </li>
-          </ul>
+          </ul> --}}
   
         </div>
         <!-- Grid column -->
@@ -218,13 +218,13 @@
               <a href="https://instagram.com/pegadaian_id?igshid=YmMyMTA2M2Y=">Instagram</a>
             </li>
             <li>
-              <a href="#!">Youtube</a>
+              <a href="https://youtube.com/c/PTPegadaianPersero_official">Youtube</a>
             </li>
             <li>
-              <a href="#!">Facebook</a>
+              <a href="https://www.facebook.com/PegadaianPersero">Facebook</a>
             </li>
             <li>
-              <a href="#!">Link 4</a>
+              <a href="https://twitter.com/Pegadaian">Twiter</a>
             </li>
           </ul>
   

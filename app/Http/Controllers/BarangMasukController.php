@@ -20,7 +20,7 @@ class BarangMasukController extends Controller
     public function index()
     {
         $stok = stok::get();
-        $barangmasuk = BarangMasuk::get();
+        $barangmasuk = BarangMasuk::latest()->paginate(50);
         return view('BarangMasuk.Index',compact('stok','barangmasuk'));
     }
 
@@ -60,7 +60,7 @@ class BarangMasukController extends Controller
             'total_barangmasuk' => 'required',
             'satuan' => 'required',
             'penerima_barangmasuk' => 'required',
-            'foto_barangmasuk' => 'required|mimes:jpg,jpeg,bmp,png|max:10000',
+            'foto_barangmasuk' => 'required|file|image|mimes:jpg,jpeg,bmp,png|max:10000',
 
         ]); 
 
@@ -140,37 +140,67 @@ class BarangMasukController extends Controller
         // $filename = Request()->nama_barangmasuk.date('dmy').'.'.$file->extension();
         // $file->move(public_path('foto_barangmasuk'), $filename);
 
-        $dokumen = BarangMasuk::find($id);
+        $this->validate($request, [
+            'stok_id' => 'required',
+            'tanggal_barangmasuk' => 'nullable',
+            'nama' => 'nullable',
+            'jenis' => 'nullable',
+            'satuan' => 'nullable',
+            'penerima' => 'nullable',
+            'foto' => 'nullable|file|image|mimes:jpg,jpeg,bmp,png|max:10000',
+        ]); 
 
-        if ($file = Request()->foto_barangmasuk) {
-            File::delete('foto_barangmasuk/'.$dokumen->foto);  
+        $barangmasuk = BarangMasuk::find($id);
+        $inter = $request->all(); 
+
+        if ($file = $request->file('foto')) {
+            File::delete('foto_barangmasuk/' . $barangmasuk->foto);
             $destinationPath = 'foto_barangmasuk/';
-            // $request->request->add(['user_id' => Auth::user()->id]);
-            $dokumenfile = Request()->nama_barangmasuk.date('his').'.'.$file->extension();
-            $file->move($destinationPath, $dokumenfile);
-            $request->foto = "$dokumenfile";
-        }else{
-            unset($request->foto);
-        }
-
-       $notif= BarangMasuk::where('id', $id)->update([
-        'stok_id' => $request->kodebarang_barangmasuk,
-        'nama' => $request->nama_barangmasuk,
-        'jenis' => $request->jenis_barangmasuk,
-        'satuan' => $request->satuan,
-        'penerima' => $request->penerima_barangmasuk,
-        'tanggal_masuk' => $request->tanggal_barangmasuk,
-        'foto' => $request->foto,
-        ]);
-
-        if ($notif) {
+            $filename = Request()->nama.date('his').'.'.$file->extension();
+            $file->move($destinationPath, $filename);
+            $inter['foto'] = "$filename";
+        } 
+        $barangmasuk->update($inter);
+        if ($barangmasuk) {
             //redirect dengan pesan sukses
-            Alert::alert('Data Berhasil Diubah', 'success');
+            Alert::alert('DATA BERHASIL DIUBAH');
             return redirect()->route('barangmasuk.index');
         } else {
             //redirect dengan pesan error
-            return redirect()->route('barangmasuk.edit')->with(['error' => 'Data Gagal Disimpan!']);
+            return redirect()->route('barangmasuk.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
+
+    //     $dokumen = BarangMasuk::find($id);
+
+    //     if ($file = Request()->foto_barangmasuk) {
+    //         File::delete('foto_barangmasuk/'.$dokumen->foto);  
+    //         $destinationPath = 'foto_barangmasuk/';
+    //         // $request->request->add(['user_id' => Auth::user()->id]);
+    //         $dokumenfile = Request()->nama_barangmasuk.date('his').'.'.$file->extension();
+    //         $file->move($destinationPath, $dokumenfile);
+    //         $request->foto = "$dokumenfile";
+    //     }else{
+    //         unset($request->foto);
+    //     }
+
+    //    $notif= BarangMasuk::where('id', $id)->update([
+    //     'stok_id' => $request->kodebarang_barangmasuk,
+    //     'nama' => $request->nama_barangmasuk,
+    //     'jenis' => $request->jenis_barangmasuk,
+    //     'satuan' => $request->satuan,
+    //     'penerima' => $request->penerima_barangmasuk,
+    //     'tanggal_masuk' => $request->tanggal_barangmasuk,
+    //     'foto' => $request->foto,
+    //     ]);
+
+    //     if ($notif) {
+    //         //redirect dengan pesan sukses
+    //         Alert::alert('Data Berhasil Diubah', 'success');
+    //         return redirect()->route('barangmasuk.index');
+    //     } else {
+    //         //redirect dengan pesan error
+    //         return redirect()->route('barangmasuk.edit')->with(['error' => 'Data Gagal Disimpan!']);
+    //     }
        // return $request->all();
     }
 

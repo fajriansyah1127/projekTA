@@ -32,7 +32,7 @@
             {{-- <table class="table  table-hover text-nowrap"> --}}
               <thead>
                 <tr>
-                  <th>ID</th>
+                  <th>No</th>
                   <th>Nama</th>
                   <th>Jabatan</th>
                   <th>Role</th>
@@ -42,7 +42,7 @@
               </thead>
               <tbody>
                 <tr>@foreach($user as $data)
-                  <td>{{ $data->id }}</td>
+                  <td>{{ $loop->iteration}}</td>
                   <td>{{ $data->nama }}</td>
                   <td>{{ $data->jabatan }}</td>
                   <td>{{ $data->role }}</td>

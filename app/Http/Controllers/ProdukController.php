@@ -117,7 +117,7 @@ class ProdukController extends Controller
 
         if ($produk) {
             //redirect dengan pesan sukses
-            Alert::alert('Data Berhasil Diubah', 'success');
+            Alert::alert('DATA BERHASIL DIUBAH');
             return redirect()->route('produk.index');
         } else {
             //redirect dengan pesan error

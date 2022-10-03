@@ -49,8 +49,8 @@ class UserController extends Controller
             'Alamat' => 'required',
             'Role' => 'required',
             'Jabatan' => 'required',
-            'Password' => 'required|min:12',
-            'Foto' => 'required|mimes:jpg,jpeg,bmp,png|max:10000',
+            'Password' => 'required|min:8',
+            'Foto' => 'required|file|image|mimes:jpg,jpeg,bmp,png|max:2048',
 
         ]);
         $request['Password'] = hash::make($request['Password']); 
@@ -138,7 +138,7 @@ class UserController extends Controller
         $user->update($inter);
         if ($user) {
             //redirect dengan pesan sukses
-            Alert::alert('Data Berhasil Diubah', 'success');
+            Alert::alert('DATA BERHASIL DIUBAH');
             return redirect()->route('user.index');
         } else {
             //redirect dengan pesan error

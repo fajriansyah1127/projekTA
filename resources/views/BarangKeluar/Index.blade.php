@@ -38,7 +38,7 @@
                     <th>Jenis</th>
                     <th>Jumlah</th>
                     <th>Satuan</th>
-                    <th>Penerima</th>
+                    <th>Pengambil</th>
                     <th>Tanggal Keluar</th>
                     <th>Action</th>
                   </tr>
@@ -57,29 +57,31 @@
                       <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#staticBackdropdelete{{$data->id}}">
                         Delete
                       </button>
-                        <div class="modal fade" id="staticBackdropdelete{{$data->id}}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content bg-default">
-                              <div class="modal-body">
-                                Apakah anda yakin menghapus {{$data->nama}} ?
-                              </div>
-                              <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn  btn-sm btn-primary" data-dismiss="modal">Close</button>
-                                <form action="{{route('barangkeluar.destroy',$data->id )}}" method="POST"> 
-                                  @csrf
-                                  @method('DELETE')
-                                  <button type ="submit" class="btn btn-sm btn-danger">Delete</button></form>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
                     </td> 
-                   </tr> @endforeach
+                  </tr> @endforeach
                 </tbody>
               </table>
             </div>
             
-            @foreach($stok as $data)
+            @foreach($barangkeluar as $data)
+            <div class="modal fade" id="staticBackdropdelete{{$data->id}}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content bg-default">
+                  <div class="modal-body">
+                    Apakah anda yakin menghapus {{$data->nama}} ?
+                  </div>
+                  <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn  btn-sm btn-primary" data-dismiss="modal">Close</button>
+                    <form action="{{route('barangkeluar.destroy',$data->id )}}" method="POST"> 
+                      @csrf
+                      @method('DELETE')
+                      <button type ="submit" class="btn btn-sm btn-danger">Delete</button></form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              @endforeach
+              @foreach($stok as $data)
             <div class="modal fade" id="tambah" >
               <div class="modal-dialog">
                 <div class="modal-content bg-default">

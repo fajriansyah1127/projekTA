@@ -31,7 +31,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Tanggal Keluar </label>
                                             <div class="col-sm-10">
-                                                <input type="date"  name="tanggal_barangkeluar"
+                                                <input type="date" value="{{old('tanggal_barangkeluar')}}"  name="tanggal_barangkeluar"
                                                     class="form-control"required>
                                                 <div class="text-danger">
                                                     @error('tanggal_barangmasuk')
@@ -99,7 +99,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Jumlah</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="total_barangkeluar" id="jumlah_total" class="form-control @error('jumlah') is-invalid @enderror" onkeyup="sum()">
+                                                <input type="number" name="total_barangkeluar" value="{{old('total_barangkeluar')}}" id="jumlah_total" class="form-control @error('jumlah') is-invalid @enderror" onkeyup="sum()">
                                                 <div class="text-danger">
                                                     @error('jumlah')
                                                         {{ $message }}
@@ -111,7 +111,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Total Stok</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="jumlah" id="jumlah"class="form-control" readonly >
+                                                <input type="number" name="jumlah" value="{{old('jumlah')}}" id="jumlah"class="form-control" readonly >
                                                 <div class="text-danger">
                                                     @error('total_barangmasuk')
                                                         {{ $message }}
@@ -140,7 +140,7 @@
                                             <label  class="col-sm-2 col-form-label">Pengambil</label>
                                             <div class="col-sm-10">
                                                 <input type="text" name="pengambil_barangkeluar"
-                                                    class="form-control" required>
+                                                    class="form-control" value="{{old('pengambil_barangkeluar')}}"required>
                                             </div>
                                         </div>
 

@@ -59,7 +59,7 @@
           </li>
 
           <li class="nav-item ">
-            <a href="" class="nav-link {{Request::is('dokumen/create')?'active':''}} {{Request::is('peminjam/create')?'active':''}} {{Request::is('dokumen')?'active':''}}">
+            <a href="" class="nav-link {{Request::is('dokumen/create')?'active':''}} {{Request::is('peminjam')?'active':''}} {{Request::is('dokumen')?'active':''}}">
               <i class="nav-icon fas fa-file"></i>
               <p>
                 Dokumen Klaim
@@ -74,7 +74,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('peminjam.index') }}" class="nav-link ">
+                <a href="{{ route('peminjam.index') }}" class="nav-link {{Request::is('peminjam')?'active':''}} ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Peminjam</p>
                 </a>
@@ -83,7 +83,7 @@
           </li>
           
           <li class="nav-item">
-            <a href="#" class="nav-link nav-link ">
+            <a href="#" class="nav-link nav-link {{Request::is('barangkeluar/create')?'active':''}} {{Request::is('barangmasuk/create')?'active':''}} {{Request::is('barangmasuk')?'active':''}} {{Request::is('barangkeluar')?'active':''}} {{Request::is('satuan')?'active':''}} {{Request::is('stok')?'active':''}}{{Request::is('peminjambarang')?'active':''}} ">
               <i class="nav-icon fas fa-chart-pie "></i>
               <p>
                 Barang
@@ -92,25 +92,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('barangmasuk.index') }}" class="nav-link">
+                <a href="{{ route('barangmasuk.index') }}" class="nav-link {{Request::is('barangmasuk/create')?'active':''}}  {{Request::is('barangmasuk')?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Barang Masuk</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('barangkeluar.index') }}" class="nav-link">
+                <a href="{{ route('barangkeluar.index') }}" class="nav-link {{Request::is('barangkeluar/create')?'active':''}} {{Request::is('barangkeluar')?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Barang Keluar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('peminjambarang.index') }}" class="nav-link">
+                <a href="{{ route('peminjambarang.index') }}" class="nav-link {{Request::is('peminjambarang')?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Peminjam Barang</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('stok.index') }}" class="nav-link">
+                <a href="{{ route('stok.index') }}" class="nav-link   {{Request::is('stok')?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Stok</p>
                 </a>
@@ -125,7 +125,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link {{Request::is('user')?'active':''}}{{Request::is('user/create')?'active':''}}{{Request::is('user/5/edit')?'active':''}}"   >
+            <a href="#" class="nav-link {{Request::is('user')?'active':''}}{{Request::is('user/create')?'active':''}}{{Request::is('user//edit')?'active':''}}"   >
               <i class="nav-icon fas fa-user "></i>
               <p>
                 Manajemen User
@@ -167,25 +167,25 @@
         </li>
 
         <li class="nav-item ">
-          <a href="" class="nav-link {{Request::is('dokumen')?'active':''}}">
+          <a href="" class="nav-link {{Request::is('dokumen/create')?'active':''}}  {{Request::is('dokumen')?'active':''}}">
             <i class="nav-icon fas fa-file"></i>
             <p>
-              Dokumen
+              Dokumen klaim
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('dokumen.index') }}" class="nav-link {{Request::is('dokumen')?'active':''}}">
+              <a href="{{ route('dokumen.index') }}" class="nav-link {{Request::is('dokumen/create')?'active':''}} {{Request::is('dokumen')?'active':''}}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Dokumen</p>
+                <p>Dokumen Klaim</p>
               </a>
             </li>
           </ul>
         </li>
 
         <li class="nav-item">
-          <a href="#" class="nav-link nav-link ">
+          <a href="#" class="nav-link nav-link {{Request::is('barangkeluar/create')?'active':''}} {{Request::is('barangmasuk/create')?'active':''}} {{Request::is('barangmasuk')?'active':''}} {{Request::is('barangkeluar')?'active':''}} {{Request::is('satuan')?'active':''}} {{Request::is('stok')?'active':''}}{{Request::is('peminjambarang')?'active':''}} ">
             <i class="nav-icon fas fa-chart-pie "></i>
             <p>
               Barang
@@ -194,19 +194,25 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="" class="nav-link">
+              <a href="{{ route('barangmasuk.index') }}" class="nav-link {{Request::is('barangmasuk/create')?'active':''}} {{Request::is('barangmasuk')?'active':''}}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Barang Masuk</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('barangkeluar.index') }}" class="nav-link">
+              <a href="{{ route('barangkeluar.index') }}" class="nav-link {{Request::is('barangkeluar/create')?'active':''}} {{Request::is('barangkeluar')?'active':''}}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Barang Keluar</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/charts/inline.html" class="nav-link">
+              <a href="{{ route('peminjambarang.index') }}" class="nav-link {{Request::is('peminjambarang')?'active':''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Peminjam Barang</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('stok.index') }}" class="nav-link {{Request::is('stok')?'active':''}}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Stok</p>
               </a>
@@ -238,7 +244,7 @@
         </li>
 
         <li class="nav-item ">
-          <a href="" class="nav-link {{Request::is('dokumen')?'active':''}}">
+          <a href="" class="nav-link {{Request::is('peminjam')?'active':''}}{{Request::is('dokumen/create')?'active':''}} {{Request::is('dokumen')?'active':''}}">
             <i class="nav-icon fas fa-file"></i>
             <p>
               Dokumen
@@ -247,13 +253,13 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('dokumen.index') }}" class="nav-link {{Request::is('dokumen')?'active':''}}">
+              <a href="{{ route('dokumen.index') }}" class="nav-link {{Request::is('dokumen/create')?'active':''}} {{Request::is('dokumen')?'active':''}}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Dokumen</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="/peminjam" class="nav-link">
+              <a href="/peminjam" class="nav-link  {{Request::is('peminjam')?'active':''}}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Data Peminjam</p>
               </a>
@@ -279,7 +285,7 @@
           </li>
 
           <li class="nav-item ">
-            <a href="" class="nav-link {{Request::is('dokumen')?'active':''}}">
+            <a href="" class="nav-link {{Request::is('dokumen/create')?'active':''}} {{Request::is('dokumen')?'active':''}}">
               <i class="nav-icon fas fa-file"></i>
               <p>
                 Dokumen
@@ -288,7 +294,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('dokumen.index') }}" class="nav-link {{Request::is('dokumen')?'active':''}}">
+                <a href="{{ route('dokumen.index') }}" class="nav-link {{Request::is('dokumen/create')?'active':''}} {{Request::is('dokumen')?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dokumen</p>
                 </a>

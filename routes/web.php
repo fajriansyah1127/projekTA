@@ -88,6 +88,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/barangkeluar', BarangKeluarController::class);
         Route::resource('/stok', StokController::class);
         Route::resource('/peminjambarang', PeminjamBarangController::class);
+        Route::get('/cetakstok', [StokController::class,'cetak'])->name('cetak');
     });
 
     Route::group(['middleware'=> 'hakakses:Admin,Satpam,Pegawai,Magang'],function(){

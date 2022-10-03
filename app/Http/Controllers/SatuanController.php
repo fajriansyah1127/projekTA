@@ -102,7 +102,7 @@ class SatuanController extends Controller
         $satuan->update($data);
         if ($satuan) {
             //redirect dengan pesan sukses
-            Alert::alert('Data Berhasil Diubah', 'success');
+            Alert::alert('DATA BERHASIL DIUBAH');
             return redirect()->route('satuan.index');
         } else {
             //redirect dengan pesan error

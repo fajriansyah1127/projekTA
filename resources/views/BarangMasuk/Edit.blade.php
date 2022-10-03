@@ -47,7 +47,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Kode Barang </label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="kodebarang_barangmasuk" class="form-control"
+                                                <input type="text" name="stok_id" class="form-control"
                                                  value="{{$barangmasuk->stok_id }}" readonly>
                                                 {{-- <div class="text-danger">
                                                     @error('nama_barangmasuk')
@@ -60,7 +60,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Barang </label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="nama_barangmasuk" class="form-control"
+                                                <input type="text" name="nama" class="form-control"
                                                  value="{{ $barangmasuk->nama }}" readonly>
                                                 {{-- <div class="text-danger">
                                                     @error('nama_barangmasuk')
@@ -73,7 +73,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Jenis Barang </label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="jenis_barangmasuk" class="form-control"
+                                                <input type="text" name="jenis" class="form-control"
                                                  value="{{ $barangmasuk->jenis}}" readonly>
                                                 {{-- <div class="text-danger">
                                                     @error('jenis_barangmasuk')
@@ -140,7 +140,7 @@
                                         <div class="form-group row">
                                             <label  class="col-sm-2 col-form-label">Penerima</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="penerima_barangmasuk" value="{{$barangmasuk ->penerima}}"
+                                                <input type="text" name="penerima" value="{{$barangmasuk ->penerima}}"
                                                     class="form-control" required>
                                             </div>
                                         </div>
@@ -154,7 +154,7 @@
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="form-control" id="exampleInputFile"
-                                                        name="foto_barangmasuk" value="{{$barangmasuk ->foto}}">
+                                                        name="foto" value="{{$barangmasuk ->foto}}">
                                                     <label class="custom-file-label" for="exampleInputFile">Choose
                                                         Foto</label>
                                                     {{-- <div class="text-danger">

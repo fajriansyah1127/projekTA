@@ -17,7 +17,7 @@ class BarangKeluarController extends Controller
     public function index()
     {
         $stok = stok::get();
-        $barangkeluar = BarangKeluar::get();
+        $barangkeluar = BarangKeluar::latest()->paginate(50);
         return view('BarangKeluar.Index',compact('stok','barangkeluar'));
     }
 
@@ -75,7 +75,7 @@ class BarangKeluarController extends Controller
 
         if ($notif) {
             //redirect dengan pesan sukses
-            alert()->success('Success', 'JOSSS DATANYA SUDAH keluar');
+            alert()->success('Success', 'JOSSS DATANYA SUDAH MASUK');
             return redirect('/barangkeluar');
         } else {
             //redirect dengan pesan error
@@ -135,7 +135,7 @@ class BarangKeluarController extends Controller
 
         if ($notif) {
             //redirect dengan pesan sukses
-            Alert::alert('Data Berhasil Diubah', 'success');
+            Alert::alert('DATA BERHASIL DIUBAH');
             return redirect()->route('barangkeluar.index');
         } else {
             //redirect dengan pesan error

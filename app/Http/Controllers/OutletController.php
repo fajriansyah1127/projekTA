@@ -101,7 +101,7 @@ class OutletController extends Controller
         $outlet->update($data);
         if ($outlet) {
             //redirect dengan pesan sukses
-            Alert::alert('Data Berhasil Diubah', 'success');
+            Alert::alert('DATA BERHASIL DIUBAH');
             return redirect()->route('outlet.index');
         } else {
             //redirect dengan pesan error

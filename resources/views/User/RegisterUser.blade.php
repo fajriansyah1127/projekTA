@@ -124,7 +124,7 @@
                             <div class="card-footer text-muted">
                                 <div class="form-group">
                                     <label for="exampleFormControlFile1">Masukkan Foto</label>
-                                    <input type="file" name="Foto" class="form-control"  value="{{old('Foto')}}" required>
+                                    <input type="file" name="Foto" class="form-control" accept="image/png, image/gif, image/jpeg"  value="{{old('Foto')}}" required>
                                     <div class ="text-danger">
                                       @error('Foto')
                                       {{ $message }}

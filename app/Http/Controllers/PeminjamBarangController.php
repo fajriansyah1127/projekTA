@@ -111,7 +111,7 @@ class PeminjamBarangController extends Controller
         $peminjam->update($doku);
         if ($peminjam) {
             //redirect dengan pesan sukses
-            Alert::alert('Data Berhasil Diubah', 'success');
+            Alert::alert('DATA BERHASIL DIUBAH');
             return redirect()->route('peminjambarang.index');
         } else {
             //redirect dengan pesan error

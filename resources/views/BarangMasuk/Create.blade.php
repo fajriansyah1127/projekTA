@@ -32,7 +32,7 @@
                                             <label class="col-sm-2 col-form-label">Tanggal Masuk </label>
                                             <div class="col-sm-10">
                                                 <input type="date"  name="tanggal_barangmasuk"
-                                                    class="form-control"required>
+                                                    class="form-control"required  value="{{old('tanggal_barangmasuk')}}" >
                                                 <div class="text-danger">
                                                     @error('tanggal_barangmasuk')
                                                         {{ $message }}
@@ -99,7 +99,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Jumlah</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="total_barangmasuk" id="jumlah_total" class="form-control @error('jumlah') is-invalid @enderror" onkeyup="sum()">
+                                                <input type="number" name="total_barangmasuk" id="jumlah_total" class="form-control @error('jumlah') is-invalid @enderror" value="{{old('jumlah')}}" required onkeyup="sum()">
                                                 <div class="text-danger">
                                                     @error('jumlah')
                                                         {{ $message }}
@@ -111,7 +111,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Total Stok</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="jumlah" id="jumlah"class="form-control" readonly >
+                                                <input type="number" name="jumlah" id="jumlah"class="form-control" value="{{old('jumlah')}}" readonly >
                                                 <div class="text-danger">
                                                     @error('total_barangmasuk')
                                                         {{ $message }}
@@ -139,8 +139,8 @@
                                         <div class="form-group row">
                                             <label  class="col-sm-2 col-form-label">Penerima</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="penerima_barangmasuk"
-                                                    class="form-control" required>
+                                                <input type="text" name="penerima_barangmasuk" 
+                                                    class="form-control"  value="{{old('penerima_barangmasuk')}}"required>
                                             </div>
                                         </div>
 
@@ -153,16 +153,16 @@
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="form-control" id="exampleInputFile"
-                                                        name="foto_barangmasuk">
+                                                        name="foto_barangmasuk" accept="image/png, image/gif, image/jpeg"required>
                                                     <label class="custom-file-label" for="exampleInputFile">Choose
                                                         Foto</label>
-                                                    <div class="text-danger">
-                                                        @error('foto_barangmasuk')
-                                                            {{ $message }}
-                                                        @enderror
                                                     </div>
                                                 </div>
-                                            </div>
+                                                <div class="text-danger">
+                                                    @error('foto_barangmasuk')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </div>
                                         </div>
                                     </div>
 

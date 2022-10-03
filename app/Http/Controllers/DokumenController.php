@@ -60,7 +60,7 @@ class DokumenController extends Controller
              'outlet_dokumen' => 'required',
              'tanggal_dokumen' => 'required',
              'produk_dokumen' => 'required',
-             'file_dokumen' => 'required|mimes:pdf|max:10000',
+             'file_dokumen' => 'required|file|mimes:pdf|max:100000',
 
           ]); 
          $file = Request()->file_dokumen;
@@ -150,7 +150,7 @@ class DokumenController extends Controller
             'outlet_id' => 'required',
             'tanggal_klaim' => 'required',
             'produk_id' => 'required',
-            'file' => 'file|mimes:pdf|max:10000',
+            'file' => 'file|mimes:pdf|max:100000',
         ]);
        
         
@@ -174,7 +174,7 @@ class DokumenController extends Controller
 
         if ($dokumen) {
             //redirect dengan pesan sukses
-            Alert::alert('Data Berhasil Diubah', 'success');
+            Alert::alert('DATA BERHASIL DIUBAH');
             return redirect()->route('dokumen.index');
         } else {
             //redirect dengan pesan error

@@ -27,7 +27,7 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
           <div class="col-lg-3 col-6">
-            <!-- small box -->
+            <!-- small box -->  
             <div class="small-box bg-info">
               <div class="inner">
                 <h3>{{$DokumenAdmindanPegawai}}</h3>
@@ -45,8 +45,8 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{$BanyakPeminjam}}</h3>
-                <p>Peminjam</p>
+                <h3>{{$BanyakPeminjamDokumen}}</h3>
+                <p>Peminjam Dokumen</p>
               </div>
               <div class="icon">
                 <i class="nav-icon fas fa-users"></i>
@@ -54,12 +54,25 @@
               <a href="/dokumen" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{$BanyakPeminjamBarang}}</h3>
+                <p>Peminjam Barang</p>
+              </div>
+              <div class="icon">
+                <i class="nav-icon fas fa-boxes"></i>
+              </div>
+              <a href="/peminjambarang" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>65</h3>
+                <h3>{{$BanyakBarangMasuk}}</h3>
                 <p>Barang Masuk</p>
               </div>
               <div class="icon">
@@ -73,7 +86,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>65</h3>
+                <h3>{{$BanyakBarangKeluar}}</h3>
                 <p>Barang Keluar</p>
               </div>
               <div class="icon">
@@ -110,13 +123,12 @@
             <div class="small-box bg-info">
               <div class="inner">
                 <h3>{{$DokumenSatpamdanMagang}}</h3>
-
                 <p>Dokumen</p>
               </div>
               <div class="icon">
                 <i class="ion ion-document-text"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('dokumen.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -126,7 +138,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>65</h3>
+                <h3>{{$BanyakBarangMasuk}}</h3>
                 <p>Barang Masuk</p>
               </div>
               <div class="icon">
@@ -140,7 +152,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>65</h3>
+                <h3>{{$BanyakBarangKeluar}}</h3>
                 <p>Barang Keluar</p>
               </div>
               <div class="icon">
@@ -189,8 +201,8 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{$BanyakPeminjam}}</h3>
-                <p>Peminjam</p>
+                <h3>{{$BanyakPeminjamDokumen}}</h3>
+                <p>Peminjam Dokumen</p>
               </div>
               <div class="icon">
                 <i class="nav-icon fas fa-users"></i>

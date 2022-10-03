@@ -7,7 +7,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Stok</h1>
+          <h1 class="m-0" >Stok</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -27,12 +27,14 @@
           <div class="card">
             <div class="card-header">
               {{-- <a class="btn btn-sm btn-primary" href="{{ route('stok.create') }}">Tambah stok</a> --}}
-              <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#staticBackdroptambah">Tambah
+              <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#staticBackdroptambah">   Tambah
                 Stok</a>
+                <a class="btn btn-sm btn-success" href="/cetakstok">      
+                     Cetak Stok</a>
               </div>
             <!-- /.card-header -->
             <div class="card-body ">
-              <table id="exampledokumen1" class="table table-bordered table-hover ">
+              <table id="examplestok" class="table table-bordered table-hover ">
                 <thead>
                   <tr>
                     <th>No</th>
@@ -57,22 +59,6 @@
                       <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#staticBackdropdelete{{$data->id}}">
                         Delete
                       </button>
-                        <div class="modal fade" id="staticBackdropdelete{{$data->id}}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content bg-default">
-                              <div class="modal-body">
-                                Apakah anda yakin menghapus {{$data->nama_barang}} ?
-                              </div>
-                              <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn  btn-sm btn-primary" data-dismiss="modal">Close</button>
-                                <form action="{{route('stok.destroy',$data->id)}}" method="POST"> 
-                                  @csrf
-                                  @method('DELETE')
-                                  <button type ="submit" class="btn btn-sm btn-danger">Delete</button></form>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
                     </td> 
                   </tr> @endforeach   
                 </tbody>
@@ -80,6 +66,22 @@
             </div>
             
             @foreach($stok as $data)
+            <div class="modal fade" id="staticBackdropdelete{{$data->id}}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content bg-default">
+                  <div class="modal-body">
+                    Apakah anda yakin menghapus {{$data->nama_barang}} ?
+                  </div>
+                  <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn  btn-sm btn-primary" data-dismiss="modal">Close</button>
+                    <form action="{{route('stok.destroy',$data->id)}}" method="POST"> 
+                      @csrf
+                      @method('DELETE')
+                      <button type ="submit" class="btn btn-sm btn-danger">Delete</button></form>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <div class="modal fade" id="staticBackdropedit{{$data->id}}" >
               <div class="modal-dialog">
                 <div class="modal-content bg-default">

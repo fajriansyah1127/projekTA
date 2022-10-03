@@ -112,7 +112,7 @@ class StokController extends Controller
         
         if($stok){
             //redirect dengan pesan sukses
-            alert()->success('Success', 'JOSSS DATANYA BERHASIL TERUBAH');
+            Alert::alert('DATA BERHASIL DIUBAH');
             return redirect('/stok');
         }else{
             //redirect dengan pesan error
@@ -142,5 +142,12 @@ class StokController extends Controller
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();
+    }
+
+    public function cetak(Stok $stok)
+    {
+        $stok = Stok::with('satuan')->get();
+        $satuan = Satuan::get();
+        return view('Stok.Cetak', compact('stok','satuan'));
     }
 }

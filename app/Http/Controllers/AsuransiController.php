@@ -115,7 +115,7 @@ class AsuransiController extends Controller
         
         if($asuransi){
             //redirect dengan pesan sukses
-            alert()->success('Success', 'JOSSS DATANYA BERHASIL TERUBAH');
+            Alert::alert('DATA BERHASIL DIUBAH');
             return redirect('/asuransi');
         }else{
             //redirect dengan pesan error
