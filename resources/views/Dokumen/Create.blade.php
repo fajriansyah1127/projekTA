@@ -44,10 +44,10 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Nomor Akad </label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="nomor_dokumen" class="form-control"
-                                                    placeholder="Masukkan Nomor Akad" required value="{{old('nomor_dokumen')}}">
+                                                <input type="text" name="nomor_akad" class="form-control"
+                                                    placeholder="Masukkan Nomor Akad" required value="{{old('nomor_akad')}}">
                                                 <div class="text-danger">
-                                                    @error('nomor_dokumen')
+                                                    @error('nomor_akad')
                                                         {{ $message }}
                                                     @enderror
                                                 </div>

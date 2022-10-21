@@ -26,8 +26,10 @@ class DashboardController extends Controller
     {
         $DokumenSatpamdanMagang = DB::table('dokumens')
         ->where('user_id', Auth::user()->id)
+        ->where('deleted_at','=',NULL)
         ->count('id');
         $DokumenAdmindanPegawai = DB::table('dokumens')
+        ->where('deleted_at','=',NULL)
         ->count('id');
         $BanyakUser = DB::table('users')
         ->count('id');
@@ -39,6 +41,9 @@ class DashboardController extends Controller
         ->count('id');
         $BanyakBarangKeluar  = DB::table('barang_keluar')
         ->count('id');
+        $BanyakSampah  = Dokumen::onlyTrashed()->count('id');
+        $riwayatadmin = DB::table('riwayats')->latest()->paginate(100);
+        $riwayatallrole= DB::table('riwayats')->where('user_id',Auth::user()->id)->latest()->paginate(100);
         // $BarangMasuk = BarangMasuk::get()->count();
         // $BarangKeluar = BarangKeluar::get()->count();
         // $Dokumen = Dokumen::get()->count();
@@ -49,7 +54,7 @@ class DashboardController extends Controller
         // $Satuan = Satuan::get()->count();
 
         // return view('index', compact('karwa', 'bah', 'supp', 'res'));
-        return view('index', compact('DokumenSatpamdanMagang','DokumenAdmindanPegawai','BanyakUser','BanyakPeminjamDokumen','BanyakBarangMasuk','BanyakBarangKeluar','BanyakPeminjamBarang'));
+        return view('index', compact('DokumenSatpamdanMagang','DokumenAdmindanPegawai','BanyakUser','BanyakPeminjamDokumen','BanyakBarangMasuk','BanyakBarangKeluar','BanyakPeminjamBarang','BanyakSampah','riwayatadmin','riwayatallrole'));
     }
 
     /**
@@ -116,5 +121,11 @@ class DashboardController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function download()
+    {
+        $file_path= public_path()."/Form_Serah_Terima_Barang.pdf";
+          return response()->download($file_path);
     }
 }

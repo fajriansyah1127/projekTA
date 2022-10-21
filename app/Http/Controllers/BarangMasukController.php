@@ -8,6 +8,8 @@ use App\Models\Stok;
 use Exception;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Riwayat;
 use Illuminate\Http\Request;
 
 class BarangMasukController extends Controller
@@ -85,6 +87,12 @@ class BarangMasukController extends Controller
             'foto' => $filename,
          ]);
 
+         Riwayat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'aktivitas' => 'Menambah Data Barang Masuk  '.$request->nama.''
+        ]);
+
 
         if ($notif) {
             //redirect dengan pesan sukses
@@ -161,6 +169,12 @@ class BarangMasukController extends Controller
             $inter['foto'] = "$filename";
         } 
         $barangmasuk->update($inter);
+
+        Riwayat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'aktivitas' => 'Mengubah Data Barang Masuk  '.$request->nama.''
+        ]);
         if ($barangmasuk) {
             //redirect dengan pesan sukses
             Alert::alert('DATA BERHASIL DIUBAH');
@@ -169,39 +183,6 @@ class BarangMasukController extends Controller
             //redirect dengan pesan error
             return redirect()->route('barangmasuk.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
-
-    //     $dokumen = BarangMasuk::find($id);
-
-    //     if ($file = Request()->foto_barangmasuk) {
-    //         File::delete('foto_barangmasuk/'.$dokumen->foto);  
-    //         $destinationPath = 'foto_barangmasuk/';
-    //         // $request->request->add(['user_id' => Auth::user()->id]);
-    //         $dokumenfile = Request()->nama_barangmasuk.date('his').'.'.$file->extension();
-    //         $file->move($destinationPath, $dokumenfile);
-    //         $request->foto = "$dokumenfile";
-    //     }else{
-    //         unset($request->foto);
-    //     }
-
-    //    $notif= BarangMasuk::where('id', $id)->update([
-    //     'stok_id' => $request->kodebarang_barangmasuk,
-    //     'nama' => $request->nama_barangmasuk,
-    //     'jenis' => $request->jenis_barangmasuk,
-    //     'satuan' => $request->satuan,
-    //     'penerima' => $request->penerima_barangmasuk,
-    //     'tanggal_masuk' => $request->tanggal_barangmasuk,
-    //     'foto' => $request->foto,
-    //     ]);
-
-    //     if ($notif) {
-    //         //redirect dengan pesan sukses
-    //         Alert::alert('Data Berhasil Diubah', 'success');
-    //         return redirect()->route('barangmasuk.index');
-    //     } else {
-    //         //redirect dengan pesan error
-    //         return redirect()->route('barangmasuk.edit')->with(['error' => 'Data Gagal Disimpan!']);
-    //     }
-       // return $request->all();
     }
 
     /**
@@ -221,6 +202,11 @@ class BarangMasukController extends Controller
             return redirect()->back();
         }
 
+        Riwayat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'aktivitas' => 'Menghapus Data Barang Masuk  '.$barangMasuk->nama.''
+        ]);
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();
     }

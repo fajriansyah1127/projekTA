@@ -149,7 +149,7 @@
 <br>
                                     <div class="card-footer text-muted">
                                         <div class="form-group">
-                                            <label for="exampleInputFile">Foto input</label>
+                                            <label for="exampleInputFile">Foto Input</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="form-control" id="exampleInputFile"

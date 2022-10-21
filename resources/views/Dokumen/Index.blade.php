@@ -57,7 +57,7 @@
                       <td>{{ $data->produk->asuransi->nama }}</td>
                       <td>{{ $data->nama_pengupload }}</td>
                       <td>
-                          <a href="{{asset('filearsip/')}}/{{ $data->file }}" target ="_blank"class="btn btn-sm btn-primary">Download</a>
+                          <a href="{{ route('dokumen.show',$data->file) }}" target ="_blank"class="btn btn-sm btn-primary">Download</a>
                           <a href="{{ route('dokumen.edit',$data->id) }}"class="btn btn-sm btn-warning">Edit</a>
                           <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#staticBackdropdelete{{$data->id}}">
                             Delete
@@ -252,7 +252,7 @@
                       <td>{{ $data->produk->asuransi->nama }}</td>
                       
                       <td>
-                          <a href="{{asset('filearsip/')}}/{{ $data->file }}" target ="_blank"class="btn btn-sm btn-primary">Download</a>
+                          <a href="{{ route('dokumen.show',$data->file) }}" target ="_blank"class="btn btn-sm btn-primary">Download</a>
                           <a href="{{ route('dokumen.edit',$data->id) }}"class="btn btn-sm btn-warning">Edit</a>
                           {{-- <a href="dokumen/{{$data->id}}/editmagang"class="btn btn-sm btn-warning">Edit</a> --}}
                           <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#staticBackdropdelete{{$data->id}}">

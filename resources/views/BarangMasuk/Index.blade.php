@@ -29,8 +29,8 @@
               <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#tambah">Tambah Barang Masuk</a>
             </div>
           
-            <div class="card-body ">
-              <table id="exampledokumen1" class="table table-bordered table-hover ">
+            <div class="card-body table-responsive ">
+              <table id="exampledokumen1" class="table table-bordered text-nowrap ">
                 <thead>
                   <tr>
                     <th>No</th>
@@ -38,10 +38,10 @@
                     <th>Jenis</th>
                     <th>Jumlah</th>
                     <th>Satuan</th>
-                    <th>Foto</th>
                     <th>Penerima</th>
                     <th>Tanggal Masuk</th>
                     <th>Action</th>
+                    <th>Foto</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -51,7 +51,6 @@
                     <td>{{ $data->jenis }}</td> 
                     <td>{{ $data->total_barangmasuk }}</td> 
                     <td>{{ $data->satuan }}</td> 
-                    <td><a href="{{ url('foto_barangmasuk/'.$data->foto) }} "target="_blank"><img src="{{ url('foto_barangmasuk/'.$data->foto) }}" alt="foto" width="100px" ></a></td> 
                     <td>{{ $data->penerima }}</td> 
                     <td>{{ $data->tanggal_masuk }}</td> 
                     <td>
@@ -60,6 +59,7 @@
                         Delete
                       </button>
                     </td> 
+                    <td><a href="{{ url('foto_barangmasuk/'.$data->foto) }} "target="_blank"><img src="{{ url('foto_barangmasuk/'.$data->foto) }}" alt="foto" width="100px" ></a></td> 
                   </tr> @endforeach
                 </tbody>
               </table>

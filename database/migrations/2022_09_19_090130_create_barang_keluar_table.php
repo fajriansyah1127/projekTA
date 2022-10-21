@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('total_barangkeluar');
             $table->string('satuan');
             $table->string('pengambil');
+            $table->string('foto');
             $table->date('tanggal_keluar');
             $table->timestamps();
         });

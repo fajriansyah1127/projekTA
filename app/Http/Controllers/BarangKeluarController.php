@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 use App\Models\Stok;
 use App\Models\BarangKeluar;
 use Exception;
+use Illuminate\Support\Facades\File;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Riwayat;
 
 class BarangKeluarController extends Controller
 {
@@ -53,6 +56,7 @@ class BarangKeluarController extends Controller
                'total_barangkeluar' => 'required',
                'satuan' => 'required',
                'pengambil_barangkeluar' => 'required',
+               'foto_barangkeluar' => 'required|file|image|mimes:jpg,jpeg,bmp,png|max:10000',
 
            ]); 
 
@@ -61,6 +65,10 @@ class BarangKeluarController extends Controller
         Stok::where('id', $request->kodebarang_barangkeluar)->update([
             'jumlah' => $update
         ]);
+
+        $file = Request()->foto_barangkeluar;
+        $filename = Request()->nama_barangkeluar.date('dmy').'.'.$file->extension();
+        $file->move(public_path('foto_barangkeluar'), $filename);
         
          $notif = BarangKeluar::create([
             'stok_id' => $request->kodebarang_barangkeluar,
@@ -70,8 +78,14 @@ class BarangKeluarController extends Controller
             'satuan' => $request->satuan,
             'pengambil' => $request->pengambil_barangkeluar,
             'tanggal_keluar' => $request->tanggal_barangkeluar,
+            'foto' => $filename,
          ]);
 
+         Riwayat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'aktivitas' => 'Menambah Data Barang Keluar  '.$request->nama.''
+        ]);
 
         if ($notif) {
             //redirect dengan pesan sukses
@@ -119,21 +133,36 @@ class BarangKeluarController extends Controller
     public function update(Request $request, $id)
     {
        
-        // $file = Request()->foto_barangkeluar;
-        // $filename = Request()->nama_barangkeluar.date('dmy').'.'.$file->extension();
-        // $file->move(public_path('foto_barangkeluar'), $filename);
-
-
-       $notif= BarangKeluar::where('id', $id)->update([
-        'stok_id' => $request->kodebarang_barangkeluar,
-        'nama' => $request->nama_barangkeluar,
-        'jenis' => $request->jenis_barangkeluar,
-        'satuan' => $request->satuan,
-        'pengambil' => $request->pengambil_barangkeluar,
-        'tanggal_keluar' => $request->tanggal_barangkeluar,
+        $this->validate($request, [
+            'stok_id' => 'required',
+            'tanggal_barangmasuk' => 'nullable',
+            'nama_barangkeluar' => 'nullable',
+            'jenis_barangkeluar' => 'nullable',
+            'satuan' => 'nullable',
+            'pengambil_barangkeluar' => 'nullable',
+            'foto' => 'nullable|file|image|mimes:jpg,jpeg,bmp,png|max:10000',
         ]);
 
-        if ($notif) {
+        $barangkeluar = BarangKeluar::find($id);
+
+        $inter = $request->all(); 
+
+        if ($file = $request->file('foto')) {
+            File::delete('foto_barangkeluar/' . $barangkeluar->foto);
+            $destinationPath = 'foto_barangkeluar/';
+            $filename = Request()->nama.date('his').'.'.$file->extension();
+            $file->move($destinationPath, $filename);
+            $inter['foto'] = "$filename";
+        } 
+        $barangkeluar->update($inter);
+
+        Riwayat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'aktivitas' => 'Mengubah Data Barang Keluar  '.$request->nama.''
+        ]);
+
+        if ($barangkeluar) {
             //redirect dengan pesan sukses
             Alert::alert('DATA BERHASIL DIUBAH');
             return redirect()->route('barangkeluar.index');
@@ -159,6 +188,12 @@ class BarangKeluarController extends Controller
             Alert::alert('ERROR', 'masih dipinjam');
             return redirect()->back();
         }
+
+        Riwayat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'aktivitas' => 'Menghapus Data Barang Keluar  '.$barangkeluar->nama.''
+        ]);
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();

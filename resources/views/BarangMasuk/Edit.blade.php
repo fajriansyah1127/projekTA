@@ -167,9 +167,9 @@
                                             <a href="{{ asset('foto_barangmasuk/') }}/{{ $barangmasuk->foto }}" target="_blank">
                                                 Lihat File</a>
                                         </div>
-                                    </div>
+                                   
 
-                                        <div class="card-footer">
+                                       
 
                                             <!-- bagian submit -->
 

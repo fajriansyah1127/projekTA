@@ -9,7 +9,10 @@ use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Exception;
 use Vinkla\Hashids\Facades\Hashids;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Riwayat;
 class PeminjamController extends Controller
+
 {
     /**
      * Display a listing of the resource.
@@ -55,6 +58,13 @@ class PeminjamController extends Controller
             'dokumen_id' => $request->Nomor_akad,
             'tanggal' => $request->Tanggal_pinjam,
         ]);
+
+        Riwayat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'aktivitas' => 'Menambah Data Peminjam Dokumen Atas Nama  '.$notif->nama.''
+        ]);
+
        if ($notif) {
            //redirect dengan pesan sukses
            alert()->success('Success', 'JOSSS DATANYA SUDAH MASUK');
@@ -108,6 +118,13 @@ class PeminjamController extends Controller
         $peminjam = Peminjam::find($id);
         $doku =  $request->all();
         $peminjam->update($doku);
+
+        Riwayat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'aktivitas' => 'Mengubah Data Peminjam Dokumen Atas Nama '.$peminjam->nama.''
+        ]);
+
         if ($peminjam) {
             //redirect dengan pesan sukses
             Alert::alert('DATA BERHASIL DIUBAH');
@@ -134,6 +151,12 @@ class PeminjamController extends Controller
             Alert::alert('ERROR', 'Terdapat Masalah Dalam Menghapus');
             return redirect()->back();
         }
+
+        Riwayat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'aktivitas' => 'Menghapus Data Peminjam Dokumen Atas Nama  '.$peminjam->nama.''
+        ]);
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();

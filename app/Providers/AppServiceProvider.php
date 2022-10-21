@@ -30,6 +30,7 @@ if ($this->app->isLocal()) {
      */
     public function boot()
     {
-        //
+        config(['app.locale' => 'id']);
+    \Carbon\Carbon::setLocale('id');
     }
 }

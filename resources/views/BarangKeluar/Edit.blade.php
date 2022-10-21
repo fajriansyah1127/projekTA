@@ -32,10 +32,10 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Tanggal Keluar </label>
                                             <div class="col-sm-10">
-                                                <input type="date"  name="tanggal_barangkeluar"
+                                                <input type="date"  name="tanggal_keluar"
                                                     class="form-control" value ="{{$barangkeluar -> tanggal_keluar}}"required>
                                                 <div class="text-danger">
-                                                    @error('tanggal_barangkeluar')
+                                                    @error('tanggal_keluar')
                                                         {{ $message }}
                                                     @enderror
                                                 </div>
@@ -47,10 +47,10 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Kode Barang </label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="kodebarang_barangkeluar" class="form-control"
+                                                <input type="text" name="stok_id" class="form-control"
                                                  value="{{$barangkeluar->stok_id }}" readonly>
                                                 <div class="text-danger">
-                                                    @error('nama_barangkeluar')
+                                                    @error('stok_id')
                                                     {{ $message }}
                                                     @enderror
                                                 </div>
@@ -60,10 +60,10 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Barang </label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="nama_barangkeluar" class="form-control"
+                                                <input type="text" name="nama" class="form-control"
                                                  value="{{ $barangkeluar->nama }}" readonly>
                                                 <div class="text-danger">
-                                                    @error('nama_barangkeluar')
+                                                    @error('nama')
                                                     {{ $message }}
                                                     @enderror
                                                 </div>
@@ -73,10 +73,10 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Jenis Barang </label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="jenis_barangkeluar" class="form-control"
+                                                <input type="text" name="jenis" class="form-control"
                                                  value="{{ $barangkeluar->jenis}}" readonly>
                                                 <div class="text-danger">
-                                                    @error('jenis_barangkeluar')
+                                                    @error('jenis')
                                                     {{ $message }}
                                                     @enderror
                                                 </div>
@@ -140,15 +140,35 @@
                                         <div class="form-group row">
                                             <label  class="col-sm-2 col-form-label">Pengambil</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="pengambil_barangkeluar" value="{{$barangkeluar ->pengambil}}"
+                                                <input type="text" name="pengambil" value="{{$barangkeluar ->pengambil}}"
                                                     class="form-control" required>
                                             </div>
                                         </div>
 
+                                        <div class="card-footer text-muted">
+                                            <div class="form-group">
+                                                <label for="exampleInputFile">Foto Input</label>
+                                                <div class="input-group">
+                                                    <div class="custom-file">
+                                                        <input type="file" class="form-control" id="exampleInputFile"
+                                                            name="foto" accept="image/png, image/gif, image/jpeg"required>
+                                                        <label class="custom-file-label" for="exampleInputFile">Choose
+                                                            Foto</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-danger">
+                                                        @error('foto')
+                                                            {{ $message }}
+                                                        @enderror
+                                                    </div>
+                                                    <a href="{{ asset('foto_barangkeluar/') }}/{{ $barangkeluar->foto }}" target="_blank">
+                                                        Lihat File</a>
+                                            </div>
+                                    
                                         
 
 <br>
-                                        <div class="card-footer">
+                                        
 
                                             <!-- bagian submit -->
 

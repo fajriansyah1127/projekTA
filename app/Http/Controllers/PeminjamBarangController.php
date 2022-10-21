@@ -7,6 +7,8 @@ use App\Models\Stok;
 use RealRashid\SweetAlert\Facades\Alert;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Riwayat;
 
 class PeminjamBarangController extends Controller
 {
@@ -56,6 +58,13 @@ class PeminjamBarangController extends Controller
             'keperluan' => $request->Keperluan_pinjam,
             'tanggal_pinjam' => $request->Tanggal_pinjam,
         ]);
+
+        Riwayat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'aktivitas' => 'Menambah Data Peminjam Barang Atas Nama  '.$request->Nama_peminjam.''
+        ]);
+
        if ($notif) {
            //redirect dengan pesan sukses
            alert()->success('Success', 'JOSSS DATANYA SUDAH MASUK');
@@ -109,6 +118,13 @@ class PeminjamBarangController extends Controller
         $peminjam = PeminjamBarang::find($id);
         $doku =  $request->all();
         $peminjam->update($doku);
+
+        Riwayat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'aktivitas' => 'Mengubah Data Peminjam Barang Atas Nama  '.$request->nama_peminjam.''
+        ]);
+
         if ($peminjam) {
             //redirect dengan pesan sukses
             Alert::alert('DATA BERHASIL DIUBAH');
@@ -135,6 +151,12 @@ class PeminjamBarangController extends Controller
             Alert::alert('ERROR', 'Terdapat Masalah Dalam Menghapus');
             return redirect()->back();
         }
+
+        Riwayat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'aktivitas' => 'Menghapus Data Peminjam Barang Atas Nama  '.$peminjam->nama_peminjam.''
+        ]);
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('file');
             $table->string('nama_pengupload');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::table('dokumens', function (Blueprint $table) {

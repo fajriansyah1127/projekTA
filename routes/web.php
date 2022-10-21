@@ -20,6 +20,9 @@ Use App\Http\Controllers\BarangMasukController;
 Use App\Http\Controllers\BarangkeluarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StokController;
+use App\Http\Controllers\KontakController;
+use App\Http\Controllers\RiwayatController;
+use App\Http\Controllers\FormulirController;
 use App\Models\CariBarang;
 
 /*
@@ -39,19 +42,14 @@ use App\Models\CariBarang;
 Route::get('/forget', function () {
     return view('auth.passwords.email');
 });
-//Route::get('/', [LoginController::class,'index'])->name('login');
+Route::get('/kontak', [KontakController::class,'index'])->name('kontak');
+
 
 Route::group(['middleware' => 'guest'], function () {
     Route::post('/auth', [AuthenticateController::class,'authenticate']);
-    // Route::get('/', function () {
-    //     return view('home');
-    // });
     Route::get('/login', [LoginController::class,'create'])->name('login');
-    //Route::get('/', [CariDokumenController::class,'index']);
     Route::resource('/', CariDokumenController::class);
-//     Route::get('/', function () {
-//     return view('home');
-// });
+
 });
 Route::resource('/login', LoginController::class);
 
@@ -60,22 +58,18 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');
     Route::post('/logout',[AuthenticateController::class,'logout']); 
-    
-    // Route::get('/index', function () {
-    //     return view('index');
-    // });
-    // Route::get('/index2', function () {
-    //     return view('index2');
-    // });
-    
-    // Route::resource('/dokumen', DokumenController::class)->middleware('satpam','admin');
-    // Route::resource('/dokumen', DokumenController::class)->middleware('admin');
+    Route::get('/kontak/show', [KontakController::class,'show'])->name('kontak');
 
     Route::group(['middleware'=> 'hakakses:Admin'],function(){
         Route::resource('/asuransi', AsuransiController::class);
         Route::resource('/user', UserController::class);
         Route::resource('/produk', ProdukController::class);
         Route::resource('/outlet', OutletController::class);
+        Route::get('/sampah', [DokumenController::class,'trash'])->name('trash');
+        Route::delete('/hapus_permanen/{id}', [DokumenController::class,'hapus_permanen'])->name('hapus_permanen');
+        Route::get('/restore/{id}', [DokumenController::class,'kembalikan'])->name('restore');
+        Route::resource('/riwayat',RiwayatController::class);
+        
     });
 
     Route::group(['middleware'=> 'hakakses:Admin,Pegawai'],function(){
@@ -89,41 +83,18 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/stok', StokController::class);
         Route::resource('/peminjambarang', PeminjamBarangController::class);
         Route::get('/cetakstok', [StokController::class,'cetak'])->name('cetak');
-    });
-
-    Route::group(['middleware'=> 'hakakses:Admin,Satpam,Pegawai,Magang'],function(){
-      
-        Route::resource('/dokumen', DokumenController::class);
-        Route::resource('/profile', ProfileController::class);
-        // Route::resource('/caridokumen', CariDokumenController::class);
-        // Route::resource('/riwayat', RiwayatController::class);
+        Route::resource('/formulirs',FormulirController::class);
     });
 
     // Route::group(['middleware'=> 'hakakses:Magang'],function(){
-    //     Route::resource('/dokumen', DokumenController::class);
+    //     Route::resource('/formulir',FormulirController::class);
     // });
 
-    // Route::group(['middleware'=> 'hakakses:Satpam'],function(){
-    //     Route::resource('/dokumen', DokumenController::class);
-    //     Route::resource('/profile', ProfileController::class);
-    //     Route::resource('/barangmasuk', BarangMasukController::class);
-    //     Route::resource('/dokumen', DokumenController::class);
-    //     Route::resource('/satuan', SatuanController::class);
-    // });
+    Route::group(['middleware'=> 'hakakses:Admin,Satpam,Pegawai,Magang'],function(){
+        Route::resource('/dokumen', DokumenController::class);
+        Route::resource('/profile', ProfileController::class);
+        Route::get('/cetakformulir', [DashboardController::class,'download'])->name('formulir');
+    });    
 
-    // Route::group(['middleware'=> 'hakakses:Pegawai'],function(){
-    //     Route::resource('/profile', ProfileController::class);
-    //     // Route::resource('/asuransi', AsuransiController::class);
-    //     Route::resource('/dokumen', DokumenController::class);
-    //     // Route::resource('/user', UserController::class);
-    //     Route::resource('/produk', ProdukController::class);
-    //     Route::resource('/peminjam', PeminjamController::class);
-    //     Route::resource('/outlet', OutletController::class);
-    //     Route::resource('/satuan', SatuanController::class);
-    //     // Route::resource('/barangmasuk', BarangMasukController::class);
-    // });
-    
 });
 Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

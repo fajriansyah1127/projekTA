@@ -41,6 +41,7 @@
                     <th>Pengambil</th>
                     <th>Tanggal Keluar</th>
                     <th>Action</th>
+                    <th>Foto</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -58,6 +59,7 @@
                         Delete
                       </button>
                     </td> 
+                    <td><a href="{{ url('foto_barangkeluar/'.$data->foto) }} "target="_blank"><img src="{{ url('foto_barangkeluar/'.$data->foto) }}" alt="foto" width="100px" ></a></td> 
                   </tr> @endforeach
                 </tbody>
               </table>

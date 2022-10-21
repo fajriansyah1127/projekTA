@@ -4,11 +4,15 @@
       <!-- Sidebar user panel (optional) -->@auth
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{asset('foto/')}}/{{auth()->user()->foto}}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{asset('template/dist/img')}}/Matador.png"  alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Nama User</a>
+          <a href="#" class="d-block">Area Balikpapan </a>
+         
         </div>
+        {{-- <div class="info">
+          <a href="#" class="d-block">Nama User</a>
+        </div> --}}
       </div>
 @endauth
 {{-- INI BAGIAN ROLE Admin --}}
@@ -79,6 +83,12 @@
                   <p>Data Peminjam</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="/sampah" class="nav-link {{Request::is('sampah')?'active':''}} ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sampah Dokumen</p>
+                </a>
+              </li>
             </ul>
           </li>
           
@@ -147,6 +157,25 @@
               </li>
             </ul>
           </li>
+
+          <li class="nav-item">
+            <a href="{{ route('formulirs.index') }}"  class="nav-link {{Request::is('formulir')?'active':''}}{{Request::is('formulir')?'active':''}}{{Request::is('user//edit')?'active':''}}"   >
+              <i class="nav-icon fas fa-file-pdf "></i>
+              <p>
+                Formulir Barang
+              </p>
+            </a>
+          </li>
+          
+          <li class="nav-item ">
+            {{-- <li class="nav-item menu-open">  --}}
+         <a href="{{ route('riwayat.index') }}" class="nav-link {{Request::is('riwayat')?'active':''}}">
+           <i class="nav-icon fas fa-tachometer-alt"></i>
+           <p>
+             Riwayat
+           </p>
+         </a>
+       </li>
         </nav>
       <!-- /.sidebar-menu -->
    
@@ -167,21 +196,12 @@
         </li>
 
         <li class="nav-item ">
-          <a href="" class="nav-link {{Request::is('dokumen/create')?'active':''}}  {{Request::is('dokumen')?'active':''}}">
+          <a href="{{ route('dokumen.index') }}" class="nav-link {{Request::is('dokumen/create')?'active':''}}  {{Request::is('dokumen')?'active':''}}">
             <i class="nav-icon fas fa-file"></i>
             <p>
               Dokumen klaim
-              <i class="right fas fa-angle-left"></i>
             </p>
           </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="{{ route('dokumen.index') }}" class="nav-link {{Request::is('dokumen/create')?'active':''}} {{Request::is('dokumen')?'active':''}}">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Dokumen Klaim</p>
-              </a>
-            </li>
-          </ul>
         </li>
 
         <li class="nav-item">
@@ -224,6 +244,15 @@
               </a>
             </li>
           </ul>
+          
+          <li class="nav-item">
+            <a href="{{ route('formulir') }}" target="_blank" class="nav-link {{Request::is('formulir')?'active':''}}{{Request::is('formulir')?'active':''}}{{Request::is('user//edit')?'active':''}}"   >
+              <i class="nav-icon fas fa-file-pdf "></i>
+              <p>
+                Formulir Barang
+              </p>
+            </a>
+          </li>
         </li>
       </nav>
 
@@ -300,6 +329,14 @@
                 </a>
               </li>
             </ul>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('formulir') }}" target="_blank" class="nav-link {{Request::is('formulir')?'active':''}}{{Request::is('formulir')?'active':''}}{{Request::is('user//edit')?'active':''}}"   >
+              <i class="nav-icon fas fa-file-pdf "></i>
+              <p>
+                Formulir Barang
+              </p>
+            </a>
           </li>
         </nav>
       @endif

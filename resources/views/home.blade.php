@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -23,10 +23,6 @@
       <link rel="stylesheet" href="{{asset('template')}}/dist/css/adminlte.min.css">
       <!-- overlayScrollbars -->
       <link rel="stylesheet" href="{{asset('template')}}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-      <!-- Daterange picker -->
-      <link rel="stylesheet" href="{{asset('template')}}/plugins/daterangepicker/daterangepicker.css">
-      <!-- summernote -->
-      <link rel="stylesheet" href="{{asset('template')}}/plugins/summernote/summernote-bs4.min.css">
     <title>SimDomba</title>
   </head>
   <body style="position: relative; min-height: 100%">
@@ -39,7 +35,7 @@
                   <div class="col"><small>Sistem Informasi</small></div>
               </div>
               <div class="row">
-                  <div class="col itk-color" style="font-weight: 700">Manajemen Dokumen dan Barang</div>
+                  <div class="col" style="font-weight: 700">Manajemen Dokumen dan Barang</div>
               </div>
           </div>
       </div>
@@ -50,7 +46,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
-              <a class="nav-item nav-link active" href="/contactex" style="font-weight: 700; color: #0067B2">Contact <span class="sr-only">(current)</span></a>
+              <a class="nav-item nav-link " href="{{ route('kontak') }}" >Contact <span class="sr-only">(current)</span></a>
               <a class="nav-item nav-link" href="/login">Login</a>
               
           </div>
@@ -141,9 +137,9 @@
 <!-- AdminLTE App -->
 <script src="{{asset('template')}}/dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{asset('template')}}/dist/js/demo.js"></script>
+{{-- <script src="{{asset('template')}}/dist/js/demo.js"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{asset('template')}}/dist/js/pages/dashboard.js"></script>
+{{-- <script src="{{asset('template')}}/dist/js/pages/dashboard.js"></script> --}}
 {{-- <script src="https://dokumen-mutu.itk.ac.id/asset/datepicker/datepicker.js"></script> --}}
 <script>
     $(document).ready(function(){

@@ -40,7 +40,7 @@ class iterasi3 extends TestCase
                     'nomor_dokumen' => $this->faker->ean13(),
                     'outlet_dokumen' =>  $this->faker->numberBetween($min = 1, $max = 10),
                     'tanggal_dokumen' =>  $this->faker->date(),
-                    'produk_dokumen' => $this->faker->numberBetween($min = 1, $max = 7),
+                    'produk_dokumen' => $this->faker->numberBetween($min = 1, $max = 4),
                     'file_dokumen' => UploadedFile::fake()->create('test4.pdf', 1024),
                 ]);
             $response->assertStatus(302);
@@ -108,4 +108,7 @@ class iterasi3 extends TestCase
     //     $response = $this->actingAs($user)->delete(route('peminjam.destroy','5'));
     //     $response->assertStatus(302);
     // }
+
+// SOFTDELETE
+
 }

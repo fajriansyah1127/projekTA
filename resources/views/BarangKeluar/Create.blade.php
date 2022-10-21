@@ -144,7 +144,24 @@
                                             </div>
                                         </div>
 
-                                        
+                                        <div class="card-footer text-muted">
+                                            <div class="form-group">
+                                                <label for="exampleInputFile">Foto Input</label>
+                                                <div class="input-group">
+                                                    <div class="custom-file">
+                                                        <input type="file" class="form-control" id="exampleInputFile"
+                                                            name="foto_barangkeluar" accept="image/png, image/gif, image/jpeg"required>
+                                                        <label class="custom-file-label" for="exampleInputFile">Choose
+                                                            Foto</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-danger">
+                                                        @error('foto_barangkeluar')
+                                                            {{ $message }}
+                                                        @enderror
+                                                    </div>
+                                            </div>
+                                        </div>
 
 <br>
                                     

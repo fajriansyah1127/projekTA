@@ -9,7 +9,7 @@ class BarangKeluar extends Model
 {
     use HasFactory;
     protected $table = "barang_keluar";
-    protected $fillable = ["nama","jenis","total_barangkeluar","satuan","pengambil","tanggal_keluar","stok_id"];
+    protected $fillable = ["nama","jenis","total_barangkeluar","satuan","pengambil","tanggal_keluar","stok_id","foto"];
     protected $guarded =['id'];
 
 

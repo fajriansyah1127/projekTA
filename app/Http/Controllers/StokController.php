@@ -7,6 +7,8 @@ use Exception;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Stok;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Riwayat;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class StokController extends Controller
@@ -56,6 +58,12 @@ class StokController extends Controller
             'jenis_barang' => $request->jenis_barang,
             'jumlah' => $request->jumlah,
             'satuan_id' => $request->satuan,
+        ]);
+
+        Riwayat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'aktivitas' => 'Menambah Stok  '.$request->nama_barang.''
         ]);
        
         if($notif){
@@ -110,6 +118,12 @@ class StokController extends Controller
         $inter = $request->all();  
         $stok->update($inter);
         
+        Riwayat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'aktivitas' => 'Mengubah Data Barang '.$stok->nama_barang.''
+        ]);
+
         if($stok){
             //redirect dengan pesan sukses
             Alert::alert('DATA BERHASIL DIUBAH');
@@ -139,6 +153,12 @@ class StokController extends Controller
             alert()->error('ERROR', 'Terdapat Masalah Dalam Menghapus');
             return redirect()->back();
         }
+
+        Riwayat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'aktivitas' => 'Menghapus Stok  '.$stok->nama_barang.''
+        ]);
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();

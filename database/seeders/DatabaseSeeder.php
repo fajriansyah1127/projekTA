@@ -21,6 +21,28 @@ class DatabaseSeeder extends Seeder
     {
         
         User::create([
+            'Nama' => 'Aris Bobby Gunadhi',
+            'Email' => 'bobbygunadhi1975@gmail.com',
+            'Kontak' => '085347031080',
+            'Alamat' => 'jln Mesjid Ar raudah rt 19 no 30 kelurahan damai bahagia ',
+            'Role' => 'Admin',
+            'Jabatan' => 'Kepala Departemen Gadai',
+            'Password' => bcrypt('asdfghjklkjh'),
+            'Foto' => 'user.jpg',
+        ]);
+        
+        
+        User::create([
+            'Nama' => 'Eko Cahyanto',
+            'Email' => 'eko@gmail.com',
+            'Kontak' => '082350476227',
+            'Alamat' => 'jln Mesjid Ar raudah rt 19 no 30 kelurahan damai bahagia ',
+            'Role' => 'Admin',
+            'Jabatan' => 'Kepala Departemen Non Gadai',
+            'Password' => bcrypt('asdfghjklkjh'),
+            'Foto' => 'user.jpg',
+        ]);
+        User::create([
             'Nama' => 'Fajriansyah',
             'Email' => 'fajriansyah573@gmail.com',
             'Kontak' => '082350476227',
@@ -32,12 +54,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'Nama' => 'Nursinta',
-            'Email' => 'nursinta@gmail.com',
+            'Nama' => 'Andri',
+            'Email' => 'andri@gmail.com',
             'Kontak' => '082350476227',
             'Alamat' => 'jln Mesjid Ar raudah rt 19 no 30 kelurahan damai bahagia ',
-            'Role' => 'Satpam',
-            'Jabatan' => 'Satpam',
+            'Role' => 'Pegawai',
+            'Jabatan' => 'Opertional Support Area Balikpapan',
             'Password' => bcrypt('asdfghjklkjh'),
             'Foto' => 'user.jpg',
         ]);
@@ -52,6 +74,17 @@ class DatabaseSeeder extends Seeder
             'Password' => bcrypt('asdfghjklkjh'),
             'Foto' => 'user.jpg',
         ]);
+        User::create([
+            'Nama' => 'Nursinta',
+            'Email' => 'nursinta@gmail.com',
+            'Kontak' => '082350476227',
+            'Alamat' => 'jln Mesjid Ar raudah rt 19 no 30 kelurahan damai bahagia ',
+            'Role' => 'Satpam',
+            'Jabatan' => 'Satpam',
+            'Password' => bcrypt('asdfghjklkjh'),
+            'Foto' => 'user.jpg',
+        ]);
+
 
         User::create([
             'Nama' => 'Rijki P',
