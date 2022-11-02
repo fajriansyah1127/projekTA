@@ -14,7 +14,7 @@ use App\Http\Controllers\PeminjamBarangController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\OutletController;
 Use App\Http\Controllers\BarangMasukController;
-Use App\Http\Controllers\BarangkeluarController;
+Use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StokController;
 use App\Http\Controllers\KontakController;
@@ -44,7 +44,7 @@ Route::get('/forget', function () {
 
 Route::group(['middleware' => 'guest'], function () {
     Route::post('/auth', [AuthenticateController::class,'authenticate']);
-    Route::get('/', [HomeController::class,'index'])->name('login');
+    Route::get('/', [HomeController::class,'index']);
     Auth::routes();
     // Route::resource('/', CariDokumenController::class);
     Route::get('/kontak', [KontakController::class,'index'])->name('kontak');
