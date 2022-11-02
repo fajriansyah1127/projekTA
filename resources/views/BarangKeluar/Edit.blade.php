@@ -83,36 +83,15 @@
                                             </div>
                                         </div>
                                         
+                                        <input type="hidden" name="stok_barangkeluar" id="stok" class="form-control"value="{{$barangkeluar->stok->jumlah}}"readonly>
                                         
-                                        {{-- <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Stok</label>
-                                            <div class="col-sm-10">
-                                                <input type="number" name="stok_barangkeluar" id="stok" class="form-control"
-                                                value="{{ $barangkeluar->jumlah }}" readonly>
-                                                 <div class="text-danger">
-                                                    @error('jenis_barangkeluar')
-                                                    {{ $message }}
-                                                    @enderror
-                                                </div> 
-                                            </div>
-                                        </div>  --}}
+                                        <input type="hidden" name="jumlah_terlanjurkeluar" value="{{$barangkeluar -> total_barangkeluar}}" id="jumlah_terlanjurkeluar"class="form-control" readonly  >
 
-                                        {{-- <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Jumlah</label>
-                                            <div class="col-sm-10">
-                                                <input type="number" name="total_barangkeluar" id="jumlah_total" class="form-control @error('jumlah') is-invalid @enderror" value="{{$barangkeluar -> total_barangkeluar}}" onkeyup="sum()">
-                                                <div class="text-danger">
-                                                    @error('jumlah')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        </div> --}}
 
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Jumlah</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="jumlah" value="{{$barangkeluar -> total_barangkeluar}}" id="jumlah"class="form-control" readonly >
+                                                <input type="number" name="total_barangkeluar" value="{{$barangkeluar -> total_barangkeluar}}" id="jumlah_total"class="form-control" onkeyup="sum()" >
                                                 <div class="text-danger">
                                                     @error('total_barangkeluar')
                                                         {{ $message }}
@@ -121,12 +100,23 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Total Stok</label>
+                                            <div class="col-sm-10">
+                                                <input type="number" name="jumlah" id="jumlah"class="form-control" value="{{old('jumlah')}}" required readonly >
+                                                <div class="text-danger">
+                                                    @error('jumlah')
+                                                        {{ 'Perlu di isi !!' }}
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
                                         
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Satuan </label>
                                             <div class="col-sm-10">
                                                 <input type="text" name="satuan" class="form-control"
-                                                placeholder="{{ $barangkeluar->satuan}}" value="{{ $barangkeluar->satuan}}" readonly>
+                                                value="{{ $barangkeluar->stok->satuan->nama}}" readonly>
                                                 <div class="text-danger">
                                                     @error('jenis_barangkeluar')
                                                     {{ $message }}
@@ -151,7 +141,7 @@
                                                 <div class="input-group">
                                                     <div class="custom-file">
                                                         <input type="file" class="form-control" id="exampleInputFile"
-                                                            name="foto" accept="image/png, image/gif, image/jpeg"required>
+                                                            name="foto" accept="image/png, image/gif, image/jpeg">
                                                         <label class="custom-file-label" for="exampleInputFile">Choose
                                                             Foto</label>
                                                         </div>
@@ -193,10 +183,11 @@
         <!-- /.content -->
     </div>
     <script>
-        function sum() {
+       function sum() {
             var stok = document.getElementById('stok').value;
-            var jumlahkeluar = document.getElementById('jumlah_total').value;
-            var result = parseInt(stok) + parseInt(jumlahkeluar);
+            var jumlahterlanjurkeluar = document.getElementById('jumlah_terlanjurkeluar').value;
+            var jumlahaslikeluar = document.getElementById('jumlah_total').value;
+            var result = parseInt(stok) + parseInt(jumlahterlanjurkeluar) -  parseInt(jumlahaslikeluar);
             if (!isNaN(result)) {
                 document.getElementById('jumlah').value = result;
             }

@@ -23,7 +23,7 @@
       <link rel="stylesheet" href="{{asset('template')}}/dist/css/adminlte.min.css">
       <!-- overlayScrollbars -->
       <link rel="stylesheet" href="{{asset('template')}}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <title>SimDomba</title>
+    <title>Simdomba</title>
   </head>
   <body style="position: relative; min-height: 100%">
     @include('sweetalert::alert')
@@ -46,7 +46,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
-              <a class="nav-item nav-link " href="{{ route('kontak') }}" >Contact <span class="sr-only">(current)</span></a>
+              <a class="nav-item nav-link " href="/kontak" >Contact <span class="sr-only">(current)</span></a>
               <a class="nav-item nav-link" href="/login">Login</a>
               
           </div>

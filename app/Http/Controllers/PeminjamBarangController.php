@@ -141,7 +141,7 @@ class PeminjamBarangController extends Controller
      *
      * @param  \App\Models\PeminjamBarang  $peminjamBarang
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function destroy($id)
     {
         $peminjam = PeminjamBarang::find($id);

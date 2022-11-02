@@ -99,7 +99,7 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'Nama' => 'Wahyu Satya Putra',
-            'Email' => 'wahyu@gmail.com',
+            'Email' => 'wahyusatyaputra@gmail.com',
             'Kontak' => '082350476227',
             'Alamat' => 'jln Mesjid Ar raudah rt 19 no 30 kelurahan damai bahagia ',
             'Role' => 'Magang',

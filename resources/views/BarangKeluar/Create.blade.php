@@ -161,12 +161,12 @@
                                                         @enderror
                                                     </div>
                                             </div>
-                                        </div>
+                                      
 
 <br>
                                     
 
-                                        <div class="card-footer">
+                                      
 
                                             <!-- bagian submit -->
 

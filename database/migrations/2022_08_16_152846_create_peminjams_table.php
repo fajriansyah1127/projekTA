@@ -19,11 +19,12 @@ return new class extends Migration
             $table->string('nama');
             $table->date('tanggal');
             $table->timestamps();
+            $table->softDeletes();
             
         });
 
         Schema::table('peminjams', function (Blueprint $table) {
-            $table->foreign('dokumen_id')->references('id')->on('dokumens')->ondelete('restrict');
+            $table->foreign('dokumen_id')->references('id')->on('dokumens')->ondelete('setnull');
             // $table->foreign('produk_id')->references('id')->on('asuransis')->ondelete('cascade');
         });
     }

@@ -8,6 +8,8 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Riwayat;
+use Illuminate\Support\Facades\Auth;
 use Exception;
 
 class UserController extends Controller
@@ -49,7 +51,7 @@ class UserController extends Controller
             'Alamat' => 'required',
             'Role' => 'required',
             'Jabatan' => 'required',
-            'Password' => 'required|min:8',
+            'Password' => 'required|min:8|max:20',
             'Foto' => 'required|file|image|mimes:jpg,jpeg,bmp,png|max:2048',
 
         ]);
@@ -73,6 +75,11 @@ class UserController extends Controller
             'password' =>$request->Password,
         ]);
 
+        Riwayat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'aktivitas' => 'Menambah '.$request->Nama.''
+        ]);
 
         if ($notif) {
             //redirect dengan pesan sukses
@@ -136,6 +143,11 @@ class UserController extends Controller
             $inter['foto'] = "$filename";
         } 
         $user->update($inter);
+        Riwayat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'aktivitas' => 'Mengubah Data Atas Nama  '.$request->nama.''
+        ]);
         if ($user) {
             //redirect dengan pesan sukses
             Alert::alert('DATA BERHASIL DIUBAH');
@@ -171,7 +183,12 @@ class UserController extends Controller
               
                     $user->delete();
                     File::delete('foto/' .$user->foto);
-                    
+
+                    Riwayat::create([
+                        'user_id' => Auth::user()->id,
+                        'nama' => Auth::user()->nama,
+                        'aktivitas' => 'Menghapus '.$user->Nama.'Dari Sistem'
+                    ]);
             
                     Alert::toast('Data Berhasil Dihapus', 'success');
                     return redirect()->back();

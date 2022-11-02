@@ -42,13 +42,14 @@ use App\Models\CariBarang;
 Route::get('/forget', function () {
     return view('auth.passwords.email');
 });
-Route::get('/kontak', [KontakController::class,'index'])->name('kontak');
+
 
 
 Route::group(['middleware' => 'guest'], function () {
     Route::post('/auth', [AuthenticateController::class,'authenticate']);
-    Route::get('/login', [LoginController::class,'create'])->name('login');
-    Route::resource('/', CariDokumenController::class);
+    Route::get('/', [LoginController::class,'create'])->name('login');
+    // Route::resource('/', CariDokumenController::class);
+    Route::get('/kontak', [KontakController::class,'index'])->name('kontak');
 
 });
 Route::resource('/login', LoginController::class);
@@ -93,7 +94,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware'=> 'hakakses:Admin,Satpam,Pegawai,Magang'],function(){
         Route::resource('/dokumen', DokumenController::class);
         Route::resource('/profile', ProfileController::class);
-        Route::get('/cetakformulir', [DashboardController::class,'download'])->name('formulir');
+        Route::resource('/formulirs',FormulirController::class);
     });    
 
 });

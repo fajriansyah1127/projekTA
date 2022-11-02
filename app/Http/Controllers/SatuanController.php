@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Satuan;
+use App\Models\Stok;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -119,12 +120,23 @@ class SatuanController extends Controller
     public function destroy($id)
     {
         $satuan = Satuan::find($id);
-        try {
-            $satuan->delete();
-        } catch (Exception $e){
-            Alert::alert('ERROR', 'Satuan Terdapat Pada Barang');
+        $stok = Stok::where('satuan_id', $id);
+
+        if($stok){
+            Alert::alert('ERROR', 'Barang masih dipinjam');
             return redirect()->back();
-        }
+		}elseif($satuan){
+			$satuan->delete();
+		}else{
+			return abort(500);
+		} 
+
+        // try {
+        //     $satuan->delete();
+        // } catch (Exception $e){
+        //     Alert::alert('ERROR', 'Satuan Terdapat Pada Barang');
+        //     return redirect()->back();
+        // }
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();
     }

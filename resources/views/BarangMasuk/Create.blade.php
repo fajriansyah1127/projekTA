@@ -148,7 +148,7 @@
 
 <br>
                                     <div class="card-footer text-muted">
-                                        <div class="form-group">
+                                        <div class="form-group ">
                                             <label for="exampleInputFile">Foto Input</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
@@ -164,15 +164,13 @@
                                                     @enderror
                                                 </div>
                                         </div>
-                                    </div>
+                                    </div> 
+                                   
 
                                         <div class="card-footer">
-
-                                            <!-- bagian submit -->
-
                                             <button type="submit" class="btn btn-success float-right">Submit</button>
-
-                                        </div>
+                                        </div>  
+                                      
 
                                         <!-- bagian tanggal -->
                                         

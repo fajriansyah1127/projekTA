@@ -152,7 +152,7 @@
                                             <div class="form-group">
                                                 <label for="exampleFormControlFile1">Masukkan Foto</label>
                                                 <input type="file" name="foto" class="form-control"
-                                                    value="{{ old('foto') }}">
+                                                    value="{{ old('foto') }}" accept="image/png, image/gif, image/jpeg">
                                                 <div class="text-danger">
                                                     @error('foto')
                                                         {{ $message }}
@@ -161,9 +161,13 @@
                                             </div>
                                         </div>
 
+                                        <div class="card-footer">
 
-                                        <button type="submit" class=" btn btn-success float-right">Submit</button>
+                                            <!-- bagian submit -->
 
+                                            <button type="submit" class="btn btn-success float-right">Submit</button>
+
+                                        </div>
                                     </form>
 
                                 </div>

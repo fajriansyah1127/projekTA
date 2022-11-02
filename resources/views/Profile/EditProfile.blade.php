@@ -17,7 +17,7 @@
                 <div class="container">
                             <div class="card mt-2">
                         <div class="card-header">
-                          <h4 style="text-align:center"><b> EDIT PROFILE </b></h4>
+                          <h4 style="text-align:center"><b> Edit Profile </b></h4>
                         </div>
                         <div class="card-body">
               
@@ -146,7 +146,7 @@
                                 <div class="form-group">
                                     <label for="exampleFormControlFile1">Masukkan Foto</label>
                                     <input type="file" name="foto" class="form-control"  value="{{old('Foto')}}">
-                                    <div class ="text-danger">
+                                    <div class ="text-danger" accept="image/png, image/gif, image/jpeg" >
                                       @error('foto')
                                       {{ $message }}
                                       @enderror
@@ -154,9 +154,13 @@
                                 </div>
                             </div>             
                 
-                            <div class="card-footer text-muted">
-                              <button type="submit" class="btn btn-danger mb-3">Submit</button>
-                            </div>
+                            <div class="card-footer">
+
+                              <!-- bagian submit -->
+
+                              <button type="submit" class="btn btn-success float-right">Submit</button>
+
+                          </div>
                           </form>
                       
                 </div>

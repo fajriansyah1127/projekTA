@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('barang_masuk', function (Blueprint $table) {
             $table->id();
-            $table->string('stok_id');
+            $table->foreignId('stok_id');
             $table->string('nama');
             $table->string('jenis');
             $table->integer('total_barangmasuk');
@@ -24,8 +24,13 @@ return new class extends Migration
             $table->string('foto');
             $table->date('tanggal_masuk');
             $table->timestamps();
+            $table->softDeletes();
         });
 
+        Schema::table('barang_masuk', function (Blueprint $table) {
+            $table->foreign('stok_id')->references('id')->on('stoks')->ondelete('cascade')->onUpdate('cascade');
+            // $table->foreign('produk_id')->references('id')->on('asuransis')->ondelete('cascade');
+        });
         
     }
 

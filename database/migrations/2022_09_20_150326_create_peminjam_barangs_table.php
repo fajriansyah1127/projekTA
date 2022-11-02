@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('keperluan');
             $table->date('tanggal_pinjam');
             $table->timestamps();
+            $table->softDeletes();
         });
         Schema::table('peminjam_barangs', function (Blueprint $table) {
             $table->foreign('stok_id')->references('id')->on('stoks')->ondelete('restrict');

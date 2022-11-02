@@ -146,7 +146,8 @@ class PeminjamController extends Controller
     {
         $peminjam = Peminjam::find($id);
         try {
-            $peminjam->delete();
+            // $peminjam->delete();
+            $peminjam->forceDelete();
         } catch (Exception $e){
             Alert::alert('ERROR', 'Terdapat Masalah Dalam Menghapus');
             return redirect()->back();

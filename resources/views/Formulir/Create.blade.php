@@ -45,26 +45,13 @@
                                             <label class="col-sm-2 col-form-label">File input</label>
                                             <div class="col-sm-10">
                                                 <input type="file" id="nama" name="file_formulir"
-                                                    class="form-control" placeholder="Masukkan Nama "required value="{{old('file_formulir')}}">
+                                                    class="form-control" placeholder="Masukkan Nama " accept="application/pdf" required value="{{old('file_formulir')}}">
                                                 <div class="text-danger">
                                                     @error('file_formulir')
                                                         {{ $message }}
                                                     @enderror
                                                 </div>
                                             </div>
-                                            {{-- <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input type="file" class="form-control" id="exampleInputFile"
-                                                        name="file_formulir" required>
-                                                        <div class="text-danger">
-                                                            @error('file_formulir')
-                                                                {{ $message }}
-                                                            @enderror
-                                                        </div>
-                                                    <label class="custom-file-label" for="exampleInputFile">Choose
-                                                        file</label>
-                                                    </div>
-                                            </div> --}}
                                         </div>
                                    
                                         <br>

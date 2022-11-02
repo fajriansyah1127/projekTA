@@ -129,7 +129,7 @@ class ProfileController extends Controller
             'alamat' => 'nullable',
             'jabatan' => 'nullable',
             'current_password' => 'nullable|required_with:new_password',
-            'new_password' => 'nullable|min:8|required_with:current_password',
+            'new_password' => 'nullable|min:8|required_with:current_password|max:20',
             'password_confirmation' => 'nullable|min:8|required_with:new_password|same:new_password',
             'foto' => 'nullable|file|mimes:jpg,png,jpeg,gif,svg,jfif|max:2048',
         ]);

@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Riwayat;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 class BarangMasukController extends Controller
 {
     /**
@@ -22,8 +23,9 @@ class BarangMasukController extends Controller
     public function index()
     {
         $stok = stok::get();
-        $barangmasuk = BarangMasuk::latest()->paginate(50);
-        return view('BarangMasuk.Index',compact('stok','barangmasuk'));
+        $barangmasuk = BarangMasuk::with('stok')->latest()->get();
+        $satuan = Satuan::get();
+        return view('BarangMasuk.Index',compact('stok','barangmasuk','satuan'));
     }
 
     /**
@@ -63,7 +65,6 @@ class BarangMasukController extends Controller
             'satuan' => 'required',
             'penerima_barangmasuk' => 'required',
             'foto_barangmasuk' => 'required|file|image|mimes:jpg,jpeg,bmp,png|max:10000',
-
         ]); 
 
        
@@ -73,7 +74,7 @@ class BarangMasukController extends Controller
         ]);
         
         $file = Request()->foto_barangmasuk;
-        $filename = Request()->nama_barangmasuk.date('dmy').'.'.$file->extension();
+        $filename = Request()->nama_barangmasuk.date('his').'.'.$file->extension();
         $file->move(public_path('foto_barangmasuk'), $filename);
        
          $notif = BarangMasuk::create([
@@ -86,6 +87,7 @@ class BarangMasukController extends Controller
             'tanggal_masuk' => $request->tanggal_barangmasuk,
             'foto' => $filename,
          ]);
+         
 
          Riwayat::create([
             'user_id' => Auth::user()->id,
@@ -125,11 +127,17 @@ class BarangMasukController extends Controller
      * @param  \App\Models\BarangMasuk  $barangMasuk
      * @return \Illuminate\Http\Response
      */
-    public function edit($barangMasuk)
+    public function edit($id)
     {
-        $barangmasuk = BarangMasuk::find($barangMasuk);
-        // $stok = Stok::with('satuan')->where('id','BAR-0002')->get();
-        return view('BarangMasuk.Edit', compact('barangmasuk'));
+        $barangmasuk = BarangMasuk::findOrfail($id); 
+        try {
+               $barangmasuk->stok->jumlah;
+        } catch (Exception $e){
+            Alert::alert('ERROR', 'Stok Sudah Di Hapus');
+            return redirect()->route('barangmasuk.index');
+        }
+        $stok = Stok::get();
+        return view('BarangMasuk.Edit', compact('barangmasuk','stok'));
     }
 
     
@@ -153,6 +161,8 @@ class BarangMasukController extends Controller
             'tanggal_barangmasuk' => 'nullable',
             'nama' => 'nullable',
             'jenis' => 'nullable',
+            'total_barangmasuk' => 'nullable',
+            'jumlah' =>'required',
             'satuan' => 'nullable',
             'penerima' => 'nullable',
             'foto' => 'nullable|file|image|mimes:jpg,jpeg,bmp,png|max:10000',
@@ -170,6 +180,11 @@ class BarangMasukController extends Controller
         } 
         $barangmasuk->update($inter);
 
+        $update = $request->jumlah;  
+        Stok::where('id', $request->stok_id)->update([
+            'jumlah' => $update
+        ]);
+
         Riwayat::create([
             'user_id' => Auth::user()->id,
             'nama' => Auth::user()->nama,
@@ -183,6 +198,7 @@ class BarangMasukController extends Controller
             //redirect dengan pesan error
             return redirect()->route('barangmasuk.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
+        //return request()->all();
     }
 
     /**

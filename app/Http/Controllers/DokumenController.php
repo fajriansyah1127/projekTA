@@ -5,6 +5,7 @@ use Exception;
 use App\Models\Dokumen;
 use App\Models\Asuransi;
 use App\Models\Outlet;
+use App\Models\Peminjam;
 use App\Models\Produk;
 use App\Models\Riwayat;
 use Illuminate\Support\Facades\Auth;
@@ -60,9 +61,9 @@ class DokumenController extends Controller
              'produk_dokumen' => 'required',
              'file_dokumen' => 'required|file|mimes:pdf|max:100000',
           ]); 
-          
+
          $file = Request()->file_dokumen;
-         $filename = Request()->nama_dokumen . '_'.Request()->nomor_dokumen.date('dmy').'.' . $file->extension();
+         $filename = Request()->nama_dokumen . '_'.Request()->nomor_akad.date('dmy').'.' . $file->extension();
          $file->move(public_path('filearsip'), $filename);
 
          $notif = Dokumen::create([
@@ -183,7 +184,7 @@ class DokumenController extends Controller
             File::delete('filearsip/'.$dokumen->file);  
             $destinationPath = 'filearsip/';
             $request->request->add(['user_id' => Auth::user()->id]);
-            $dokumenfile = Request()->nama.'_'.Request()->nomor_surat.date('dmy').'.' . $file->extension();
+            $dokumenfile = Request()->nama.'_'.Request()->nomor_akad.date('dmy').'.' . $file->extension();
             $file->move($destinationPath, $dokumenfile);
             $doku['file'] = "$dokumenfile";
         }else{
@@ -218,13 +219,24 @@ class DokumenController extends Controller
     public function destroy($id)
     {
         $decoded_id = Hashids::decode($id);
+        // $peminjam = Peminjam::where('dokumen_id', $decoded_id)->get('dokumen_id');
         $dokumen = Dokumen::find($decoded_id[0]);
-        try {
-            $dokumen->delete();
-        } catch (Exception $e){
+        
+        if(Peminjam::where('dokumen_id', $decoded_id)->exists()){
             Alert::alert('ERROR', 'Dokumen masih dipinjam');
             return redirect()->back();
-        }
+		}elseif($dokumen){
+			$dokumen->delete();
+		}else{
+			return abort(500);
+		}
+
+        // try {
+        //     $dokumen->delete();
+        // } catch (Exception $e){
+        //     Alert::alert('ERROR', 'Dokumen masih dipinjam');
+        //     return redirect()->back();
+        // }
 
         Riwayat::create([
             'user_id' => Auth::user()->id,
@@ -262,13 +274,22 @@ class DokumenController extends Controller
         // $dokumen = Dokumen::find($decoded_id[0]);
     	// $dokumen = Dokumen::onlyTrashed()->where('id',$decoded_id);
         $dokumen = Dokumen::onlyTrashed()->find($decoded_id[0]);
-        try {
-            $dokumen->forceDelete();
-            File::delete('filearsip/' . $dokumen->file);
-        } catch (Exception $e){
-            Alert::alert('ERROR', 'Dokumen masih dipinjam');
+        if(Peminjam::where('dokumen_id', $decoded_id)->exists()){
+            Alert::alert('ERROR', 'Barang masih dipinjam');
             return redirect()->back();
-        }
+		}elseif($dokumen){
+			$dokumen->forceDelete();
+            File::delete('filearsip/' . $dokumen->file);
+		}else{
+			return abort(500);
+		} 
+        // try {
+        //     $dokumen->forceDelete();
+        //     File::delete('filearsip/' . $dokumen->file);
+        // } catch (Exception $e){
+        //     Alert::alert('ERROR', 'Dokumen masih dipinjam');
+        //     return redirect()->back();
+        // }
         
         Alert::toast('Data Berhasil DiHapus', 'success');
     	return redirect('/sampah');

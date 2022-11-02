@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PeminjamBarang;
 use App\Models\Satuan;
 use Exception;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -147,12 +148,22 @@ class StokController extends Controller
         // Alert::alert('Data Berhasil DiHAPUS', 'success');
         // return redirect()->back();
         $stok = Stok::find($id);
-        try {
-            $stok->delete();
-        } catch (Exception $e){
-            alert()->error('ERROR', 'Terdapat Masalah Dalam Menghapus');
+        $peminjam = PeminjamBarang::where('stok_id', $id);
+
+        if(PeminjamBarang::where('stok_id', $id)->exists()){
+            Alert::alert('ERROR', 'Barang masih dipinjam');
             return redirect()->back();
-        }
+		}elseif($stok){
+			$stok->delete();
+		}else{
+			return abort(500);
+		} 
+        // try {
+        //     $stok->delete();
+        // } catch (Exception $e){
+        //     alert()->error('ERROR', 'Terdapat Masalah Dalam Menghapus');
+        //     return redirect()->back();
+        // }
 
         Riwayat::create([
             'user_id' => Auth::user()->id,

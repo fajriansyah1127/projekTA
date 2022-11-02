@@ -27,6 +27,7 @@
           <div class="card">
             <div class="card-header">
               <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#tambah">Tambah Barang Masuk</a>
+              <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#tambahstock">Tambah Stok</a>
             </div>
           
             <div class="card-body table-responsive ">
@@ -50,7 +51,7 @@
                     <td>{{ $data->nama}}</td> 
                     <td>{{ $data->jenis }}</td> 
                     <td>{{ $data->total_barangmasuk }}</td> 
-                    <td>{{ $data->satuan }}</td> 
+                    <td>{{ $data->satuan}}</td> 
                     <td>{{ $data->penerima }}</td> 
                     <td>{{ $data->tanggal_masuk }}</td> 
                     <td>
@@ -77,7 +78,7 @@
                     <form action="{{route('barangmasuk.destroy',$data->id)}}" method="POST"> 
                       @csrf
                       @method('DELETE')
-                      <button type ="submit" class="btn btn-sm btn-danger">Delete</button></form>
+                      <button id="Sub" type ="submit" class="btn btn-sm btn-danger">Delete</button></form>
                     </div>
                   </div>
                 </div>
@@ -113,6 +114,48 @@
                 </div>                         
               </div>
               @endforeach
+
+              <div class="modal fade" id="tambahstock" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content bg-default">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Tambah Stok</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ route('stok.store') }}" method="POST">
+                                {{ csrf_field() }}
+            
+                                <label>Nama stok </label>
+                                <input type="text" name="nama_barang" class="form-control"
+                                    placeholder="Masukkan Nama stok "required>
+            
+                                <label>Jenis</label>
+                                <input type="text"name="jenis_barang" class="form-control"
+                                placeholder="Masukkan Jenis  "required>
+            
+                                <label>Jumlah</label>
+                                <input type="number" name="jumlah" class="form-control"
+                                placeholder="0" value="0" readonly>
+            
+                                <label>Satuan</label>
+                                <select id="disabledSelect" name="satuan" class="form-control " style="width: 100%;" required>
+                                <option value="" selected disabled> Pilih Satuan</option>
+                                @foreach ($satuan as $data)
+                                <option value="{{ $data->id }}">{{ $data->nama }}</option>
+                                @endforeach
+                                </select>
+            
+                                <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-sm btn-danger"
+                                        data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                                </div>
+                        </div>
+            
+                        </form>
+                    </div>
+                </div>
+            </div>
            
 </section>
 </div>

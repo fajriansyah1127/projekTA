@@ -18,7 +18,7 @@
                         <div class="container">
                             <div class="card mt-2">
                                 <div class="card-header">
-                                    <h4 style="text-align:center"><b>TAMBAH DOKUMEN </b></h4>
+                                    <h4 style="text-align:center"><b>Tambah Dokumen </b></h4>
                                 </div>
                                 <div class="card-body">
 
@@ -103,13 +103,13 @@
                                         </div>
 
 <br>
-                                   
+                                    <div class="card-footer text-muted">
                                         <div class="form-group">
                                             <label for="exampleInputFile">File input</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="form-control" id="exampleInputFile"
-                                                        name="file_dokumen" required>
+                                                        name="file_dokumen" accept="application/pdf" required>
                                                         <div class="text-danger">
                                                             @error('file_dokumen')
                                                                 {{ $message }}
@@ -120,13 +120,20 @@
                                                     </div>
                                             </div>
                                         </div>
+                                    
                                    
                                         <br>
                                         
-                                        
-                                            <button type="submit" class="btn btn-success float-right">Submit</button>
-                                     
 
+                                <!-- bagian submit -->
+                               
+
+                                    <!-- bagian submit -->
+
+                                    <button type="submit" class="btn btn-success float-right">Submit</button>
+
+                                </div>
+                            </div>
                                         <!-- bagian tanggal -->
                                     </form>
 

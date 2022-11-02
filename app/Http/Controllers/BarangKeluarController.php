@@ -20,7 +20,7 @@ class BarangKeluarController extends Controller
     public function index()
     {
         $stok = stok::get();
-        $barangkeluar = BarangKeluar::latest()->paginate(50);
+        $barangkeluar = BarangKeluar::latest()->paginate(100);
         return view('BarangKeluar.Index',compact('stok','barangkeluar'));
     }
 
@@ -67,7 +67,7 @@ class BarangKeluarController extends Controller
         ]);
 
         $file = Request()->foto_barangkeluar;
-        $filename = Request()->nama_barangkeluar.date('dmy').'.'.$file->extension();
+        $filename = Request()->nama_barangkeluar.date('his').'.'.$file->extension();
         $file->move(public_path('foto_barangkeluar'), $filename);
         
          $notif = BarangKeluar::create([
@@ -116,11 +116,17 @@ class BarangKeluarController extends Controller
      * @param  \App\Models\BarangKeluar  $barangKeluar
      * @return \Illuminate\Http\Response
      */
-    public function edit($barangKeluar)
+    public function edit($id)
     {
-        $barangkeluar = BarangKeluar::find($barangKeluar);
-        // $stok = Stok::with('satuan')->where('id','BAR-0002')->get();
-        return view('BarangKeluar.Edit', compact('barangkeluar'));
+        $barangkeluar = BarangKeluar::findOrfail($id); 
+        try {
+               $barangkeluar->stok->jumlah;
+        } catch (Exception $e){
+            Alert::alert('ERROR', 'Stok Sudah Di Hapus');
+            return redirect()->route('barangkeluar.index');
+        }
+        $stok = Stok::get();
+        return view('BarangKeluar.Edit', compact('barangkeluar','stok'));
     }
 
     /**

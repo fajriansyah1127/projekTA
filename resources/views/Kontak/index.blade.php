@@ -17,7 +17,7 @@
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href=""><img src="{{asset('template')}}/dist/img/MATADOR6.jpg" alt="" width="80px"></a>
+    <a class="navbar-brand" href ="/" ><img src="{{asset('template')}}/dist/img/Matador.png"  alt="" width="80px"></a>
     <div class="row">
         <div class="col">
             <div class="row">
@@ -35,7 +35,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link " href="{{ route('kontak') }}" >Contact <span class="sr-only">(current)</span></a>
+            
             <a class="nav-item nav-link" href="/login">Login</a>
             
         </div>
@@ -107,5 +107,4 @@
 <script src="{{asset('template')}}/plugins/jquery/jquery.min.js"></script>
 <script src="{{asset('template')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="{{asset('template')}}/dist/js/adminlte.min.js"></script>
-<script src="{{asset('template')}}/dist/js/demo.js"></script>
 </body>

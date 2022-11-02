@@ -29,7 +29,7 @@
               {{-- <a class="btn btn-sm btn-primary" href="{{ route('stok.create') }}">Tambah stok</a> --}}
               <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#staticBackdroptambah">   Tambah
                 Stok</a>
-                <a class="btn btn-sm btn-success" href="/cetakstok">      
+                <a class="btn btn-sm btn-success" target="_blank" href="/cetakstok">      
                      Cetak Stok</a>
               </div>
             <!-- /.card-header -->

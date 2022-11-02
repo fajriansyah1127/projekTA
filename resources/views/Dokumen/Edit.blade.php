@@ -17,7 +17,7 @@
                         <div class="container">
                             <div class="card mt-2">
                                 <div class="card-header">
-                                    <h4 style="text-align:center"><b>UPDATE DOKUMEN </b></h4>
+                                    <h4 style="text-align:center"><b>Update Dokumen </b></h4>
                                 </div>
                                 <div class="card-body">
                                     <form action="{{ route('dokumen.update', $dokuman->id) }}" method="POST"
@@ -107,7 +107,7 @@
                                                 <div class="input-group">
                                                     <div class="custom-file">
                                                         <input type="file" class="form-control" id="exampleInputFile"
-                                                            name="file">
+                                                            name="file" accept="application/pdf">
                                                         <label class="custom-file-label" for="exampleInputFile">Choose
                                                             file</label>
                                                         <div class="text-danger">

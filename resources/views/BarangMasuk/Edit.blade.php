@@ -6,7 +6,7 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <!-- /.content-header -->
-
+        
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -21,7 +21,6 @@
                                     <h4 style="text-align:center"><b>Edit Data Barang Masuk </b></h4>
                                 </div>
                                 <div class="card-body">
-
                                     <!-- membuat formnya -->
                                     <!-- bagian judul -->
                                    
@@ -83,50 +82,39 @@
                                             </div>
                                         </div>
                                         
-                                        
-                                        {{-- <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Stok</label>
-                                            <div class="col-sm-10">
-                                                <input type="number" name="stok_barangmasuk" id="stok" class="form-control"
-                                                value="{{ $barangmasuk->jumlah }}" readonly>
-                                                 <div class="text-danger">
-                                                    @error('jenis_barangmasuk')
-                                                    {{ $message }}
-                                                    @enderror
-                                                </div> 
-                                            </div>
-                                        </div>  --}}
-
-                                        {{-- <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Jumlah</label>
-                                            <div class="col-sm-10">
-                                                <input type="number" name="total_barangmasuk" id="jumlah_total" class="form-control @error('jumlah') is-invalid @enderror" value="{{$barangmasuk -> total_barangmasuk}}" onkeyup="sum()">
-                                                <div class="text-danger">
-                                                    @error('jumlah')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        </div> --}}
-
+                                     
+                                                <input type="hidden" name="stok_barangmasuk" id="stok" class="form-control"value="{{$barangmasuk->stok->jumlah}}"readonly>
+                                               
+                                                <input type="hidden" name="jumlah_terlanjurmasuk" value="{{$barangmasuk -> total_barangmasuk}}" id="jumlah_terlanjurmasuk"class="form-control" readonly  >
+                                               
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Jumlah</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="jumlah" value="{{$barangmasuk -> total_barangmasuk}}" id="jumlah"class="form-control" readonly >
-                                                {{-- <div class="text-danger">
+                                                <input type="number" name="total_barangmasuk" value="{{$barangmasuk -> total_barangmasuk}}" id="jumlah_total"class="form-control" onkeyup="sum()" >
+                                                <div class="text-danger">
                                                     @error('total_barangmasuk')
                                                         {{ $message }}
                                                     @enderror
-                                                </div> --}}
+                                                </div> 
                                             </div>
                                         </div>
 
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Total Stok</label>
+                                            <div class="col-sm-10">
+                                                <input type="number" name="jumlah" id="jumlah"class="form-control" value="{{old('jumlah')}}" required readonly >
+                                                <div class="text-danger">
+                                                    @error('jumlah')
+                                                        {{ 'Perlu di isi !!' }}
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
                                         
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Satuan </label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="satuan" class="form-control"
-                                                placeholder="{{ $barangmasuk->satuan}}" value="{{ $barangmasuk->satuan}}" readonly>
+                                                <input type="text" name="satuan" id="satuan"class="form-control" value="{{$barangmasuk->stok->satuan->nama}}" required readonly >
                                                 {{-- <div class="text-danger">
                                                     @error('jenis_barangmasuk')
                                                     {{ $message }}
@@ -134,6 +122,7 @@
                                                 </div> --}}
                                             </div>
                                         </div>
+                                                
 
                                         <!-- bagian unit -->
 
@@ -154,7 +143,7 @@
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="form-control" id="exampleInputFile"
-                                                        name="foto" value="{{$barangmasuk ->foto}}">
+                                                        name="foto" value="{{$barangmasuk ->foto}}" accept="image/png, image/gif, image/jpeg">
                                                     <label class="custom-file-label" for="exampleInputFile">Choose
                                                         Foto</label>
                                                     {{-- <div class="text-danger">
@@ -196,11 +185,31 @@
     <script>
         function sum() {
             var stok = document.getElementById('stok').value;
-            var jumlahmasuk = document.getElementById('jumlah_total').value;
-            var result = parseInt(stok) + parseInt(jumlahmasuk);
+            var jumlahterlanjurmasuk = document.getElementById('jumlah_terlanjurmasuk').value;
+            var jumlahaslimasuk = document.getElementById('jumlah_total').value;
+            var result = parseInt(stok) - parseInt(jumlahterlanjurmasuk) +  parseInt(jumlahaslimasuk);
             if (!isNaN(result)) {
                 document.getElementById('jumlah').value = result;
             }
         }
+        // function sum() {
+        // let stok = document.getElementById('stok').value;
+        // let jumlahterlanjurmasuk = document.getElementById('jumlah_terlanjurmasuk').value;
+        // let jumlahaslimasuk = document.getElementById('jumlah_total').value;
+        // let x = stok - jumlahterlanjurmasuk + jumlahaslimasuk;
+
+        // if (!isNaN(result)) {
+        //     document.getElementById("jumlah").value = x
+        //     }
+        // }
+        // function sum() {
+        //     var stok = document.getElementById('stok').value;
+        //     var jumlahmasuk = document.getElementById('jumlah_total').value;
+        //     var result = parseInt(stok) + parseInt(jumlahmasuk);
+        //     if (!isNaN(result)) {
+        //         document.getElementById('jumlah').value = result;
+        //     }
+        // }
+
         </script>
 @endsection

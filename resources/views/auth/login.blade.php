@@ -19,6 +19,7 @@
   @include('sweetalert::alert')
 <div class="login-box">
   <div class="login-logo">
+    {{-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Pegadaian_logo_%282013%29.svg/2560px-Pegadaian_logo_%282013%29.svg.png" width="200" height="100"  alt="User Image"> <br> --}}
     <a href="{{asset('template')}}/index2.html"><b>Sistem Informasi Manajemen Dokumen dan Barang</b></a>
   </div>
   <!-- /.login-logo -->

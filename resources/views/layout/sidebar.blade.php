@@ -93,7 +93,10 @@
           </li>
           
           <li class="nav-item">
-            <a href="#" class="nav-link nav-link {{Request::is('barangkeluar/create')?'active':''}} {{Request::is('barangmasuk/create')?'active':''}} {{Request::is('barangmasuk')?'active':''}} {{Request::is('barangkeluar')?'active':''}} {{Request::is('satuan')?'active':''}} {{Request::is('stok')?'active':''}}{{Request::is('peminjambarang')?'active':''}} ">
+            <a href="#" class="nav-link nav-link {{Request::is('barangkeluar/create')?'active':''}} {{Request::is('barangmasuk/create')?'active':''}}
+             {{Request::is('barangmasuk')?'active':''}} {{Request::is('barangkeluar')?'active':''}} {{Request::is('satuan')?'active':''}} 
+             {{Request::is('stok')?'active':''}}{{Request::is('peminjambarang')?'active':''}} {{Request::is('barangkeluar/*/edit')?'active':''}} 
+             {{Request::is('barangmasuk/*/edit')?'active':''}}">
               <i class="nav-icon fas fa-chart-pie "></i>
               <p>
                 Barang
@@ -102,13 +105,14 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('barangmasuk.index') }}" class="nav-link {{Request::is('barangmasuk/create')?'active':''}}  {{Request::is('barangmasuk')?'active':''}}">
+                <a href="{{ route('barangmasuk.index') }}" class="nav-link {{Request::is('barangmasuk/create')?'active':''}}  
+                {{Request::is('barangmasuk')?'active':''}} {{Request::is('barangmasuk/*/edit')?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Barang Masuk</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('barangkeluar.index') }}" class="nav-link {{Request::is('barangkeluar/create')?'active':''}} {{Request::is('barangkeluar')?'active':''}}">
+                <a href="{{ route('barangkeluar.index') }}" class="nav-link {{Request::is('barangkeluar/*/edit')?'active':''}} {{Request::is('barangkeluar/create')?'active':''}} {{Request::is('barangkeluar')?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Barang Keluar</p>
                 </a>
@@ -135,7 +139,8 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link {{Request::is('user')?'active':''}}{{Request::is('user/create')?'active':''}}{{Request::is('user//edit')?'active':''}}"   >
+            <a href="#" class="nav-link {{Request::is('user')?'active':''}}{{Request::is('user/create')?'active':''}}
+            {{Request::is('user/*/edit')?'active':''}} "   >
               <i class="nav-icon fas fa-user "></i>
               <p>
                 Manajemen User
@@ -144,7 +149,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('user.index') }}" class="nav-link {{Request::is('user')?'active':''}}">
+                <a href="{{ route('user.index') }}" class="nav-link {{Request::is('user')?'active':''}}  {{Request::is('user/*/edit')?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data User</p>
                 </a>
@@ -159,7 +164,8 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ route('formulirs.index') }}"  class="nav-link {{Request::is('formulir')?'active':''}}{{Request::is('formulir')?'active':''}}{{Request::is('user//edit')?'active':''}}"   >
+            <a href="{{ route('formulirs.index') }}"  class="nav-link {{Request::is('formulirs/create')?'active':''}}
+            {{Request::is('formulirs')?'active':''}}{{Request::is('formulirs/*/edit')?'active':''}}"   >
               <i class="nav-icon fas fa-file-pdf "></i>
               <p>
                 Formulir Barang
@@ -176,6 +182,10 @@
            </p>
          </a>
        </li>
+
+       
+
+       
         </nav>
       <!-- /.sidebar-menu -->
    
@@ -246,7 +256,7 @@
           </ul>
           
           <li class="nav-item">
-            <a href="{{ route('formulir') }}" target="_blank" class="nav-link {{Request::is('formulir')?'active':''}}{{Request::is('formulir')?'active':''}}{{Request::is('user//edit')?'active':''}}"   >
+            <a href="/formulirs"  class="nav-link {{Request::is('formulir')?'active':''}}{{Request::is('formulir')?'active':''}}{{Request::is('user//edit')?'active':''}}"   >
               <i class="nav-icon fas fa-file-pdf "></i>
               <p>
                 Formulir Barang
@@ -294,6 +304,14 @@
               </a>
             </li>
           </ul>
+          <li class="nav-item">
+            <a href="/formulirs"  class="nav-link {{Request::is('formulir')?'active':''}}{{Request::is('formulir')?'active':''}}{{Request::is('user//edit')?'active':''}}"   >
+              <i class="nav-icon fas fa-file-pdf "></i>
+              <p>
+                Formulir Barang
+              </p>
+            </a>
+          </li>
         </li>
       </nav>
 
@@ -314,24 +332,15 @@
           </li>
 
           <li class="nav-item ">
-            <a href="" class="nav-link {{Request::is('dokumen/create')?'active':''}} {{Request::is('dokumen')?'active':''}}">
+            <a href="{{ route('dokumen.index') }}" class="nav-link {{Request::is('dokumen/create')?'active':''}} {{Request::is('dokumen')?'active':''}}">
               <i class="nav-icon fas fa-file"></i>
               <p>
                 Dokumen
-                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('dokumen.index') }}" class="nav-link {{Request::is('dokumen/create')?'active':''}} {{Request::is('dokumen')?'active':''}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dokumen</p>
-                </a>
-              </li>
-            </ul>
           </li>
           <li class="nav-item">
-            <a href="{{ route('formulir') }}" target="_blank" class="nav-link {{Request::is('formulir')?'active':''}}{{Request::is('formulir')?'active':''}}{{Request::is('user//edit')?'active':''}}"   >
+            <a href="/formulirs"  class="nav-link {{Request::is('formulir')?'active':''}}{{Request::is('formulir')?'active':''}}{{Request::is('user//edit')?'active':''}}"   >
               <i class="nav-icon fas fa-file-pdf "></i>
               <p>
                 Formulir Barang

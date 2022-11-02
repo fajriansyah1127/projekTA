@@ -18,7 +18,7 @@
                 <div class="container">
                             <div class="card mt-2">
                         <div class="card-header">
-                          <h4 style="text-align:center"><b>TAMBAH USER </b></h4>
+                          <h4 style="text-align:center"><b>Tambah User </b></h4>
                         </div>
                         <div class="card-body">
               
@@ -133,9 +133,9 @@
                                 </div>
                             </div>             
                 
-                           
+                            <div class="card-footer">
                               <button type="submit" class="btn btn-success float-right">Submit</button>
-                           
+                            </div>    
                           </form>
                       
                 </div>
