@@ -4,12 +4,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DokumenController;
-use App\Http\Controllers\CariDokumenController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AsuransiController;
-use App\Http\Controllers\IcipController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\PeminjamController;
@@ -23,7 +20,7 @@ use App\Http\Controllers\StokController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\FormulirController;
-use App\Models\CariBarang;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -47,12 +44,12 @@ Route::get('/forget', function () {
 
 Route::group(['middleware' => 'guest'], function () {
     Route::post('/auth', [AuthenticateController::class,'authenticate']);
-    Route::get('/', [LoginController::class,'create'])->name('login');
+    Route::get('/', [HomeController::class,'index'])->name('login');
+    Auth::routes();
     // Route::resource('/', CariDokumenController::class);
     Route::get('/kontak', [KontakController::class,'index'])->name('kontak');
 
 });
-Route::resource('/login', LoginController::class);
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -98,4 +95,4 @@ Route::group(['middleware' => 'auth'], function () {
     });    
 
 });
-Auth::routes();
+
