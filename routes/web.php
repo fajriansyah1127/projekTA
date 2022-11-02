@@ -47,7 +47,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/', [HomeController::class,'index']);
     Auth::routes();
     // Route::resource('/', CariDokumenController::class);
-    Route::get('/kontak', [KontakController::class,'index'])->name('kontak');
+    Route::get('/kontak', [KontakController::class,'index']);
 
 });
 
