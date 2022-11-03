@@ -121,7 +121,7 @@ class OutletController extends Controller
         try {
             $outlet->delete();
         } catch (Exception $e){
-            Alert::alert('ERROR', 'Terdapat Masalah Dalam Menghapus');
+            Alert::alert('ERROR', 'Outlet Terdapat Pada Dokumen');
             return redirect()->back();
         }
 

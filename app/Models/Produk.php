@@ -9,12 +9,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Produk extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+    // use SoftDeletes;
     protected $table = "produks";
     
     protected $fillable = ["nama", "asuransi_id"];
     protected $guarded = ['id'];
-    protected $dates = ['deleted_at'];
+    // protected $dates = ['deleted_at'];
 
     public function asuransi()
     {

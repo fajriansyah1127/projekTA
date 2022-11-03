@@ -9,13 +9,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Asuransi extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+    // use SoftDeletes;
 
     protected $table = "asuransis";
 
     protected $fillable = ["nama", "email", "kontak","alamat","status"];
     protected $guarded = ['id'];
-    protected $dates = ['deleted_at'];
+    // protected $dates = ['deleted_at'];
 
     public function dokumen()
     {

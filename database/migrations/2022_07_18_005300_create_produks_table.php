@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('asuransi_id');
             $table->string('nama');
             $table->timestamps();
-            $table->softDeletes();
+            
         });
         Schema::table('produks', function (Blueprint $table) {
             $table->foreign('asuransi_id')->references('id')->on('asuransis')->ondelete('restrict');

@@ -63,7 +63,8 @@
           </li>
 
           <li class="nav-item ">
-            <a href="" class="nav-link {{Request::is('dokumen/create')?'active':''}} {{Request::is('peminjam')?'active':''}} {{Request::is('dokumen')?'active':''}}">
+            <a href="" class="nav-link {{Request::is('dokumen/create')?'active':''}} {{Request::is('peminjam')?'active':''}}
+            {{Request::is('sampah')?'active':''}} {{Request::is('dokumen')?'active':''}}">
               <i class="nav-icon fas fa-file"></i>
               <p>
                 Dokumen Klaim
