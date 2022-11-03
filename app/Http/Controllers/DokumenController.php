@@ -64,7 +64,7 @@ class DokumenController extends Controller
 
          $file = Request()->file_dokumen;
          $filename = Request()->nama_dokumen . '_'.Request()->nomor_akad.date('dmy').'.' . $file->extension();
-         $file->move(public_path('dokumen_klaim'), $filename);
+         $file->move(public_path('filearsip'), $filename);
 
          $notif = Dokumen::create([
              'nama' => $request->nama_dokumen,
@@ -113,7 +113,7 @@ class DokumenController extends Controller
             'aktivitas' => 'Mengunduh Dokumen Atas Nama '.$Dokumen->nama
         ]);
 
-        $file_path= public_path()."/dokumen_klaim/$file";
+        $file_path= public_path()."/filearsip/$file";
 
         $headers = array(
             'Content-Type: application/pdf',
@@ -181,8 +181,8 @@ class DokumenController extends Controller
         
 
         if ($file = $request->file('file')) {
-            File::delete('dokumen_klaim/'.$dokumen->file);  
-            $destinationPath = 'dokumen_klaim/';
+            File::delete('filearsip/'.$dokumen->file);  
+            $destinationPath = 'filearsip/';
             $request->request->add(['user_id' => Auth::user()->id]);
             $dokumenfile = Request()->nama.'_'.Request()->nomor_akad.date('dmy').'.' . $file->extension();
             $file->move($destinationPath, $dokumenfile);
@@ -279,13 +279,13 @@ class DokumenController extends Controller
             return redirect()->back();
 		}elseif($dokumen){
 			$dokumen->forceDelete();
-            File::delete('dokumen_klaim/' . $dokumen->file);
+            File::delete('filearsip/' . $dokumen->file);
 		}else{
 			return abort(500);
 		} 
         // try {
         //     $dokumen->forceDelete();
-        //     File::delete('dokumen_klaim/' . $dokumen->file);
+        //     File::delete('filearsip/' . $dokumen->file);
         // } catch (Exception $e){
         //     Alert::alert('ERROR', 'Dokumen masih dipinjam');
         //     return redirect()->back();
