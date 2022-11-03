@@ -15,7 +15,7 @@ class KontakController extends Controller
         ->orwhere('role', 'pegawai')
         ->orwhere('role', 'satpam')
         ->get();
-        return view('Kontak.index', compact('kontak'));
+        return view('Kontak.Index', compact('kontak'));
     }
 
     public function show(User $id)
@@ -25,6 +25,6 @@ class KontakController extends Controller
         ->orwhere('role', 'pegawai')
         ->orwhere('role', 'satpam')
         ->get();
-        return view('Kontak.show', compact('kontak'));
+        return view('Kontak.Show', compact('kontak'));
     }
 }

@@ -42,7 +42,7 @@ class DokumenController extends Controller
     {   
         $dokumen = Produk::with('asuransi')->get();
         $dokumens = Outlet::get();
-        return view('Dokumen.create', compact('dokumen','dokumens'));
+        return view('Dokumen.Create', compact('dokumen','dokumens'));
     }
 
     /**
@@ -146,7 +146,7 @@ class DokumenController extends Controller
         }
         $dokumen = Produk::with('asuransi')->get();
         $outlet = Outlet::get();
-        return view('Dokumen.edit', compact('dokuman','dokumen','outlet'));
+        return view('Dokumen.Edit', compact('dokuman','dokumen','outlet'));
     }
     // public function editmagang(Dokumen $magang)
     // {
@@ -251,7 +251,7 @@ class DokumenController extends Controller
     {
     	// mengampil data dokumen yang sudah dihapus
     	$dokumen = Dokumen::onlyTrashed()->get();
-    	return view('Dokumen.dokumen_trash', ['dokumen_trash' => $dokumen]);
+    	return view('Dokumen.Dokumen_trash', ['dokumen_trash' => $dokumen]);
     }
 
      // restore data dokumen yang dihapus

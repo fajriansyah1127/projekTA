@@ -103,7 +103,7 @@ class FormulirController extends Controller
     public function edit(Formulir $formulir)
     {
     
-        return view('Formulir.edit', compact('formulir'));
+        return view('Formulir.Edit', compact('formulir'));
     }
 
     /**
