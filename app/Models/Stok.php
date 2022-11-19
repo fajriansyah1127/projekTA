@@ -9,8 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Stok extends Model
 {
     use HasFactory;
-    use SoftDeletes;
-  
     // public $incrementing = false;
     // protected $keyType = 'string';
     protected $fillable = ["id","nama_barang", "jenis_barang","jumlah","satuan_id"];
