@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('foto');
             $table->date('tanggal_masuk');
             $table->timestamps();
-            $table->softDeletes();
+           
         });
 
         Schema::table('barang_masuk', function (Blueprint $table) {

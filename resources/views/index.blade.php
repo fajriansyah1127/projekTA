@@ -251,7 +251,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>@foreach($riwayatadmin as $data)
+                      <tr>@foreach($riwayatallrole as $data)
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $data->nama }}</td>
                         <td>{{ $data->aktivitas }}</td>

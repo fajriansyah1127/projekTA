@@ -19,20 +19,12 @@
   @include('sweetalert::alert')
 <div class="login-box">
   <div class="login-logo">
-    {{-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Pegadaian_logo_%282013%29.svg/2560px-Pegadaian_logo_%282013%29.svg.png" width="200" height="100"  alt="User Image"> <br> --}}
     <a href="{{asset('template')}}/index2.html"><b>Sistem Informasi Manajemen Dokumen dan Barang</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
-{{--       
-      @if(session()->has('loginError'))
-      <div class = "alert alert-danger aler-dimissible fade show " role = "alert">
-        {{session('loginError')}}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      @endif --}}
       <form action="/auth" method="post">
         @csrf
         <div class="input-group mb-3">
@@ -48,7 +40,6 @@
             @enderror
         </div>
         </div>
-
         <div class="input-group mb-3">
           <input type="password" class="form-control" placeholder="Password" name ="password" required>
           <div class="text-danger">
@@ -63,39 +54,15 @@
           </div>
         </div>
         <div class="row">
-          {{-- <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
-          </div> --}}
-          <!-- /.col -->
           <div class="col-4">
             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
-
-      {{-- <div class="social-auth-links text-center mb-3">
-        <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-        </a>
-      </div>  --}}
-      <!-- /.social-auth-links -->
-
        <p class="mb-1">
         <a href="{{route('password.request')}}">I forgot my password</a>
       </p> 
-       {{-- <p class="mb-0">
-        <a href="/home" class="text-center">Register a new membership</a>
-      </p> --}}
     </div>
     <!-- /.login-card-body -->
   </div>
@@ -110,3 +77,22 @@
 <script src="{{asset('template')}}/dist/js/adminlte.min.js"></script>
 </body>
 </html>
+{{--       
+      @if(session()->has('loginError'))
+      <div class = "alert alert-danger aler-dimissible fade show " role = "alert">
+        {{session('loginError')}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif --}}
+        {{-- <div class="social-auth-links text-center mb-3">
+        <p>- OR -</p>
+        <a href="#" class="btn btn-block btn-primary">
+          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+        </a>
+        <a href="#" class="btn btn-block btn-danger">
+          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+        </a>
+      </div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Pegadaian_logo_%282013%29.svg/2560px-Pegadaian_logo_%282013%29.svg.png" width="200" height="100"  alt="User Image"> <br>  --}}
+      
+      <!-- /.social-auth-links -->

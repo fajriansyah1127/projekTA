@@ -26,10 +26,8 @@ class DashboardController extends Controller
     {
         $DokumenSatpamdanMagang = DB::table('dokumens')
         ->where('user_id', Auth::user()->id)
-        ->where('deleted_at','=',NULL)
         ->count('id');
         $DokumenAdmindanPegawai = DB::table('dokumens')
-        ->where('deleted_at','=',NULL)
         ->count('id');
         $BanyakUser = DB::table('users')
         ->count('id');

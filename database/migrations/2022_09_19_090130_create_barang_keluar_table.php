@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('foto');
             $table->date('tanggal_keluar');
             $table->timestamps();
-            $table->softDeletes();
+           
         });
         Schema::table('barang_keluar', function (Blueprint $table) {
             $table->foreign('stok_id')->references('id')->on('stoks')->ondelete('cascade')->onUpdate('cascade');

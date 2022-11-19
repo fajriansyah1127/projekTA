@@ -66,7 +66,7 @@
                             <div class="form-group row">
                                 <label for="Judul" class="col-sm-2 col-form-label"> Kontak </label>
                                 <div class="col-sm-10">
-                                      <input type="text" id="Kontak" name="Kontak" class="form-control " placeholder="Masukkan Nomor telephone" required value="{{old('Kontak')}}">  
+                                      <input type="number" id="Kontak" name="Kontak" class="form-control " placeholder="Masukkan Nomor telephone" required value="{{old('Kontak')}}">  
                                       <div class ="text-danger">
                                         @error('Kontak')
                                         {{ $message }}

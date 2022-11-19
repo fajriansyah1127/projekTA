@@ -23,12 +23,47 @@ class iterasi1 extends TestCase
     {
          $response = $this->post('/auth', [
             'email' => 'fajriansyah573@gmail.com',
-            'password' => 'asdfghjkl',
+            'password' => 'asdfghjklkjh',
         ]);
 
         $this->assertAuthenticated();
         // $response->assertRedirect(RouteServiceProvider::HOME);
     }
+
+    // public function test_Login_Pegawai()
+    // {
+    //      $response = $this->post('/auth', [
+    //         'email' => 'fajriansyah573@gmail.com',
+    //         'password' => 'asdfghjkl',
+    //     ]);
+
+    //     $this->assertAuthenticated();
+    //     // $response->assertRedirect(RouteServiceProvider::HOME);
+    // }
+
+
+    // public function test_Login_Satpam()
+    // {
+    //      $response = $this->post('/auth', [
+    //         'email' => 'fajriansyah573@gmail.com',
+    //         'password' => 'asdfghjkl',
+    //     ]);
+
+    //     $this->assertAuthenticated();
+    //     // $response->assertRedirect(RouteServiceProvider::HOME);
+    // }
+
+    // public function test_LoginMagang()
+    // {
+    //      $response = $this->post('/auth', [
+    //         'email' => 'fajriansyah573@gmail.com',
+    //         'password' => 'asdfghjkl',
+    //     ]);
+
+    //     $this->assertAuthenticated();
+    //     // $response->assertRedirect(RouteServiceProvider::HOME);
+    // }
+
 
     public function test_tambah_user_()
     {
@@ -81,13 +116,13 @@ class iterasi1 extends TestCase
     public function test_hapus_user()
     {
         $user = User::where('role','Admin')->first();
-        $response = $this->actingAs($user)->delete(route('user.destroy','8'));
+        $response = $this->actingAs($user)->delete(route('user.destroy','7'));
         $response->assertStatus(302);
     }
 
     public function test_lihat_profil()
      {
-        $user = User::where('id','1')
+        $user = User::where('id','3')
         ->first();
 
         $response = $this->actingAs($user)
@@ -113,6 +148,19 @@ class iterasi1 extends TestCase
             'new_password' => 'asdfghjklkjh',
             'password_confirmation' => 'asdfghjklkjh',
             'foto' => UploadedFile::fake()->create('testing3.jpg', 1024),
+            ]);
+
+        $response->assertStatus(302);
+    }
+
+    public function test_edit_password()
+    {
+        $user = User::where('id','1')->first();
+        $response = $this->actingAs($user)
+            ->put(route('profile.update', '2'), [
+            'current_password' => 'asdfghjklkjh',
+            'new_password' => 'asdfghjklkjh',
+            'password_confirmation' => 'asdfghjklkjh',
             ]);
 
         $response->assertStatus(302);

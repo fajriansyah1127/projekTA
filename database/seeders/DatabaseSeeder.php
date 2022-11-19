@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'Role' => 'Admin',
             'Jabatan' => 'Kepala Departemen Gadai',
             'Password' => bcrypt('asdfghjklkjh'),
-            'Foto' => 'user.jpg',
+            'Foto' => 'user1.png',
         ]);
         
         
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
             'Role' => 'Admin',
             'Jabatan' => 'Kepala Departemen Non Gadai',
             'Password' => bcrypt('asdfghjklkjh'),
-            'Foto' => 'user.jpg',
+            'Foto' => 'user2.png',
         ]);
         User::create([
             'Nama' => 'Fajriansyah',
@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
             'Role' => 'Admin',
             'Jabatan' => 'mahasiswa',
             'Password' => bcrypt('asdfghjklkjh'),
-            'Foto' => 'user.jpg',
+            'Foto' => 'user3.png',
         ]);
 
         User::create([
@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
             'Role' => 'Pegawai',
             'Jabatan' => 'Opertional Support Area Balikpapan',
             'Password' => bcrypt('asdfghjklkjh'),
-            'Foto' => 'user.jpg',
+            'Foto' => 'user4.png',
         ]);
 
         User::create([
@@ -72,7 +72,7 @@ class DatabaseSeeder extends Seeder
             'Role' => 'Pegawai',
             'Jabatan' => 'Sales chanel',
             'Password' => bcrypt('asdfghjklkjh'),
-            'Foto' => 'user.jpg',
+            'Foto' => 'user5.png',
         ]);
         User::create([
             'Nama' => 'Nursinta',
@@ -82,7 +82,7 @@ class DatabaseSeeder extends Seeder
             'Role' => 'Satpam',
             'Jabatan' => 'Satpam',
             'Password' => bcrypt('asdfghjklkjh'),
-            'Foto' => 'user.jpg',
+            'Foto' => 'user6.png',
         ]);
 
 
@@ -94,7 +94,7 @@ class DatabaseSeeder extends Seeder
             'Role' => 'Magang',
             'Jabatan' => 'mahasiswa',
             'Password' => bcrypt('asdfghjklkjh'),
-            'Foto' => 'user.jpg',
+            'Foto' => 'user7.png',
         ]);
 
         User::create([
@@ -105,7 +105,7 @@ class DatabaseSeeder extends Seeder
             'Role' => 'Magang',
             'Jabatan' => 'mahasiswa',
             'Password' => bcrypt('asdfghjklkjh'),
-            'Foto' => 'user.jpg',
+            'Foto' => 'user8.png',
         ]);
 
         Outlet::create([

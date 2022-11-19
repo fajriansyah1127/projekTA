@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('jumlah');
             $table->foreignId('satuan_id');
             $table->timestamps();
-            $table->softDeletes();
+            
         });
 
         Schema::table('stoks', function (Blueprint $table) {

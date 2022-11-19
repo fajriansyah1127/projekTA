@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('jenis');
             $table->string('detail');
             $table->timestamps();
-            $table->softDeletes();
+            
         });
     }
 

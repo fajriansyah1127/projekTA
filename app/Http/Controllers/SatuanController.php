@@ -123,7 +123,7 @@ class SatuanController extends Controller
         $stok = Stok::where('satuan_id', $id);
 
         if($stok){
-            Alert::alert('ERROR', 'Barang masih dipinjam');
+            Alert::alert('ERROR', 'Satuan Terdapat Di Stok');
             return redirect()->back();
 		}elseif($satuan){
 			$satuan->delete();

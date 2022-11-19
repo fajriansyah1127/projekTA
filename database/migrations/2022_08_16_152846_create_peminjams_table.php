@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nama');
             $table->date('tanggal');
             $table->timestamps();
-            $table->softDeletes();
+           
             
         });
 

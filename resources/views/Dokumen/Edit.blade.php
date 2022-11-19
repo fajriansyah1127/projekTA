@@ -39,7 +39,7 @@
                                         <div class="form-group row">
                                             <label for="Judul" class="col-sm-2 col-form-label">Nomor Akad </label>
                                             <div class="col-sm-10">
-                                                <input type="text" id="nomor" name="nomor_akad" class="form-control"
+                                                <input type="number" id="nomor" name="nomor_akad" class="form-control"
                                                     placeholder="Masukkan Nomor" required
                                                     value="{{ $dokuman->nomor_akad }}">
                                                 <div class="text-danger">
