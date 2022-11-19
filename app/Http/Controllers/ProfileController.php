@@ -117,6 +117,7 @@ class ProfileController extends Controller
         }
         Riwayat::create([
             'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
             'aktivitas' => 'Mengubah Data Profil'
         ]);
         $user->save();
