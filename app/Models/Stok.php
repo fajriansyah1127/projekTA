@@ -10,11 +10,11 @@ class Stok extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $table = "stoks";
+  
     // public $incrementing = false;
     // protected $keyType = 'string';
     protected $fillable = ["id","nama_barang", "jenis_barang","jumlah","satuan_id"];
-    protected $dates = ['deleted_at'];
+   
 
     public function satuan()
     {

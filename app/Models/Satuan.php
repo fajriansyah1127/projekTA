@@ -9,11 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Satuan extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+    
     protected $table = "satuans";
     protected $fillable = ["nama", "jenis", "detail"];
     protected $guarded = ['id'];
-    protected $dates = ['deleted_at'];
+    
 
     public function stok()
     {
