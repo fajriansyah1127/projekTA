@@ -15,10 +15,14 @@ return new class extends Migration
     {
         Schema::create('riwayats', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+            $table->foreignId('user_id')->nullable();
             $table->string('nama');
             $table->string('aktivitas');
             $table->timestamps();
+        });
+
+        Schema::table('riwayats', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
         });
     }
 

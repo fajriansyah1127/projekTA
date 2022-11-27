@@ -23,19 +23,25 @@ class SoftdeleteTest extends TestCase
    
 // SOFTDELETE
 
+    public function testMelihatSampahDokumen()
+    {
+        $user = User::where('role','Admin')->first();
+                $response = $this->actingAs($user)
+                    ->get(route('trash'));
+                $response->assertStatus(200);
+    }
+
     public function testRestore()
     {
         $user = User::where('role','Admin')->first();
-        $response = $this->actingAs($user)->get(route('restore','B1VQ91QRba'));
+        $response = $this->actingAs($user)->get(route('restore','WezGbqwyoJ'));
         $response->assertStatus(302);
     }
-
-
 
     public function testHapusPermanen()
     {
         $user = User::where('role','Admin')->first();
-        $response = $this->actingAs($user)->delete(route('hapus_permanen','jgaGgmr1NL'));
+        $response = $this->actingAs($user)->delete(route('hapus_permanen','52yr7zQvdp'));
         $response->assertStatus(302);
     }
 }

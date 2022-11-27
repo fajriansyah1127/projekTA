@@ -38,7 +38,38 @@ class Iterasi5Test extends TestCase
         // ->assertSee('Biodata');
     }
 
-    
+    public function testMelihatFormulirBarang()
+    {
+        $user = User::where('role','Admin')->first();
+                $response = $this->actingAs($user)
+                    ->get(route('formulir'));
+                $response->assertStatus(200);
+    }
+
+    public function testMenambahFormulirBarang()
+    {
+        $user = User::where('role','Admin')->first();
+                $response = $this->actingAs($user)
+                    ->get(route('formulir'));
+                $response->assertStatus(200);
+    }
+
+    public function testMengubahFormulirBarang()
+    {
+        $user = User::where('role','Admin')->first();
+                $response = $this->actingAs($user)
+                    ->get(route('formulir'));
+                $response->assertStatus(200);
+    }
+
+    public function testMenghapusFormulirBarang()
+    {
+        $user = User::where('role','Admin')->first();
+                $response = $this->actingAs($user)
+                    ->get(route('formulir'));
+                $response->assertStatus(200);
+    }
+
     public function testMengunduhFormulirBarang()
     {
         $user = User::where('role','Admin')->first();

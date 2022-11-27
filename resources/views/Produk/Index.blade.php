@@ -117,7 +117,7 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content bg-default">
                                         <div class="modal-body">
-                                            Apaknah anda yakin menghapus {{ $data->nama }} ?
+                                            Apakah anda yakin menghapus {{ $data->nama }} ?
                                         </div>
                                         <div class="modal-footer justify-content-between">
                                             <button type="button" class="btn  btn-sm btn-primary"
