@@ -151,19 +151,21 @@ class StokController extends Controller
         $peminjam = PeminjamBarang::where('stok_id', $id);
 
         if(PeminjamBarang::where('stok_id', $id)->exists()){
-            Alert::alert('ERROR', 'Barang masih dipinjam');
+            alert()->error('ERROR', 'Barang masih dipinjam');
             return redirect()->back();
-		}elseif($stok){
-			$stok->delete();
-		}else{
-			return abort(500);
-		} 
+		}try {
+            $stok->delete();
+        } catch (Exception $e){
+            alert()->error('ERROR', 'Terdapat Masalah Dalam Menghapus');
+            return redirect()->back();
+        }
         // try {
         //     $stok->delete();
         // } catch (Exception $e){
         //     alert()->error('ERROR', 'Terdapat Masalah Dalam Menghapus');
         //     return redirect()->back();
         // }
+        
 
         Riwayat::create([
             'user_id' => Auth::user()->id,

@@ -181,14 +181,14 @@ class UserController extends Controller
         //         Alert::toast('Data Berhasil Dihapus', 'success');
         //         return redirect()->back();
               
+        Riwayat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'aktivitas' => 'Menghapus '.$user->Nama.'Dari Sistem'
+        ]);
                     $user->delete();
                     File::delete('foto/' .$user->foto);
 
-                    Riwayat::create([
-                        'user_id' => Auth::user()->id,
-                        'nama' => Auth::user()->nama,
-                        'aktivitas' => 'Menghapus '.$user->Nama.'Dari Sistem'
-                    ]);
             
                     Alert::toast('Data Berhasil Dihapus', 'success');
                     return redirect()->back();

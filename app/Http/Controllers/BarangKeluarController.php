@@ -20,7 +20,7 @@ class BarangKeluarController extends Controller
     public function index()
     {
         $stok = stok::get();
-        $barangkeluar = BarangKeluar::latest()->paginate(100);
+        $barangkeluar = BarangKeluar::latest()->get();
         return view('BarangKeluar.Index',compact('stok','barangkeluar'));
     }
 
@@ -190,6 +190,7 @@ class BarangKeluarController extends Controller
         $barangkeluar = BarangKeluar::find($id);
         try {
             $barangkeluar->delete();
+            File::delete('foto_barangkeluar/' . $barangkeluar->foto);
         } catch (Exception $e){
             Alert::alert('ERROR', 'masih dipinjam');
             return redirect()->back();

@@ -119,17 +119,17 @@ class SatuanController extends Controller
      */
     public function destroy($id)
     {
-        $satuan = Satuan::find($id);
-        $stok = Stok::where('satuan_id', $id);
+        // $satuan = Satuan::find($id);
+        // $stok = Stok::where('satuan_id', $id);
 
-        if($stok){
-            Alert::alert('ERROR', 'Satuan Terdapat Di Stok');
-            return redirect()->back();
-		}elseif($satuan){
-			$satuan->delete();
-		}else{
-			return abort(500);
-		} 
+        // if($stok){
+        //     Alert::alert('ERROR', 'Satuan Terdapat Di Stok');
+        //     return redirect()->back();
+		// }elseif($satuan){
+		// 	$satuan->delete();
+		// }else{
+		// 	return abort(500);
+		// } 
 
         // try {
         //     $satuan->delete();
@@ -137,6 +137,17 @@ class SatuanController extends Controller
         //     Alert::alert('ERROR', 'Satuan Terdapat Pada Barang');
         //     return redirect()->back();
         // }
+        // Alert::toast('Data Berhasil Dihapus', 'success');
+        // return redirect()->back();
+
+        $satuan = Satuan::find($id);
+        try {
+            $satuan->delete();
+        } catch (Exception $e){
+            alert()->error('ERROR', 'Satuan Terdapat Pada Stok');
+            return redirect()->back();
+        }
+
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();
     }
