@@ -50,7 +50,7 @@
                   <td>
                       <a href="{{route('user.show',$data->id) }} "class="btn btn-sm btn-success">Detail</a>
                       <a href="{{route('user.edit',$data->id) }}"class="btn btn-sm btn-warning">Edit</a>
-                      @if (auth()->user()->id == '3' and auth()->user()->id == '1')
+                      @if (auth()->user()->id == '3')
                       <button type="button" class="btn btn-sm btn-secondary" data-toggle="modal"
                       data-target="#suspenduser{{$data->id}}">Suspend
                       </button>
