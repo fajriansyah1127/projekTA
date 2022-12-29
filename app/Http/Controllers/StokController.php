@@ -166,7 +166,6 @@ class StokController extends Controller
         //     return redirect()->back();
         // }
         
-
         Riwayat::create([
             'user_id' => Auth::user()->id,
             'nama' => Auth::user()->nama,

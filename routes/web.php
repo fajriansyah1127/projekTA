@@ -52,7 +52,7 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'suspend','auth'], function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');
     Route::post('/logout',[AuthenticateController::class,'logout']); 
@@ -67,6 +67,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/hapus_permanen/{id}', [DokumenController::class,'hapus_permanen'])->name('hapus_permanen');
         Route::get('/restore/{id}', [DokumenController::class,'kembalikan'])->name('restore');
         Route::resource('/riwayat',RiwayatController::class);
+        Route::get('/suspenduser', [UserController::class,'suspendindex'])->name('user.suspendview');
+        Route::post('/suspenduser/{id}', [UserController::class,'suspend'])->name('user.suspend');
+        Route::post('/unsuspenduser/{id}', [UserController::class,'unsuspend'])->name('user.unsuspend');
         
     });
 

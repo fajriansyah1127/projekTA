@@ -52,11 +52,11 @@ class BarangKeluarController extends Controller
                'tanggal_barangkeluar' => 'required',
                'nama_barangkeluar' => 'required',
                'jenis_barangkeluar' => 'required',
-               'jumlah' => 'required',
+               'jumlah' => 'required|min:1',
                'total_barangkeluar' => 'required',
                'satuan' => 'required',
                'pengambil_barangkeluar' => 'required',
-               'foto_barangkeluar' => 'required|file|image|mimes:jpg,jpeg,bmp,png|max:10000',
+               'foto_barangkeluar' => 'nullable|file|image|mimes:jpg,jpeg,bmp,png|max:10000',
 
            ]); 
 
@@ -96,7 +96,7 @@ class BarangKeluarController extends Controller
             alert()->error('Gagal', 'GAGAL BRO NDA BISA keluar Di ulangi lagi');
             return redirect()->back();
         }
-        // return $request->all();
+         return $request->all();
     }
 
     /**
@@ -144,6 +144,7 @@ class BarangKeluarController extends Controller
             'tanggal_barangmasuk' => 'nullable',
             'nama_barangkeluar' => 'nullable',
             'jenis_barangkeluar' => 'nullable',
+            'jumlah' => 'required|min:1',
             'satuan' => 'nullable',
             'pengambil_barangkeluar' => 'nullable',
             'foto' => 'nullable|file|image|mimes:jpg,jpeg,bmp,png|max:10000',

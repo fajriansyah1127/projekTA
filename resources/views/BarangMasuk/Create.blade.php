@@ -99,7 +99,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Jumlah</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="total_barangmasuk" id="jumlah_total" class="form-control @error('jumlah') is-invalid @enderror" value="{{old('jumlah')}}" required onkeyup="sum()">
+                                                <input type="number" name="total_barangmasuk" id="jumlah_total" class="form-control @error('jumlah') is-invalid @enderror" value="{{old('jumlah')}}" required min="1" onkeyup="sum()">
                                                 <div class="text-danger">
                                                     @error('jumlah')
                                                         {{ $message }}
@@ -111,7 +111,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Total Stok</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="jumlah" id="jumlah"class="form-control" value="{{old('jumlah')}}" readonly >
+                                                <input type="number" name="jumlah" id="jumlah"class="form-control" value="{{old('jumlah')}}"  min="0" readonly >
                                                 <div class="text-danger">
                                                     @error('total_barangmasuk')
                                                         {{ $message }}
@@ -193,8 +193,13 @@
             var stok = document.getElementById('stok').value;
             var jumlahmasuk = document.getElementById('jumlah_total').value;
             var result = parseInt(stok) + parseInt(jumlahmasuk);
-            if (!isNaN(result)) {
+            // if (!isNaN(result)) {
+            //     document.getElementById('jumlah').value = result;
+            // }
+            if ( result > 0 ) {
                 document.getElementById('jumlah').value = result;
+            }else {
+                document.getElementById('jumlah').value = 0;
             }
         }
         </script>

@@ -156,6 +156,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{ route('user.suspendview') }}" class="nav-link {{Request::is('suspenduser')?'active':''}}  {{Request::is('user/*/edit')?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>User Suspended</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{ route('user.create') }}" class="nav-link {{Request::is('user/create')?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tambah User</p>

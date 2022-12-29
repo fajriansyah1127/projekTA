@@ -21,8 +21,9 @@ class UserController extends Controller
      */
     public function index(User $user )
     {
-        $user = User::get();
-        return view('User.Index', compact('user'));
+        $user = User::where('status','1')->get();
+        $suspend_user = User::onlyTrashed()->get();
+        return view('User.Index', compact('user','suspend_user'));
         
     }
 
@@ -187,11 +188,51 @@ class UserController extends Controller
             'aktivitas' => 'Menghapus '.$user->Nama.'Dari Sistem'
         ]);
                     $user->delete();
-                    File::delete('foto/' .$user->foto);
-
-            
-                    Alert::toast('Data Berhasil Dihapus', 'success');
+                    // File::delete('foto/' .$user->foto);
+                    Alert::toast('User Berhasil Dihapus', 'success');
                     return redirect()->back();
         
+    }
+
+    public function suspendindex(User $user)
+    {
+    	$suspend_user = User::where('status','0')->get();
+        return view('User.Indexsuspend', compact('suspend_user'));
+    }
+
+    public function suspend(Request  $request,$id)
+    {
+    	$this->validate($request, [
+            'status' => 'required',
+        ]);
+        $user = User::find($id);
+        $inter = $request->all(); 
+        $user->update($inter);
+        if ($user) {
+            //redirect dengan pesan sukses
+            Alert::alert('DATA BERHASIL DISUSPEND');
+            return redirect()->route('user.index');
+        } else {
+            //redirect dengan pesan error
+            return redirect()->route('user.index')->with(['error' => 'Data Gagal Disimpan!']);
+        }
+    }
+
+    public function unsuspend(Request  $request,$id)
+    {
+    	$this->validate($request, [
+            'status' => 'required',
+        ]);
+        $user = User::find($id);
+        $inter = $request->all(); 
+        $user->update($inter);
+        if ($user) {
+            //redirect dengan pesan sukses
+            Alert::alert('DATA BERHASIL DIUNSUSPEND');
+            return redirect()->route('user.index');
+        } else {
+            //redirect dengan pesan error
+            return redirect()->route('user.index')->with(['error' => 'Data Gagal Disimpan!']);
+        }
     }
 }

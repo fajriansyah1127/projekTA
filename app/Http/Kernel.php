@@ -21,6 +21,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        
     ];
 
     /**
@@ -68,5 +69,6 @@ class Kernel extends HttpKernel
         'akses' => \App\Http\Middleware\akses::class,
         'magang' => \App\Http\Middleware\IsMagang::class,
         'hakakses' => \App\Http\Middleware\HakAkses::class,
+        'suspend' => \App\Http\Middleware\CheckBanned::class,
     ];
 }

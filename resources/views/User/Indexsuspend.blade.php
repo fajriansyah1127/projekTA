@@ -41,7 +41,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>@foreach($user as $data)
+                <tr>@foreach($suspend_user as $data)
                   <td>{{ $loop->iteration}}</td>
                   <td>{{ $data->nama }}</td>
                   <td>{{ $data->jabatan }}</td>
@@ -50,9 +50,12 @@
                   <td>
                       <a href="{{route('user.show',$data->id) }} "class="btn btn-sm btn-success">Detail</a>
                       <a href="{{route('user.edit',$data->id) }}"class="btn btn-sm btn-warning">Edit</a>
-                      @if (auth()->user()->id == '3' and auth()->user()->id == '1')
                       <button type="button" class="btn btn-sm btn-secondary" data-toggle="modal"
-                      data-target="#suspenduser{{$data->id}}">Suspend
+                      data-target="#suspenduser{{$data->id}}">Unsuspend
+                      </button>
+                      @if (auth()->user()->id == '3')
+                      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                      data-target="#deleteuser{{$data->id}}">Delete
                       </button>
                       @endauth
                     </td>
@@ -67,7 +70,26 @@
       </div>
       <!-- /.card -->
     </div>
-    @foreach($user as $data)
+  @foreach($suspend_user as $data)
+    <div class="modal fade" id="unsuspenduser{{$data->id}}" data-backdrop="static">
+      <div class="modal-dialog">
+          <div class="modal-content bg-default">
+              <div class="modal-body">
+                  Apakah anda yakin unsuspend {{ $data->nama }} ?
+              </div>
+              <div class="modal-footer justify-content-between">
+                  <button type="button" class="btn  btn-sm btn-primary" data-dismiss="modal">Close</button>
+                  <form action="{{ route('user.suspend', $data->id) }}" method="POST">
+                      @csrf
+                      <input type="hidden" id="nama" name="status" class="form-control"required value="`">
+                      <button type="submit" class="btn btn-sm btn-danger">Suspend</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  @endforeach
+  @foreach($suspend_user as $data)
     <div class="modal fade" id="deleteuser{{$data->id}}" data-backdrop="static">
       <div class="modal-dialog">
           <div class="modal-content bg-default">
@@ -80,25 +102,6 @@
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                  </form>
-              </div>
-          </div>
-      </div>
-  </div>
-  @endforeach
-  @foreach($user as $data)
-    <div class="modal fade" id="suspenduser{{$data->id}}" data-backdrop="static">
-      <div class="modal-dialog">
-          <div class="modal-content bg-default">
-              <div class="modal-body">
-                  Apakah anda yakin suspend {{ $data->nama }} ?
-              </div>
-              <div class="modal-footer justify-content-between">
-                  <button type="button" class="btn  btn-sm btn-primary" data-dismiss="modal">Close</button>
-                  <form action="{{ route('user.suspend', $data->id) }}" method="POST">
-                      @csrf
-                      <input type="hidden" id="nama" name="status" class="form-control"required value="0">
-                      <button type="submit" class="btn btn-sm btn-danger">Suspend</button>
                   </form>
               </div>
           </div>

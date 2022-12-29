@@ -91,7 +91,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Jumlah</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="total_barangkeluar" value="{{$barangkeluar -> total_barangkeluar}}" id="jumlah_total"class="form-control" onkeyup="sum()" >
+                                                <input type="number" name="total_barangkeluar" value="{{$barangkeluar -> total_barangkeluar}}" id="jumlah_total"class="form-control" min="1" onkeyup="sum()" >
                                                 <div class="text-danger">
                                                     @error('total_barangkeluar')
                                                         {{ $message }}
@@ -103,10 +103,10 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Total Stok</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="jumlah" id="jumlah"class="form-control" value="{{old('jumlah')}}" required readonly >
+                                                <input type="number" name="jumlah" id="jumlah"class="form-control" value="{{old('jumlah')}}"  min="0" required disabled >
                                                 <div class="text-danger">
                                                     @error('jumlah')
-                                                        {{ 'Perlu di isi !!' }}
+                                                        {{ 'Pengeluaran Tidak Boleh Minus' }}
                                                     @enderror
                                                 </div>
                                             </div>

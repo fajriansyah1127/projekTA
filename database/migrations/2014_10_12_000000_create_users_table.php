@@ -23,9 +23,10 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('role');
             $table->string('foto');
+            $table->integer('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
-          
+            $table->softDeletes();
         });
     }
 

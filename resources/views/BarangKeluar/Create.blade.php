@@ -99,9 +99,9 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Jumlah</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="total_barangkeluar" value="{{old('total_barangkeluar')}}" id="jumlah_total" class="form-control @error('jumlah') is-invalid @enderror" onkeyup="sum()">
+                                                <input type="number" name="total_barangkeluar" value="{{old('total_barangkeluar')}}" id="jumlah_total" class="form-control @error('jumlah') is-invalid @enderror" min="1" onkeyup="sum()">
                                                 <div class="text-danger">
-                                                    @error('jumlah')
+                                                    @error('total_barangmasuk')
                                                         {{ $message }}
                                                     @enderror
                                                 </div>
@@ -111,10 +111,10 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Total Stok</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="jumlah" value="{{old('jumlah')}}" id="jumlah"class="form-control" readonly >
+                                                <input type="number" name="jumlah" value="{{old('jumlah')}}"  min="0" id="jumlah"class="form-control" required disabled >
                                                 <div class="text-danger">
-                                                    @error('total_barangmasuk')
-                                                        {{ $message }}
+                                                    @error('jumlah')
+                                                        {{ 'Total Stok Tidak Boleh Minus' }}
                                                     @enderror
                                                 </div>
                                             </div>
@@ -150,7 +150,7 @@
                                                 <div class="input-group">
                                                     <div class="custom-file">
                                                         <input type="file" class="form-control" id="exampleInputFile"
-                                                            name="foto_barangkeluar" accept="image/png, image/gif, image/jpeg"required>
+                                                            name="foto_barangkeluar" accept="image/png, image/gif, image/jpeg" required>
                                                         <label class="custom-file-label" for="exampleInputFile">Choose
                                                             Foto</label>
                                                         </div>
